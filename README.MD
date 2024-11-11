@@ -70,7 +70,7 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
 
 ## Notas
 
-- La base de datos persiste en un volumen llamado `db_data`, por lo que los datos no se perderán cuando apagues los contenedores.
+- La base de datos persiste en un volumen llamado `db_data`, por lo que los datos no se perderán cuando se apaguen los contenedores.
 - Cualquier cambio en la carpeta `src` se refleja automáticamente en el contenedor.
 
 ## Archivos Ignorados en el Control de Versiones
