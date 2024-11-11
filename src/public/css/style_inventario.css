@@ -1,0 +1,117 @@
+/*MARGEN A TODO EL CONTENT DE LA PANTALLA*/
+section{
+    margin:0px 30px 0px 30px;
+}
+
+h1{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
+
+/*AREA DE CONSULTA*/
+.Consulta-sucursal{
+    height: 50px;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #1B3F48;
+}
+
+.titulo-suc1 h1{
+    margin-top: 30px;
+    margin-bottom: 0px;
+    color: #1B3F48;
+}
+
+label{
+    font-weight: 600;
+    font-size:large;
+    color:#ffffff
+}
+
+input{
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+select{
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#boton-enviar {
+    width: 170px;
+    padding: 8px;
+    font-size: large;
+    background-color: #308499;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+#boton-enviar:hover{
+    transform: scale(1.1);
+}
+/*FIN AREA DE CONSULTA*/
+
+/*INVENTARIO - ESTILO A LAS TABLAS*/
+table{
+    border-collapse:collapse;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+th{
+    background-color: #89673a;
+    padding: 10px;
+    color: #ffffff;
+}
+
+td{
+    padding: 20px;
+    background-color: #eed3ad;
+}
+
+/*para separar cada fila con un borde*/
+#fila-data{
+    border-bottom: 2px solid #89673a;
+}
+
+/*Para redondear las esquinas de las heads*/
+th:first-child {
+    border-top-left-radius: 10px;
+}
+th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/*Para redondear las esquinas de la ultima fila de data*/
+#ultimafila td:first-child{
+    border-bottom-left-radius: 10px;
+}
+
+#ultimafila td:last-child{
+    border-bottom-right-radius: 10px;
+}

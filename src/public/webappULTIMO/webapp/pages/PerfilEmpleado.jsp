@@ -1,0 +1,121 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
+
+<%
+    // Obtener la sesión actual
+    HttpSession currentsession = request.getSession(false);
+    if (session == null || session.getAttribute("usuario") == null) {
+        response.sendRedirect("loginempleado.jsp"); // Redirige al login si no hay sesión activa
+        return;
+    }
+
+    String usuario = (String) session.getAttribute("usuario");
+    String cod_libreria = (String) session.getAttribute("cod_libreria");
+    String cargo = (String) session.getAttribute("cargo");
+    String email = (String) session.getAttribute("email");
+%>
+<!DOCTYPE html>
+<html lang="es">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width">
+        <title>Mi cuenta</title>
+        <link rel="shortcut icon" href="../images/LOGO.png" alt="logo"> 
+        <!--Documentos CSS utilizados-->
+        <link rel="stylesheet" href="../css/header_footerEmpleado.css">
+        <link rel="stylesheet" href="../css/Cuenta_Empleado.css">
+        <!---Fuente Nunito de Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+        <!---Fuente Playwrite England SemiJoined de Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
+    </head>
+
+
+    <body>
+    <!--HEADER-->
+    <header>
+        <!--LOGO Y REDES-->
+        <div class="LogoRedes">
+            <div class="logo">
+                <img src="../images/LOGO.png" alt="Librería ¡Donde Paco!">
+            </div>
+            <div class="Redes">
+                <ul>
+                    <li><a href="https://www.instagram.com"><img src="../images/Instagram.png" alt="Instagram"></a></li>
+                    <li><a href="https://www.facebook.com"><img src="../images/Facebook.png" alt="Facebook"></a></li>
+                    <li><a href="https://www.google.com/webhp?hl=es&sa=X&ved=0ahUKEwjdofSloIGHAxVQmYQIHetICooQPAgI"><img
+                                src="../images/Buscar.png" alt="Buscar"></a></li>
+                </ul>
+            </div>
+        </div>
+        <!--MENU-->
+        <div class="Menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Inventario.html">Inventario</a></li>
+                <li><a href="HistorialVentas.html">Ventas</a></li>
+                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+                <li><a href="sucursal.html">Contacto</a></li>
+            </ul>
+            <div class="Usuario">
+                <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
+                <a href="PerfilEmpleado.html">Mi cuenta</a>
+            </div>
+        </div>
+    </header>
+
+
+        <main>
+            <section class="titulo">
+                <h1>Mi cuenta</h1>
+            </section>
+            <!--INFO DEL EMPLEADO-->
+            <section class="Container-infoper">
+                <div class="campoizquierdo">
+                    <div class="fotoperfil">
+                        <img src="../images/sinfotoperfil.png" alt="FotoPerfil" title="Foto de Perfil"> 
+                    </div>
+                    <div class="boton">
+                        <button id="boton-editar">Editar perfil</button>
+                    </div>
+                    
+                </div>
+                <div class="infop">
+                    <h4>Nombre: <%= usuario %></h4>
+                    <h4>Código de Librería: <%= cod_libreria %></h4>
+                    <h4>Cargo: <%= cargo %></h4>
+                    <h4>Email: <%= email %></h4>
+                    <h4>Contraseña: ****</h4>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <!--MENU-->
+            <div class="Menu-footer">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="Inventario.html">Inventario</a></li>
+                    <li><a href="HistorialVentas.html">Ventas</a></li>
+                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="sucursal.html">Contacto</a></li>
+                </ul>
+                <div class="Usuario-footer">
+                    <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
+                    <a href="PerfilEmpleado.html">Mi cuenta</a>
+                </div>
+                <ul>
+                    <li><a href="perfiles.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <!--COPYRIGHT-->
+            <div class="Copyright">
+                <p>© 2024, Libreria ¡Donde Paco!</p>
+            </div>
+        </footer>
+    </body>
+</html>
