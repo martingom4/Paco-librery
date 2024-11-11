@@ -1,0 +1,19 @@
+# Archivos y carpetas del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno
+.env
+
+# Archivos de logs
+logs/
+logs/*
+
+# Configuración de Docker
+docker/db_data
+docker/apache-config.conf
+docker/php.ini
+
+# Archivos temporales de PHP
+*.log
+*.cache
