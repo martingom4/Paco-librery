@@ -112,3 +112,8 @@ docker/php.ini
 
 
 ```
+
+Si encuentras problemas al iniciar los contenedores, asegúrate de que el archivo `entrypoint.sh` tiene permisos de ejecución. Ejecuta:
+```bash
+chmod +x docker/entrypoint.sh
+
