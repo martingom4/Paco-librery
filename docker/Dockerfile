@@ -1,9 +1,10 @@
 # Usa una imagen base de PHP con Apache
 FROM php:8.0-apache
 
-# Instala extensiones de PHP necesarias para PostgreSQL
+# Instala extensiones de PHP necesarias para PostgreSQL y el cliente de PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    postgresql-client \
     && docker-php-ext-install pdo pdo_pgsql
 
 # Copia el archivo de configuración de Apache
