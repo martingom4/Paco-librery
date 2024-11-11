@@ -100,8 +100,7 @@ logs/*
 
 # Configuración de Docker
 docker/db_data
-docker/apache-config.conf
-docker/php.ini
+
 
 # Archivos temporales de PHP
 *.log
