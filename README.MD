@@ -22,11 +22,23 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
    Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
 
    ```env
-   DB_HOST=db
-   DB_DATABASE=paco_librery_db
-   DB_USERNAME=paco_user
-   DB_PASSWORD=paco1234
+   # Configuración general del entorno
+      APP_ENV=development
+      APP_DEBUG=true
+      
+      # Configuración de la base de datos
+      DB_CONNECTION=pgsql
+      DB_HOST=db
+      DB_PORT=5432
+      DB_DATABASE=paco_librery_db
+      DB_USERNAME=paco_user
+      DB_PASSWORD=paco1234
    ```
+
+## Configuración de Entornos
+
+- **Desarrollo**: Configura `APP_ENV=development` y `APP_DEBUG=true` en `.env` para ver los errores y advertencias.
+- **Producción**: Cambia a `APP_ENV=production` y `APP_DEBUG=false` para ocultar errores y advertencias en el entorno de producción.
 
 3. **Iniciar los contenedores**:
    Ejecuta el siguiente comando para iniciar el entorno:
@@ -57,10 +69,7 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
 - **docker/**: Archivos de configuración de Docker, como el Dockerfile y configuraciones de Apache.
 - **logs/**: Carpeta para almacenar los logs de Apache y PHP.
 
-## Configuración de Entornos
 
-- **Desarrollo**: Configura `APP_ENV=development` y `APP_DEBUG=true` en `.env` para ver los errores y advertencias.
-- **Producción**: Cambia a `APP_ENV=production` y `APP_DEBUG=false` para ocultar errores y advertencias en el entorno de producción.
 
 ## Acceso a Logs
 
