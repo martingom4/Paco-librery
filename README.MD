@@ -17,7 +17,67 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
    cd paco_librery
    ```
 ````
+1.1 **Para configurar en windows se necesita cambiar dos archivos:** 
+   ## Primero cambia el entrypoint.sh
+      ```
+         #!/bin/sh
+         echo "Esperando a que PostgreSQL esté listo..."
+         until pg_isready -h $DB_HOST -p $DB_PORT -U $DB_USERNAME; do
+           sleep 2
+         done
+         echo "Ejecutando migraciones..."
+         if [ -f /var/www/html/migrations/init.sql ]; then
+           export PGPASSWORD=$DB_PASSWORD
+           psql -h $DB_HOST -U $DB_USERNAME -d $DB_DATABASE -f /var/www/html/migrations/init.sql
+         fi
+         echo "Configurando ServerName en Apache..."
+         echo "ServerName localhost" >> /etc/apache2/apache2.conf
+         echo "Iniciando Apache..."
+         apache2-foreground
+      ```
+   ## Dockerfile 
+      ```
+         # docker/Dockerfile
 
+         # Usar una imagen base de PHP con Apache
+         FROM php:7.4-apache
+         
+         # Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
+         RUN apt-get update && apt-get install -y \
+             libpq-dev \
+             && docker-php-ext-install pdo pdo_pgsql
+         
+         # Instalar el cliente de PostgreSQL
+         RUN apt-get update && apt-get install -y postgresql-client
+         
+         # Habilitar el módulo de reescritura de Apache
+         RUN a2enmod rewrite
+         
+         # Copiar el archivo de configuración de Apache
+         COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
+         
+         # Configurar permisos para el directorio de la aplicación
+         RUN chown -R www-data:www-data /var/www/html
+         
+         # Exponer el puerto 80
+         EXPOSE 80
+         
+         # Copiar el código fuente de la aplicación al contenedor
+         COPY ./src /var/www/html
+         
+         # Copiar el archivo .env al contenedor
+         COPY ./.env /var/www/.env
+         
+         # Copiar el script de entrada
+         COPY ./docker/entrypoint.sh /entrypoint.sh
+         
+         # Otorgar permisos de ejecución al script de entrada
+         RUN chmod +x /entrypoint.sh
+         
+         # Configurar el script de entrada
+         # ENTRYPOINT ["/entrypoint.sh"]
+      
+      ```
 2. **Crear el archivo de entorno**:
    Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
 
