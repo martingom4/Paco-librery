@@ -22,3 +22,4 @@ RUN chmod +x /entrypoint.sh
 
 # Configura el entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2-foreground"]
