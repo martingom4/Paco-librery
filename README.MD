@@ -148,32 +148,34 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
 ## Archivos Ignorados en el Control de Versiones
 
 El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
+## **Importante** despues de configurar todo en el archivo gitignore colocar esta configuracion
+```
 
-```gitignore
 # Archivos y carpetas del sistema
 .DS_Store
 Thumbs.db
 
-# Archivos de entorno
+# Archivos de entorno (no incluir el archivo .env en producción)
 .env
 
 # Archivos de logs
 logs/
 logs/*
 
-# Configuración de Docker
-docker/db_data
-
-
 # Archivos temporales de PHP
 *.log
 *.cache
-```
+
+# Configuración de Docker
+docker/db_data
+
+# Archivos y configuraciones de Docker que no deben subirse
+docker/entrypoint.sh
+Dockerfile
 
 ```
 
 
-```
 
 Si encuentras problemas al iniciar los contenedores, asegúrate de que el archivo `entrypoint.sh` tiene permisos de ejecución. Ejecuta:
 ```bash
