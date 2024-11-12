@@ -8,15 +8,17 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./src:/var/www/html
-      - ./logs/apache:/var/log/apache2   # Mapea los logs de Apache a una carpeta en tu proyecto
-      - ./logs/php:/var/log/php          # Mapea los logs de PHP a una carpeta en tu proyecto
-
+      - ./src:/var/www/html                 # Mapea el código fuente
+      - ./logs/apache:/var/log/apache2       # Mapea los logs de Apache
+      - ./logs/php:/var/log/php              # Mapea los logs de PHP
     environment:
       - DB_HOST=db
+      - DB_PORT=5432
       - DB_DATABASE=paco_librery_db
       - DB_USERNAME=paco_user
-      - DB_PASSWORD=paco_password
+      - DB_PASSWORD=paco1234
+    depends_on:
+      - db
 
   db:
     image: postgres:13

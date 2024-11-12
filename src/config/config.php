@@ -14,7 +14,8 @@ function loadEnv($path) {
 }
 
 // Cargar el archivo .env
-loadEnv(__DIR__ . '/../../../.env');
+loadEnv('/var/www/html/.env');
+
 
 // Configuración de la conexión a la base de datos
 $host = getenv('DB_HOST');

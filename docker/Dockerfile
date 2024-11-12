@@ -16,7 +16,8 @@ RUN a2enmod rewrite
 # Copia el archivo de configuración php.ini
 COPY docker/php.ini /usr/local/etc/php/php.ini
 
-# Copia el script de entrypoint
+# Copia el archivo de migración y el script de entrada
+COPY docker/migrations /var/www/html/migrations
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
