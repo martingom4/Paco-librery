@@ -1,5 +1,4 @@
-version: '3.8'
-
+version: '3.9'
 services:
   web:
     build:
@@ -8,26 +7,37 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./src:/var/www/html:cached           # Usa cached para mejorar rendimiento en Windows
-      - ./logs/apache:/var/log/apache2       # Logs de Apache
-      - ./logs/php:/var/log/php              # Logs de PHP
+      - ./src:/var/www/html           # Código fuente en el contenedor
+      - ./logs/apache:/var/log/apache2 # Logs de Apache
+      - ./logs/php:/var/log/php        # Logs de PHP
+      - ./.env:/var/www/.env           # Archivo .env en /var/www
     environment:
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_DATABASE=paco_librery_db
-      - DB_USERNAME=paco_user
-      - DB_PASSWORD=paco1234
+      APP_ENV: ${APP_ENV}
+      APP_DEBUG: ${APP_DEBUG}
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: postgres:13
     environment:
-      POSTGRES_DB: paco_librery_db
-      POSTGRES_USER: paco_user
-      POSTGRES_PASSWORD: paco1234
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 volumes:
   db_data:

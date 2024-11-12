@@ -1,19 +1,14 @@
 #!/bin/bash
-
-# Espera a que PostgreSQL esté listo antes de ejecutar migraciones
-until pg_isready -h db -p 5432 -U paco_user
-do
-  echo "Esperando a que PostgreSQL esté listo..."
-  sleep 1
+echo "Esperando a que PostgreSQL esté listo..."
+until pg_isready -h $DB_HOST -p $DB_PORT -U $DB_USERNAME; do
+  sleep 2
 done
-
-# Ejecuta las migraciones (instrucciones SQL en init.sql)
+echo "Ejecutando migraciones..."
 if [ -f /var/www/html/migrations/init.sql ]; then
-  echo "Ejecutando migraciones..."
-  psql -h db -U paco_user -d paco_librery_db -f /var/www/html/migrations/init.sql
-else
-  echo "Archivo de migración init.sql no encontrado"
+  export PGPASSWORD=$DB_PASSWORD
+  psql -h $DB_HOST -U $DB_USERNAME -d $DB_DATABASE -f /var/www/html/migrations/init.sql
 fi
-
-# Inicia Apache en el contenedor
+echo "Configurando ServerName en Apache..."
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+echo "Iniciando Apache..."
 apache2-foreground

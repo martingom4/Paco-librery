@@ -1,26 +1,39 @@
-# Usa una imagen base de PHP con Apache
-FROM php:8.0-apache
+# docker/Dockerfile
 
-# Instala extensiones de PHP necesarias para PostgreSQL y el cliente de PostgreSQL
+# Usar una imagen base de PHP con Apache
+FROM php:7.4-apache
+
+# Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    postgresql-client \
     && docker-php-ext-install pdo pdo_pgsql
 
-# Copia el archivo de configuración de Apache
-COPY docker/apache-config.conf /etc/apache2/sites-available/000-default.conf
+# Instalar el cliente de PostgreSQL
+RUN apt-get update && apt-get install -y postgresql-client
 
-# Habilita el módulo rewrite de Apache
+# Habilitar el módulo de reescritura de Apache
 RUN a2enmod rewrite
 
-# Copia el archivo de configuración php.ini
-COPY docker/php.ini /usr/local/etc/php/php.ini
+# Copiar el archivo de configuración de Apache
+COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
 
-# Copia el archivo de migración y el script de entrada
-COPY docker/migrations /var/www/html/migrations
-COPY docker/entrypoint.sh /entrypoint.sh
+# Configurar permisos para el directorio de la aplicación
+RUN chown -R www-data:www-data /var/www/html
+
+# Exponer el puerto 80
+EXPOSE 80
+
+# Copiar el código fuente de la aplicación al contenedor
+COPY ./src /var/www/html
+
+# Copiar el archivo .env al contenedor
+COPY ./.env /var/www/.env
+
+# Copiar el script de entrada
+COPY ./docker/entrypoint.sh /entrypoint.sh
+
+# Otorgar permisos de ejecución al script de entrada
 RUN chmod +x /entrypoint.sh
 
-# Configura el entrypoint
+# Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["apache2-foreground"]
