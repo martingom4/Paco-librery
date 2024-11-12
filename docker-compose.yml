@@ -8,9 +8,9 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./src:/var/www/html                 # Mapea el código fuente
-      - ./logs/apache:/var/log/apache2       # Mapea los logs de Apache
-      - ./logs/php:/var/log/php              # Mapea los logs de PHP
+      - ./src:/var/www/html:cached           # Usa cached para mejorar rendimiento en Windows
+      - ./logs/apache:/var/log/apache2       # Logs de Apache
+      - ./logs/php:/var/log/php              # Logs de PHP
     environment:
       - DB_HOST=db
       - DB_PORT=5432
