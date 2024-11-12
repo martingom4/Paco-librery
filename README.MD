@@ -39,8 +39,11 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
 
 - **Desarrollo**: Configura `APP_ENV=development` y `APP_DEBUG=true` en `.env` para ver los errores y advertencias.
 - **Producción**: Cambia a `APP_ENV=production` y `APP_DEBUG=false` para ocultar errores y advertencias en el entorno de producción.
-
-3. **Iniciar los contenedores**:
+3. **si es primera vez en iniciar docker ejecuta este comando**:
+   ```bash
+   docker-compose up --build
+   ```
+3.1 **Iniciar los contenedores**:
    Ejecuta el siguiente comando para iniciar el entorno:
 
    ```bash
