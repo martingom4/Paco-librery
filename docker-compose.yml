@@ -10,6 +10,7 @@ services:
       - ./src:/var/www/html           # Código fuente en el contenedor
       - ./logs/apache:/var/log/apache2 # Logs de Apache
       - ./logs/php:/var/log/php        # Logs de PHP
+      - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf # Archivo vhost.conf
     environment:
       APP_ENV: ${APP_ENV}
       APP_DEBUG: ${APP_DEBUG}
@@ -22,7 +23,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
+    command: >
+      /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
   db:
     image: postgres:13
     environment:
@@ -37,7 +39,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-
 
 volumes:
   db_data:
