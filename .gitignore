@@ -16,3 +16,4 @@ docker/db_data
 # Archivos temporales de PHP
 *.log
 *.cache
+src/.migraciones_completadas
