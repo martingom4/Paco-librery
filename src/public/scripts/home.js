@@ -10,17 +10,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    nextButton.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % slides.length;
+    function updateState(newIndex) {
+        currentSlide = newIndex;
         showSlide(currentSlide);
+    }
+
+    nextButton.addEventListener('click', () => {
+        const newIndex = (currentSlide + 1) % slides.length;
+        updateState(newIndex);
     });
 
     prevButton.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
+        const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+        updateState(newIndex);
     });
 
     showSlide(currentSlide);
 });
-
-

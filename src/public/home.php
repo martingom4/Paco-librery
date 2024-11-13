@@ -1,13 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
     <link rel="shortcut icon" href="../images/LOGO.PNG" alt="logo">
     <!--Documentos CSS utilizados-->
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="css/home.css">
     <!---Fuente Nunito de Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <jsp:include page="header.jsp" />
-    
+    <?php include 'includes/header.php'; ?>
+
    <main>
         <div class="welcome-message">
             <h1>¡Bienvenidos a Librería ¡Donde Paco!</h1>
@@ -45,8 +44,8 @@
                 </div>
                 <div class="text-content">
                     <h2>Nueva antología de poesía panameña</h2>
-                    <p>La escritora panameña Consuelo Tomás Fitzgerald presentó hace unos días, 
-                        en el marco del Festival Centroamérica Cuenta, la última de las antologías 
+                    <p>La escritora panameña Consuelo Tomás Fitzgerald presentó hace unos días,
+                        en el marco del Festival Centroamérica Cuenta, la última de las antologías
                         de poesía centroamericana publicadas por Ediciones Perro Azul y titulada Vienen de Panamá.</p>
                     <a href="https://www.laestrella.com.pa/vida-y-cultura/nueva-antologia-de-poesia-panamena-GD7621558" class="text-content button">
                         <button>Click aquí para ver más</button>
@@ -59,7 +58,7 @@
                 </div>
                 <div class="text-content">
                     <h2>Netflix lanzará serie del libro "Cien años de soledad" de Gabriel García Márquez</h2>
-                    <p>Una nueva serie de Netflix titulada "Cien años de soledad" llevará a la icónica novela 
+                    <p>Una nueva serie de Netflix titulada "Cien años de soledad" llevará a la icónica novela
                         del escritor colombiano y Premio Nobel de Literatura Gabriel García Márquez a la pantalla.</p>
                     <a href="https://cnnespanol.cnn.com/video/netflix-cien-anos-soledad-gabriel-garcia-marquez-aristegui-tv/" class="text-content button">
                         <button>Click aquí para ver más</button>
@@ -75,7 +74,6 @@
         </div>
     </main>
 
-    <jsp:include page="footer.jsp" />
-    <script src="../scripts/home.js"></script>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>
