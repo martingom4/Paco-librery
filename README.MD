@@ -1,6 +1,6 @@
 Aquí tienes el archivo `README.md` ajustado con el formato adecuado y el contenido completo:
 
-```markdown
+````markdown
 # Paco Librery
 
 Este es un sistema de gestión de librerías desarrollado en PHP sin el uso de frameworks. Utiliza Docker para manejar el entorno de desarrollo con Apache y PostgreSQL.
@@ -16,10 +16,12 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
    git clone <URL del repositorio>
    cd paco_librery
    ```
+````
 
 ### 1.1 **Para configurar en Windows, se necesita cambiar dos archivos:**
 
 #### Primero cambia el `entrypoint.sh`:
+
 ```bash
 #!/bin/bash
 echo "Esperando a que PostgreSQL esté listo..."
@@ -45,6 +47,7 @@ apache2-foreground
 ```
 
 #### Dockerfile:
+
 ```dockerfile
 # Usar una imagen base de PHP con Apache
 FROM php:7.4-apache
@@ -126,6 +129,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 - **Producción**: Cambia a `APP_ENV=production` y `APP_DEBUG=false` para ocultar errores y advertencias en el entorno de producción.
 
 3. **Si es la primera vez iniciando Docker, ejecuta este comando**:
+
    ```bash
    docker-compose up --build
    ```
@@ -147,13 +151,27 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 7. **Apagar el proyecto**:
    Para detener los contenedores, ejecuta:
+
    ```bash
    docker-compose down
    ```
 
+8. **Las ramas que se estan utilizando se pueden activar con**:
+
+```
+git checkout -b busqueda-libro remotes/origin/busqueda-libro
+git checkout -b develop remotes/origin/develop
+git checkout -b factura remotes/origin/factura
+git checkout -b inicio-sesion remotes/origin/inicio-sesion
+git checkout -b master remotes/origin/master
+git checkout -b registro-cliente remotes/origin/registro-cliente
+```
+
+Se tendria que navegar dependiendo de lo que se quiera programar
+
 ## Estructura de Carpetas
 
-- **src/public/**: Contiene los archivos frontend (HTML, CSS, JS) y el archivo `index.php`.
+- **src/public/**: Contiene los archivos frontend (HTML, CSS, JS) y el archivo `home.php`.
 - **src/app/**: Contiene la lógica de backend, organizada en controladores, modelos, vistas y helpers.
 - **src/config/**: Configuración del proyecto, incluyendo la conexión a la base de datos.
 - **docker/**: Archivos de configuración de Docker, como el Dockerfile y configuraciones de Apache.
@@ -198,13 +216,19 @@ docker/entrypoint.sh
 Dockerfile
 ```
 
-Si encuentras problemas al iniciar los contenedores, asegúrate de que el archivo `entrypoint.sh` tiene permisos de ejecución. Ejecuta:
+## **importante**
 
-```bash
-chmod +x docker/entrypoint.sh
+para que los cambios de archivos de contenedor se debe usar este comando despues de haber configurado todo en tu sistema
+
+```
+git update-index --no-assume-unchanged docker/Dockerfile
+git update-index --no-assume-unchanged docker/apache/vhost.conf
+git update-index --no-assume-unchanged docker/entrypoint.sh
+git update-index --no-assume-unchanged docker-compose.yml
 ```
 
+Esto lo que hace es que ignora los cambios que se pudieron hacer en la instalacion sin que dañe produccion
+
+Ejecutar estos comandos en la terminal bash para que se vean reflejados
+
 ---
-
-
-
