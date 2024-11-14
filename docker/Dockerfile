@@ -1,23 +1,48 @@
-# Usa una imagen base de PHP con Apache
-FROM php:8.0-apache
+# Usar una imagen base de PHP con Apache
+FROM php:7.4-apache
 
-# Instala extensiones de PHP necesarias para PostgreSQL
+# Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    unzip \
+    git \
     && docker-php-ext-install pdo pdo_pgsql
 
-# Copia el archivo de configuración de Apache
-COPY docker/apache-config.conf /etc/apache2/sites-available/000-default.conf
+# Instalar el cliente de PostgreSQL
+RUN apt-get update && apt-get install -y postgresql-client
 
-# Habilita el módulo rewrite de Apache
+# Habilitar el módulo de reescritura de Apache
 RUN a2enmod rewrite
 
-# Copia el archivo de configuración php.ini
-COPY docker/php.ini /usr/local/etc/php/php.ini
+# Copiar el archivo de configuración de Apache
+COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
 
-# Copia el script de entrypoint
-COPY docker/entrypoint.sh /entrypoint.sh
+# Descargar e instalar Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Configurar el directorio de trabajo para Composer y el proyecto
+WORKDIR /var/www/html
+
+# Copiar composer.json en el contenedor
+COPY ./src/composer.json ./
+
+
+# Instalar dependencias de Composer en /var/www/html/vendor
+RUN composer install --no-dev --optimize-autoloader
+
+# Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
+COPY ./src /var/www/html
+
+# Copiar el archivo .env directamente a /var/www/html/.env
+COPY .env /var/www/html/.env
+
+# Exponer el puerto 80
+EXPOSE 80
+RUN chown -R www-data:www-data /var/www
+
+# Copiar el script de entrada y darle permisos de ejecución
+COPY ./docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Configura el entrypoint
+# Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]

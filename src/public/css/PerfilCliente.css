@@ -1,0 +1,246 @@
+body{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F2E5D5;
+}
+h1{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
+
+/*HEADER*/
+/*HEADER DONDE ESTA EL LOGO Y LAS REDES*/
+.logo img{
+    height: 85px;
+    margin-left: 35px;
+}
+.LogoRedes{
+    margin-bottom:0%;
+    background-color: white;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.LogoRedes a{
+    text-decoration: none;
+    color: black;
+}
+
+.Redes img{
+    height: 35px;
+    margin-right: 5px;
+}
+
+/*HEADER DONDE ESTA EL MENU NAVEGACION*/
+.Menu{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.Menu ul, .Redes ul{
+    display: flex;
+    gap:20px;
+    list-style: none;
+}
+
+.Menu ul{
+    margin-left:auto;
+}
+
+.Menu a{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    position: relative;
+}
+
+.Usuario img{
+    height: 30px;
+}
+
+.Usuario{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
+.Menu ul li a::after,.Usuario a::after{
+    content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    bottom: -5px; /*para colocar la linea debajo del texto*/
+    left: 0;
+    transform: scaleX(0); /*reducir la escala*/
+    transform-origin: bottom right; /*el origen de la transformacion*/
+    transition: transform 0.25s ease-out; /*una transicion suave*/
+}
+/*HOVER EN LA LISTA DEL HEADER*/
+.Menu ul li a:hover::after, .Usuario a:hover::after{
+    transform: scaleX(1); /*expansion de la linea a tamaño completo*/
+    transform-origin: bottom left; /*cambiar el origen de la transformacion*/
+}
+
+/*FOOTER DONDE ESTA EL MENU NAVEGACION*/
+.Menu-footer{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    justify-content: center;
+}
+
+.Menu-footer ul{
+    list-style: none;
+    display: flex;
+    gap: 100px;
+}
+
+.Menu-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.Menu-footer a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.Usuario-footer img{
+    height: 30px;
+}
+
+.Usuario-footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*FOOTER COPYRIGHT*/
+.Copyright{
+    margin: 0%;
+    background-color: #284F58;
+    height: 30px;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/*Estilo de los titulos y main*/
+
+main {
+    background-color: #F2E5D5;
+    padding: 40px;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    text-align: left;
+    color: #1B3F48;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+h2{
+    font-size: 27px;
+    font-weight: 800;
+}
+
+/*Estilo de la section que tiene toda la info del empleados*/
+.Container-infoper{
+    background-color: #284f58d6;
+    display: flex;
+    align-items: center;
+    gap:130px;
+    margin:0px 50px 20px 50px;
+    border-radius: 25px;
+    box-shadow: 0  0  5px #00000080; /*x y size color*/
+}
+
+/*estilo de la foto de perfil */
+.fotoperfil img:hover{
+    transform: scale(1.1);
+}
+.fotoperfil img{
+    height: 150px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/*estilo para el campo izquierdo de la section que contiene la info*/
+.campoizquierdo{
+    padding-left: 20px;
+    background-color: #EDEDED;
+    padding-right: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    box-shadow: 0  0  5px #00000080;
+}
+
+/*estilo del boton editar*/
+.boton{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+#boton-editar{
+    width: 130px;
+    padding: 10px;
+    font-size: medium;
+    background-color: #308499;
+    color: #ffffff;
+    border: 3px solid #1B3F48;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+#boton-editar:hover{
+    transform: scale(1.1);
+}
+
+/*estilo de los datos*/
+.infop h4{
+    margin:5px;
+    color: #ffffff;
+}
+
+/*Estilo del historial de compra*/
+.Container-historial{
+    color: #ffffff;
+    background-color: #284f58d6;
+    margin:0px 50px 20px 50px;
+    border-radius: 25px;
+    box-shadow: 0  0  5px #00000080; /*x y size color*/
+    display: flex;
+    align-items: center;
+}
+
+.Container-historial img{
+    margin: 0px 40px;
+    height: 150px;
+    width: auto;
+}
+
+.imagenlibro, .infolibro{
+    display: inline-block;
+}

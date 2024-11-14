@@ -1,0 +1,284 @@
+/* Establecer el body y el html para ocupar toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: #F2E5D5;
+    display: flex;
+    flex-direction: column;
+}
+
+/*HEADER*/
+/*HEADER DONDE ESTA EL LOGO Y LAS REDES*/
+.logo img{
+    height: 85px;
+    margin-left: 35px;
+}
+.LogoRedes{
+    margin-bottom:0%;
+    background-color: white;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+h3,h4{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
+.LogoRedes a{
+    text-decoration: none;
+    color: black;
+}
+
+.Redes img{
+    height: 35px;
+    margin-right: 5px;
+}
+
+/*HEADER DONDE ESTA EL MENU NAVEGACION*/
+.Menu{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.Menu ul, .Redes ul{
+    display: flex;
+    gap:20px;
+    list-style: none;
+}
+
+.Menu ul{
+    margin-left:auto;
+}
+
+.Menu a{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    position: relative;
+}
+
+.Usuario img{
+    height: 30px;
+}
+
+.Usuario{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
+.Menu ul li a::after,.Usuario a::after{
+    content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    bottom: -5px; /*para colocar la linea debajo del texto*/
+    left: 0;
+    transform: scaleX(0); /*reducir la escala*/
+    transform-origin: bottom right; /*el origen de la transformacion*/
+    transition: transform 0.25s ease-out; /*una transicion suave*/
+}
+/*HOVER EN LA LISTA DEL HEADER*/
+.Menu ul li a:hover::after, .Usuario a:hover::after{
+    transform: scaleX(1); /*expansion de la linea a tamaño completo*/
+    transform-origin: bottom left; /*cambiar el origen de la transformacion*/
+}
+
+/*FOOTER DONDE ESTA EL MENU NAVEGACION*/
+.Menu-footer{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    justify-content: center;
+}
+
+.Menu-footer ul{
+    list-style: none;
+    display: flex;
+    gap: 100px;
+}
+
+.Menu-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.Menu-footer a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.Usuario-footer img{
+    height: 30px;
+}
+
+.Usuario-footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*FOOTER COPYRIGHT*/
+.Copyright{
+    margin: 0%;
+    background-color: #284F58;
+    height: 30px;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/*HEADER*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #e0e0e0;
+}
+
+.header button, header input {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #004d40;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.header input[type="search"] {
+    flex-grow: 1;
+    margin: 0 1rem;
+    padding: 0.5rem;
+}
+
+/* Asegurar que el contenedor principal ocupe el espacio restante */
+main {
+    flex: 1;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+}
+
+/* Sección principal de contenido */
+.main-content {
+    display: flex;
+    flex: 1;
+}
+
+/* Sección de filtros */
+.filter-section {
+    width: 20%;
+    height: auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-right: 1rem;
+}
+
+.filter-section h3 {
+    margin-top: 0;
+}
+
+.filter-group {
+    margin-bottom: 1rem;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.filter-group select, .filter-group input {
+    width: 75%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-filtrar {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #004d40;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-filtrar:hover {
+    background-color: #00332e;
+}
+
+/* Sección del catálogo */
+.catalog-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 80%;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 calc(33.333% - 1rem);
+    box-sizing: border-box;
+}
+
+.product-card img {
+    width: 50%;
+    height: 250px;
+    background-color: #ddd;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.product-card h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+.product-card p {
+    margin: 0 0 1rem 0;
+}
+
+.product-card button {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #004d40;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+.product-card button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.product-card button:hover {
+    background-color: #00332e;
+}
