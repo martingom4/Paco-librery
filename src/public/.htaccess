@@ -17,8 +17,3 @@ Header always set Access-Control-Allow-Headers "Content-Type"
     Deny from all
 </Files>
 
-# Proteger el directorio vendor
-<Directory "/var/www/html/vendor">
-    Order Allow,Deny
-    Deny from all
-</Directory>
