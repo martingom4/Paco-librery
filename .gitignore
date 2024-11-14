@@ -26,7 +26,7 @@ docker/db_data
 
 # Archivos y directorios que contienen configuraciones específicas de desarrollo
 # Ignorar archivos de configuración de Apache o Nginx si es necesario
-docker/apache/vhost.conf
+
 
 # Ignorar archivos de configuración en src
 src/.migraciones_completadas
@@ -38,4 +38,4 @@ examples/
 # Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
 docker-compose.yml
 docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
-docker/
+
