@@ -1,0 +1,264 @@
+body{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F2E5D5;
+}
+h1{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
+
+/*HEADER*/
+/*HEADER DONDE ESTA EL LOGO Y LAS REDES*/
+.logo img{
+    height: 85px;
+    margin-left: 35px;
+}
+.LogoRedes{
+    margin-bottom:0%;
+    background-color: white;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.LogoRedes a{
+    text-decoration: none;
+    color: black;
+}
+
+.Redes img{
+    height: 35px;
+    margin-right: 5px;
+}
+
+/*HEADER DONDE ESTA EL MENU NAVEGACION*/
+.Menu{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.Menu ul, .Redes ul{
+    display: flex;
+    gap:20px;
+    list-style: none;
+}
+
+.Menu ul{
+    margin-left:auto;
+}
+
+.Menu a{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    position: relative;
+}
+
+.Usuario img{
+    height: 30px;
+}
+
+.Usuario{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
+.Menu ul li a::after,.Usuario a::after{
+    content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    bottom: -5px; /*para colocar la linea debajo del texto*/
+    left: 0;
+    transform: scaleX(0); /*reducir la escala*/
+    transform-origin: bottom right; /*el origen de la transformacion*/
+    transition: transform 0.25s ease-out; /*una transicion suave*/
+}
+/*HOVER EN LA LISTA DEL HEADER*/
+.Menu ul li a:hover::after, .Usuario a:hover::after{
+    transform: scaleX(1); /*expansion de la linea a tamaño completo*/
+    transform-origin: bottom left; /*cambiar el origen de la transformacion*/
+}
+
+/*FOOTER DONDE ESTA EL MENU NAVEGACION*/
+.Menu-footer{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 90px; /*cambio para que se centre el nav abajo*/
+    justify-content: center;
+}
+
+.Menu-footer ul{
+    list-style: none;
+    display: flex;
+    gap: 90px; /*cambio para que se centre el nav abajo*/
+    padding: 0px; /*cambio para que se centre el nav abajo*/
+}
+
+
+.Menu-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.Menu-footer a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.Usuario-footer img{
+    height: 30px;
+}
+
+.Usuario-footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*FOOTER COPYRIGHT*/
+.Copyright{
+    margin: 0%;
+    background-color: #284F58;
+    height: 30px;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*Estilo General del cuerpo*/
+main {
+    background-color: #F2E5D5;
+    padding: 40px;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    text-align: left;
+    color: #1B3F48;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+h2{
+    font-size: 27px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente si hay altura definida */
+}
+
+/*Estilo de la tabla/*/
+table{
+    border-collapse:collapse;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+th{
+    background-color: #89673a;
+    padding: 10px;
+    color: #ffffff;
+}
+
+td{
+    padding: 20px;
+    background-color: #eed3ad;
+}
+
+.columna1{
+    font-weight: 700;
+}
+/*para separar cada fila con un borde*/
+#fila-data{
+    border-bottom: 2px solid #89673a;
+}
+
+/*Para redondear las esquinas de las heads*/
+th:first-child {
+    border-top-left-radius: 10px;
+}
+th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/*Para redondear las esquinas de la ultima fila de data*/
+#ultimafila td:first-child{
+    border-bottom-left-radius: 10px;
+}
+
+#ultimafila td:last-child{
+    border-bottom-right-radius: 10px;
+}
+
+/*Boton de imprimir*/
+button {
+
+    font-family: inherit;
+    padding: 20px 30px;
+    font-size: 23px;
+    font-weight: 700;
+    color: white;
+    background-color: #308499;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-flex; /* Cambia a flexbox */
+    align-items: center; /* Alinea verticalmente */
+}
+
+button:hover {
+    background-color: #2b7284;
+    scale: 1.03;
+}
+
+#logoimprimir{
+    height: 30px;
+    width: auto;
+    margin-left: 10px;
+}
+
+/*Configuración de las cajas*/
+.Detalles {
+    text-align: center; /* Centra horizontalmente todo el contenido */
+}
+
+.tablascontenedor {
+    display: inline-block; /* Para que los divs de las tablas estén en línea */
+    vertical-align: middle; /* Alinea verticalmente en el centro */
+    margin: 20px;
+}
+
+.DetallesGenerales, .ArticulosComprados {
+    display: inline-block; /* Para que las tablas estén en línea */
+    margin: 0 40px; /* Espacio entre las tablas */
+    vertical-align: top; /* Alinea las tablas en la parte superior */
+}
+
+.contenedorboton{
+    display:block;
+}

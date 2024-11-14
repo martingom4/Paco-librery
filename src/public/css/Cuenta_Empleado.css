@@ -1,0 +1,74 @@
+/*estilo de titulo de la pagina*/
+.titulo h1{
+    margin: 0px;
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
+.titulo{
+    font-size: x-large;
+    color:#284F58;
+    margin:20px 50px 10px 50px;
+}
+
+/*Estilo de la section que tiene toda la info del empleados*/
+.Container-infoper{
+    background-color: #284f58d6;
+    display: flex;
+    align-items: center;
+    gap:130px;
+    margin:0px 50px 20px 50px;
+    border-radius: 25px;
+    box-shadow: 0  0  5px #00000080; /*x y size color*/
+}
+
+/*estilo de la foto de perfil */
+.fotoperfil img:hover{
+    transform: scale(1.1);
+}
+.fotoperfil img{
+    height: 150px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/*estilo para el campo izquierdo de la section que contiene la info*/
+.campoizquierdo{
+    padding-left: 20px;
+    background-color: #EDEDED;
+    padding-right: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    box-shadow: 0  0  5px #00000080;
+}
+
+/*estilo del boton editar*/
+.boton{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+#boton-editar{
+    width: 130px;
+    padding: 10px;
+    font-size: medium;
+    background-color: #308499;
+    color: #ffffff;
+    border: 3px solid #1B3F48;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+#boton-editar:hover{
+    transform: scale(1.1);
+}
+
+/*estilo de los datos*/
+.infop h4{
+    margin:5px;
+    color: #ffffff;
+}
+

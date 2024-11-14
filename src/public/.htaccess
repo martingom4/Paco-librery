@@ -1,0 +1,24 @@
+# Habilitar el rewrite engine
+RewriteEngine On
+
+# Redirigir todo el tráfico a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ home.php [QSA,L]
+
+# Configuración de CORS (si es necesario)
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+Header always set Access-Control-Allow-Headers "Content-Type"
+
+# Proteger el archivo .env
+<Files .env>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Proteger el directorio vendor
+<Directory "/var/www/html/vendor">
+    Order Allow,Deny
+    Deny from all
+</Directory>
