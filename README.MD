@@ -96,7 +96,8 @@ RUN chown -R www-data:www-data /var/www
 
 # Copiar el script de entrada y darle permisos de ejecución
 COPY ./docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod +x docker/entrypoint.sh
+
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
