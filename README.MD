@@ -19,7 +19,7 @@ Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Comp
 ````
 1.1 **Para configurar en windows se necesita cambiar dos archivos:** 
    ## Primero cambia el entrypoint.sh
-
+  ```
     #!/bin/bash
 echo "Esperando a que PostgreSQL esté listo..."
 until pg_isready -h $DB_HOST -p $DB_PORT -U $DB_USERNAME; do
@@ -41,7 +41,7 @@ echo "Configurando ServerName en Apache..."
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 echo "Iniciando Apache..."
 apache2-foreground
-
+  ```
 
    ## Dockerfile 
       ```
