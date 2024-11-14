@@ -205,5 +205,5 @@ chmod +x docker/entrypoint.sh
 
 ---
 
-Con este formato, el `README.md` es claro, organizado y facilita la configuración del proyecto y su despliegue. Si tienes algún otro detalle que agregar o alguna pregunta, no dudes en comentarlo.
+
 
