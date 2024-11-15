@@ -37,9 +37,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
 COPY ./src /var/www/
 
-# Copiar el archivo .env directamente a /var/www/html/.env
-COPY .env /var/www/html/.env
-
 # Exponer el puerto 80
 EXPOSE 80
 
