@@ -26,7 +26,7 @@ COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Configurar el directorio de trabajo para Composer y el proyecto
-WORKDIR /var/www/html
+WORKDIR /var/www/
 
 # Copiar composer.json en el contenedor
 COPY ./src/composer.json ./
@@ -35,7 +35,7 @@ COPY ./src/composer.json ./
 RUN composer install --no-dev --optimize-autoloader
 
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
-COPY ./src /var/www/html
+COPY ./src /var/www/
 
 # Copiar el archivo .env directamente a /var/www/html/.env
 COPY .env /var/www/html/.env
