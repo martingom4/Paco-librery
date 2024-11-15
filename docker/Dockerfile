@@ -27,6 +27,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Configurar el directorio de trabajo para Composer y el proyecto
 WORKDIR /var/www/
+WORKDIR /var/www/
 
 # Copiar composer.json en el contenedor
 COPY ./src/composer.json ./
@@ -37,6 +38,9 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
 COPY ./src /var/www/
+
+# Copiar el archivo .env directamente a /var/www/html/.env
+COPY .env /var/www/html/.env
 
 # Exponer el puerto 80
 EXPOSE 80
