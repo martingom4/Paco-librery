@@ -162,8 +162,9 @@ ENTRYPOINT ["/entrypoint.sh"]
 git checkout -b busqueda-libro remotes/origin/busqueda-libro
 git checkout -b develop remotes/origin/develop
 git checkout -b factura remotes/origin/factura
-git checkout -b inicio-sesion remotes/origin/inicio-sesion
-git checkout -b master remotes/origin/master
+git checkout -b inicio-sesion remotes/origin/inicio-sesion-cliente
+git checkout -b inicio-sesion remotes/origin/inicio-sesion-admin
+git checkout -b inicio-sesion remotes/origin/registro-admin
 git checkout -b registro-cliente remotes/origin/registro-cliente
 ```
 
