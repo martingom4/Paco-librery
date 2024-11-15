@@ -14,6 +14,7 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
 
    ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
+
    #### **1. Cambia el formato de salto de línea en Visual Studio Code**
    Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
 
@@ -35,8 +36,6 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
       Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
 
    ---
-
-   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
 
 
 ---
