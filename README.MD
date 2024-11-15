@@ -14,19 +14,22 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
 
    ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
-
    #### **1. Cambia el formato de salto de línea en Visual Studio Code**
    Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
+
 
    1. Abre Visual Studio Code.
    2. Ve a: **Archivo > Preferencias > Configuración**.
    3. En la barra de búsqueda, escribe `eol`.
    4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
+
    ---
+
 
    #### **2. Configura los saltos de línea en Git**
    Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
+
 
    1. Abre una terminal Git.
    2. Ejecuta el siguiente comando:
@@ -35,7 +38,10 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
       ```
       Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
 
+
    ---
+
+
 
 
 ---
@@ -80,6 +86,7 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
    ```
  #### **1.1. Da permisos de ejecución al archivo `entrypoint.sh`**
    Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
+
 
    1. Abre una terminal en Visual Studio Code.
    2. Asegurate que la terminal sea bash
