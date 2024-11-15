@@ -7,11 +7,12 @@ services:
     ports:
       - "8000:80"
     volumes:
-      #- ./src:/var/www/html           # Código fuente en el contenedor
       - ./src:/var/www
       - ./logs/apache:/var/log/apache2 # Logs de Apache
       - ./logs/php:/var/log/php        # Logs de PHP
       - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf # Archivo vhost.conf
+    env_file:
+      - .env
     environment:
       APP_ENV: ${APP_ENV}
       APP_DEBUG: ${APP_DEBUG}

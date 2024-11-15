@@ -1,5 +1,7 @@
 <?php
 // config.php
+define ('APP_PATH', __DIR__); # que tengo una nueva path llamada app_path que apunta a src/app
+define ('ROOT_PATH', dirname(__DIR__,2)); # que tengo una nueva path llamada root_path que apunta a src
 
 function loadEnv($path) {
     if (!file_exists($path)) {
@@ -17,7 +19,7 @@ function loadEnv($path) {
 }
 
 // Cargar el archivo .env
-loadEnv(__DIR__ . '/../../../.env');
+loadEnv(ROOT_PATH . '/');
 
 // Configuración de la conexión a la base de datos
 $host = getenv('DB_HOST');

@@ -31,14 +31,11 @@ WORKDIR /var/www/
 # Copiar composer.json en el contenedor
 COPY ./src/composer.json ./
 
-# Instalar dependencias de Composer en /var/www/html/vendor
+# Instalar dependencias de Composer en /var/www/vendor
 RUN composer install --no-dev --optimize-autoloader
 
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
 COPY ./src /var/www/
-
-# Copiar el archivo .env directamente a /var/www/html/.env
-COPY .env /var/www/html/.env
 
 # Exponer el puerto 80
 EXPOSE 80
@@ -48,8 +45,6 @@ RUN chown -R www-data:www-data /var/www
 
 # Copiar el script de entrada y darle permisos de ejecución
 COPY ./docker/entrypoint.sh /entrypoint.sh
-
-
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
