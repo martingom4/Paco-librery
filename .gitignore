@@ -13,6 +13,8 @@ logs/*
 
 # Configuración de Docker
 docker/db_data
+docker-compose.override.yml
+docker/Dockerfile.override
 
 
 
