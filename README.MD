@@ -1,108 +1,57 @@
-````markdown
 # Paco Librery
 
 Este es un sistema de gestión de librerías desarrollado en PHP sin el uso de frameworks. Utiliza Docker para manejar el entorno de desarrollo con Apache y PostgreSQL.
 
 ## Requisitos
 
-Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) y [Docker Compose](https://docs.docker.com/compose/install/) instalados en tu sistema.
-
+Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) instalados en tu sistema.
+Despues de esto recuerda que es importante ejecutar Docker para su funcionamiento
 ## Configuración del Proyecto
 
 1. **Clonar el repositorio**:
-   ```bash
+   ```
    git clone <URL del repositorio>
    cd paco_librery
    ```
-````
 
-### 1.1 **Para configurar en Windows, se necesita cambiar dos archivos:**
+---
 
-#### Primero cambia el `entrypoint.sh`:
+   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
-```bash
-#!/bin/bash
-echo "Esperando a que PostgreSQL esté listo..."
-until pg_isready -h $DB_HOST -p $DB_PORT -U $DB_USERNAME; do
-  sleep 3
-done
+   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
+   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
 
-# Ejecutar migraciones solo si no se han ejecutado antes
-if [ ! -f /var/www/.migraciones_completadas ]; then
-  echo "Ejecutando migraciones..."
-  if [ -f /var/www/html/migrations/init.sql ]; then
-    export PGPASSWORD=$DB_PASSWORD
-    psql -h $DB_HOST -U $DB_USERNAME -d $DB_DATABASE -f /var/www/html/migrations/init.sql
-  fi
-  # Crear un archivo de marca para indicar que las migraciones se ejecutaron
-  touch /var/www/.migraciones_completadas
-fi
+   1. Abre Visual Studio Code.
+   2. Ve a: **Archivo > Preferencias > Configuración**.
+   3. En la barra de búsqueda, escribe `eol`.
+   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
-echo "Configurando ServerName en Apache..."
-echo "ServerName localhost" >> /etc/apache2/apache2.conf
-echo "Iniciando Apache..."
-apache2-foreground
-```
+   ---
 
-#### Dockerfile:
+   #### **2. Configura los saltos de línea en Git**
+   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
 
-```dockerfile
-# Usar una imagen base de PHP con Apache
-FROM php:7.4-apache
+   1. Abre una terminal Git.
+   2. Ejecuta el siguiente comando:
+      ```bash
+      git config --global core.autocrlf input
+      ```
+      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
 
-# Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    unzip \
-    git \
-    && docker-php-ext-install pdo pdo_pgsql \
-    && rm -rf /var/lib/apt/lists/*  # Limpiar la cache de apt para reducir el tamaño de la imagen
+   ---
 
-# Instalar el cliente de PostgreSQL
-RUN apt-get update && apt-get install -y postgresql-client \
-    && rm -rf /var/lib/apt/lists/*  # Limpiar la cache de apt
+   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
+   Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
 
-# Habilitar el módulo de reescritura de Apache
-RUN a2enmod rewrite
+   1. Abre una terminal en Visual Studio Code.
+   2. Asegúrate de estar en el directorio raíz de tu proyecto.
+   3. Ejecuta el siguiente comando:
+      ```bash
+      chmod +x ./docker/entrypoint.sh
+      ```
+      Esto asignará permisos de ejecución al archivo.
 
-# Habilitar el módulo de headers para CORS
-RUN a2enmod headers
-
-# Copiar el archivo de configuración de Apache
-COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
-
-# Descargar e instalar Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Configurar el directorio de trabajo para Composer y el proyecto
-WORKDIR /var/www/html
-
-# Copiar composer.json en el contenedor
-COPY ./src/composer.json ./
-
-# Instalar dependencias de Composer en /var/www/html/vendor
-RUN composer install --no-dev --optimize-autoloader
-
-# Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
-COPY ./src /var/www/html
-
-# Copiar el archivo .env directamente a /var/www/html/.env
-COPY .env /var/www/html/.env
-
-# Exponer el puerto 80
-EXPOSE 80
-
-# Cambiar la propiedad de los archivos a www-data para Apache
-RUN chown -R www-data:www-data /var/www
-
-# Copiar el script de entrada y darle permisos de ejecución
-COPY ./docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x docker/entrypoint.sh
-
-
-# Configurar el script de entrada
-ENTRYPOINT ["/entrypoint.sh"]
-```
+---
 
 2. **Crear el archivo de entorno**:
    Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
