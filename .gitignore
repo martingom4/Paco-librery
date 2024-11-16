@@ -4,6 +4,8 @@ Thumbs.db
 
 # Archivos de entorno
 .env
+docker-compose.override.yml
+docker/Dockerfile.override
 
 # Archivos de logs
 logs/
@@ -11,8 +13,7 @@ logs/*
 
 # Configuración de Docker
 docker/db_data
-docker-compose.override.yml
-docker/Dockerfile.override
+
 
 # Archivos de bases de datos y backups
 *.sql
