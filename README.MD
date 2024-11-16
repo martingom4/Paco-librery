@@ -6,102 +6,100 @@ Este es un sistema de gestión de librerías desarrollado en PHP sin el uso de f
 
 Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) instalados en tu sistema.
 Despues de esto recuerda que es importante ejecutar Docker para su funcionamiento
+
 ## Configuración del Proyecto
 
+---
 
+### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
+
+#### **1. Cambia el formato de salto de línea en Visual Studio Code**
+
+Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
+
+1.  Abre Visual Studio Code.
+2.  Ve a: **Archivo > Preferencias > Configuración**.
+3.  En la barra de búsqueda, escribe `eol`.
+4.  Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
 ---
 
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
+#### **2. Configura los saltos de línea en Git**
 
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
+Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
 
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
-
-   ---
-
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
-
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
-
-   ---
-
+1.  Abre una terminal Git.
+2.  Ejecuta el siguiente comando:
+    ```bash
+    git config --global core.autocrlf input
+    ```
+    Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
 
 ---
 
-
+---
 
 ---
 
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
+### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
+#### **1. Cambia el formato de salto de línea en Visual Studio Code**
 
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
+Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
 
-   ---
-
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
-
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
-
-   ---
-
-   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
-
+1.  Abre Visual Studio Code.
+2.  Ve a: **Archivo > Preferencias > Configuración**.
+3.  En la barra de búsqueda, escribe `eol`.
+4.  Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
 ---
 
+#### **2. Configura los saltos de línea en Git**
 
+Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
+
+1.  Abre una terminal Git.
+2.  Ejecuta el siguiente comando:
+    ```bash
+    git config --global core.autocrlf input
+    ```
+    Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
 
 ---
 
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
+#### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
 
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
+---
 
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
+---
 
-   ---
+### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
+#### **1. Cambia el formato de salto de línea en Visual Studio Code**
 
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
+Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
 
-   ---
+1.  Abre Visual Studio Code.
+2.  Ve a: **Archivo > Preferencias > Configuración**.
+3.  En la barra de búsqueda, escribe `eol`.
+4.  Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
-   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
+---
 
+#### **2. Configura los saltos de línea en Git**
+
+Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
+
+1.  Abre una terminal Git.
+2.  Ejecuta el siguiente comando:
+    ```bash
+    git config --global core.autocrlf input
+    ```
+    Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
+
+---
+
+#### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
 
 ---
 
@@ -110,35 +108,38 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
    git clone <URL del repositorio>
    cd Paco-librery
    ```
- #### **1.1. Da permisos de ejecución al archivo `entrypoint.sh`**
-   Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
 
-   1. Abre una terminal en Visual Studio Code.
-   2. Asegurate que la terminal sea bash
-   3. Asegúrate de estar en el directorio raíz de tu proyecto.
-   4. Ejecuta el siguiente comando:
-      ```bash
-      chmod +x ./docker/entrypoint.sh
-      ```
-      Esto asignará permisos de ejecución al archivo.
+#### **1.1. Da permisos de ejecución al archivo `entrypoint.sh`**
 
+Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
 
-2. **Crear el archivo de entorno**:
-   Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
+1.  Abre una terminal en Visual Studio Code.
+2.  Asegurate que la terminal sea bash
+3.  Asegúrate de estar en el directorio raíz de tu proyecto.
+4.  Ejecuta el siguiente comando:
 
-   ```env
-   # Configuración general del entorno
-   APP_ENV=development
-   APP_DEBUG=true
+    ```bash
+    chmod +x ./docker/entrypoint.sh
+    ```
 
-   # Configuración de la base de datos
-   DB_CONNECTION=pgsql
-   DB_HOST=db
-   DB_PORT=5432
-   DB_DATABASE=paco_librery_db
-   DB_USERNAME=paco_user
-   DB_PASSWORD=paco1234
-   ```
+    Esto asignará permisos de ejecución al archivo.
+
+5.  **Crear el archivo de entorno**:
+    Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
+
+    ```env
+    # Configuración general del entorno
+    APP_ENV=development
+    APP_DEBUG=true
+
+    # Configuración de la base de datos
+    DB_CONNECTION=pgsql
+    DB_HOST=db
+    DB_PORT=5432
+    DB_DATABASE=paco_librery_db
+    DB_USERNAME=paco_user
+    DB_PASSWORD=paco1234
+    ```
 
 ## Configuración de Entornos
 
@@ -211,55 +212,101 @@ Se tendria que navegar dependiendo de lo que se quiera programar
 El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
 
 ```
+
+```
+
 # Archivos y carpetas del sistema
+
 .DS_Store
 Thumbs.db
 
 # Archivos de entorno
+
+# Archivos de entorno
+
 .env
+docker-compose.override.yml
+docker/Dockerfile.override
 docker-compose.override.yml
 docker/Dockerfile.override
 
 # Archivos de logs
+
 logs/
-logs/*
+logs/\*
 
 # Configuración de Docker
+
 docker/db_data
 
 # Archivos de bases de datos y backups
-*.sql
-*.tar.gz
-*.gz
+
+_.sql
+_.tar.gz
+\*.gz
+
+# Configuración de Docker
+
+docker/db_data
+
+# Archivos de bases de datos y backups
+
+_.sql
+_.tar.gz
+\*.gz
 
 # Archivos temporales de PHP
-*.log
-*.cache
+
+_.log
+_.cache
 
 # Directorios generados por Composer y dependencias
+
 /vendor/
 
 # Archivos y directorios que contienen configuraciones específicas de desarrollo
+
 # Ignorar archivos de configuración de Apache o Nginx si es necesario
 
-
 # Ignorar archivos de configuración en src
+
 src/.migraciones_completadas
 
 # Ignorar archivos de pruebas o ejemplos (si no son necesarios en producción)
+
 tests/
 examples/
 
 # Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
-docker-compose.yml
-docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
+docker-compose.yml
+docker/\* # Ignorar el directorio Docker entero si contiene configuraciones sensibles
+
+# Directorios generados por Composer y dependencias
+
+/vendor/
+
+# Archivos y directorios que contienen configuraciones específicas de desarrollo
+
+# Ignorar archivos de configuración de Apache o Nginx si es necesario
+
+# Ignorar archivos de configuración en src
+
+src/.migraciones_completadas
+
+# Ignorar archivos de pruebas o ejemplos (si no son necesarios en producción)
+
+tests/
+examples/
+
+# Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
+
+docker-compose.yml
+docker/\* # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
 ---
 
 # Guía para Mantener las Ramas Actualizadas sin Conflictos
-
-
 
 ## 1. **Usar `git fetch` para Traer Cambios sin Fusionarlos Automáticamente**
 
@@ -382,11 +429,6 @@ Aquí tienes un ejemplo del flujo completo, usando la rama `busqueda-libro` como
 
 Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y minimizar los conflictos en el proceso de colaboración. Si tienes dudas, consulta con el equipo antes de proceder.
 
-
----
-
-Aquí tienes una sección de documentación para incluir en tu archivo `README.md`, explicando el uso de `docker-compose.override.yml` y `Dockerfile.override` para configuraciones locales:
-
 ---
 
 ## Configuración de Docker para Desarrollo Local
@@ -399,119 +441,119 @@ Aquí tienes una sección de documentación para incluir en tu archivo `README.m
 
 ### Cómo Configurar el Entorno de Desarrollo Local
 
-1. Crea los archivos `docker-compose.override.yml` y `Dockerfile.override`  en las ubicaciones donde estan los archivos semejantes.
+1. Crea los archivos `docker-compose.override.yml` y `Dockerfile.override` en las ubicaciones donde estan los archivos semejantes.
 
 2. **Ejemplo de `docker-compose.override.yml`**:
 
-    ```
-    version: '3.9'
-    services:
-      web:
-        build:
-          context: .
-          dockerfile: docker/Dockerfile.override  # Dockerfile específico para el entorno local
-        ports:
-          - "8000:80"
-        volumes:
-          - ./src:/var/www
-          - ./logs/apache:/var/log/apache2
-          - ./logs/php:/var/log/php
-          - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf
-        env_file:
-          - .env
-        environment:
-          APP_ENV: ${APP_ENV}
-          APP_DEBUG: ${APP_DEBUG}
-          DB_CONNECTION: ${DB_CONNECTION}
-          DB_HOST: ${DB_HOST}
-          DB_PORT: ${DB_PORT}
-          DB_DATABASE: ${DB_DATABASE}
-          DB_USERNAME: ${DB_USERNAME}
-          DB_PASSWORD: ${DB_PASSWORD}
-        depends_on:
-          db:
-            condition: service_healthy
-        command: >
-          /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
-      db:
-        image: postgres:13
-        environment:
-          POSTGRES_DB: ${DB_DATABASE}
-          POSTGRES_USER: ${DB_USERNAME}
-          POSTGRES_PASSWORD: ${DB_PASSWORD}
-        volumes:
-          - db_data:/var/lib/postgresql/data
-          - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
-        healthcheck:
-          test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
-          interval: 30s
-          timeout: 10s
-          retries: 5
+   ```
+   version: '3.9'
+   services:
+     web:
+       build:
+         context: .
+         dockerfile: docker/Dockerfile.override  # Dockerfile específico para el entorno local
+       ports:
+         - "8000:80"
+       volumes:
+         - ./src:/var/www
+         - ./logs/apache:/var/log/apache2
+         - ./logs/php:/var/log/php
+         - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf
+       env_file:
+         - .env
+       environment:
+         APP_ENV: ${APP_ENV}
+         APP_DEBUG: ${APP_DEBUG}
+         DB_CONNECTION: ${DB_CONNECTION}
+         DB_HOST: ${DB_HOST}
+         DB_PORT: ${DB_PORT}
+         DB_DATABASE: ${DB_DATABASE}
+         DB_USERNAME: ${DB_USERNAME}
+         DB_PASSWORD: ${DB_PASSWORD}
+       depends_on:
+         db:
+           condition: service_healthy
+       command: >
+         /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
+     db:
+       image: postgres:13
+       environment:
+         POSTGRES_DB: ${DB_DATABASE}
+         POSTGRES_USER: ${DB_USERNAME}
+         POSTGRES_PASSWORD: ${DB_PASSWORD}
+       volumes:
+         - db_data:/var/lib/postgresql/data
+         - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+       healthcheck:
+         test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+         interval: 30s
+         timeout: 10s
+         retries: 5
 
-    volumes:
-      db_data:
-    ```
+   volumes:
+     db_data:
+   ```
 
 3. **Ejemplo de `Dockerfile.override`**:
 
-    ```
-    # Usar una imagen base de PHP con Apache
-    FROM php:7.4-apache
+   ```
+   # Usar una imagen base de PHP con Apache
+   FROM php:7.4-apache
 
-    # Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
-    RUN apt-get update && apt-get install -y \
-        libpq-dev \
-        unzip \
-        git \
-        && docker-php-ext-install pdo pdo_pgsql \
-        && rm -rf /var/lib/apt/lists/*
+   # Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
+   RUN apt-get update && apt-get install -y \
+       libpq-dev \
+       unzip \
+       git \
+       && docker-php-ext-install pdo pdo_pgsql \
+       && rm -rf /var/lib/apt/lists/*
 
-    # Habilitar el módulo de reescritura de Apache
-    RUN a2enmod rewrite
+   # Habilitar el módulo de reescritura de Apache
+   RUN a2enmod rewrite
 
-    # Habilitar el módulo de headers para CORS
-    RUN a2enmod headers
+   # Habilitar el módulo de headers para CORS
+   RUN a2enmod headers
 
-    # Copiar el archivo de configuración de Apache
-    COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
+   # Copiar el archivo de configuración de Apache
+   COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
 
-    # Descargar e instalar Composer
-    RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+   # Descargar e instalar Composer
+   RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-    # Configurar el directorio de trabajo para Composer y el proyecto
-    WORKDIR /var/www/
+   # Configurar el directorio de trabajo para Composer y el proyecto
+   WORKDIR /var/www/
 
-    # Copiar composer.json en el contenedor
-    COPY ./src/composer.json ./
+   # Copiar composer.json en el contenedor
+   COPY ./src/composer.json ./
 
-    # Instalar dependencias de Composer en /var/www/vendor
-    RUN composer install --no-dev --optimize-autoloader
+   # Instalar dependencias de Composer en /var/www/vendor
+   RUN composer install --no-dev --optimize-autoloader
 
-    # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
-    COPY ./src /var/www/
+   # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
+   COPY ./src /var/www/
 
-    # Exponer el puerto 80
-    EXPOSE 80
+   # Exponer el puerto 80
+   EXPOSE 80
 
-    # Cambiar la propiedad de los archivos a www-data para Apache
-    RUN chown -R www-data:www-data /var/www
+   # Cambiar la propiedad de los archivos a www-data para Apache
+   RUN chown -R www-data:www-data /var/www
 
-    # Copiar el script de entrada y darle permisos de ejecución
-    COPY ./docker/entrypoint.sh /entrypoint.sh
+   # Copiar el script de entrada y darle permisos de ejecución
+   COPY ./docker/entrypoint.sh /entrypoint.sh
 
-    # Configurar el script de entrada
-    ENTRYPOINT ["/entrypoint.sh"]
-    ```
+   # Configurar el script de entrada
+   ENTRYPOINT ["/entrypoint.sh"]
+   ```
 
 4. **Ignorar Archivos de Override en el Repositorio**
 
    Para evitar que estos archivos de configuración local se suban al repositorio, agrégalos a tu archivo `.gitignore`:
 
-    ```gitignore
-    # Ignorar archivos de configuración local
-    docker-compose.override.yml
-    docker/Dockerfile.override
-    ```
+   ```gitignore
+   # Ignorar archivos de configuración local
+   docker-compose.override.yml
+   docker/Dockerfile.override
+   ```
 
 ### Ejecución del Entorno de Desarrollo con Override
 
