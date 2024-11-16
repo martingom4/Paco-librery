@@ -255,9 +255,11 @@ docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sen
 
 ---
 
+---
+
 # Guía para Mantener las Ramas Actualizadas sin Conflictos
 
----
+
 
 ## 1. **Usar `git fetch` para Traer Cambios sin Fusionarlos Automáticamente**
 
