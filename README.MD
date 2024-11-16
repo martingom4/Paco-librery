@@ -149,12 +149,16 @@ Se tendria que navegar dependiendo de lo que se quiera programar
 El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
 
 ```
+```
 # Archivos y carpetas del sistema
 .DS_Store
 Thumbs.db
 
 # Archivos de entorno
+# Archivos de entorno
 .env
+docker-compose.override.yml
+docker/Dockerfile.override
 docker-compose.override.yml
 docker/Dockerfile.override
 
@@ -170,9 +174,35 @@ docker/db_data
 *.tar.gz
 *.gz
 
+# Configuración de Docker
+docker/db_data
+
+# Archivos de bases de datos y backups
+*.sql
+*.tar.gz
+*.gz
+
 # Archivos temporales de PHP
 *.log
 *.cache
+
+# Directorios generados por Composer y dependencias
+/vendor/
+
+# Archivos y directorios que contienen configuraciones específicas de desarrollo
+# Ignorar archivos de configuración de Apache o Nginx si es necesario
+
+
+# Ignorar archivos de configuración en src
+src/.migraciones_completadas
+
+# Ignorar archivos de pruebas o ejemplos (si no son necesarios en producción)
+tests/
+examples/
+
+# Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
+docker-compose.yml
+docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
 # Directorios generados por Composer y dependencias
 /vendor/
@@ -323,15 +353,11 @@ Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y mi
 
 ---
 
-Aquí tienes una sección de documentación para incluir en tu archivo `README.md`, explicando el uso de `docker-compose.override.yml` y `Dockerfile.override` para configuraciones locales:
-
----
-
 ## Configuración de Docker para Desarrollo Local
 
 ### Archivos de Configuración
 
-1. **`docker-compose.override.yml`**: Este archivo complementa el archivo `docker-compose.yml` principal y se utiliza para personalizar configuraciones de Docker Compose para el entorno de desarrollo local. 
+1. **`docker-compose.override.yml`**: Este archivo complementa el archivo `docker-compose.yml` principal y se utiliza para personalizar configuraciones de Docker Compose para el entorno de desarrollo local.
 
 2. **`Dockerfile.override`**: Este archivo es una versión personalizada del `Dockerfile` principal y contiene configuraciones adicionales o específicas para el desarrollo local, como herramientas de depuración o dependencias adicionales.
 
@@ -467,6 +493,6 @@ Este comando carga tanto el archivo principal `docker-compose.yml` como el archi
 - **Evita conflictos**: Cada desarrollador puede tener su configuración sin afectar al proyecto principal.
 - **Flexibilidad**: Puedes agregar o eliminar configuraciones según el entorno sin modificar el `Dockerfile` y `docker-compose.yml` principal.
 
---- 
+---
 
 Esta configuración ayuda a mantener un entorno de desarrollo limpio y flexible, permitiendo personalizar el entorno local sin interferir con el flujo de trabajo del equipo o el entorno de producción.
