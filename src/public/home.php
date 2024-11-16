@@ -1,3 +1,9 @@
+<?php
+
+define ("BASE_PATH",dirname(__DIR__));
+require_once BASE_PATH . '/app/config/config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,6 +73,7 @@
             </div>
         </div>
         <div class="recuadro-slider-controls">
+            <script src="scripts/home.js"></script>
             <div class="slider-controls">
                 <button id="prev">◀</button>
                 <button id="next">▶</button>
