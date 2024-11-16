@@ -27,15 +27,20 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Configurar el directorio de trabajo para Composer y el proyecto
 WORKDIR /var/www/
+WORKDIR /var/www/
 
 # Copiar composer.json en el contenedor
 COPY ./src/composer.json ./
 
 # Instalar dependencias de Composer en /var/www/vendor
+# Instalar dependencias de Composer en /var/www/vendor
 RUN composer install --no-dev --optimize-autoloader
 
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
-COPY ./src /var/www/
+COPY ./src /var/www/html
+
+# Copiar el archivo .env directamente a /var/www/html/.env
+COPY .env /var/www/html/.env
 
 # Exponer el puerto 80
 EXPOSE 80
@@ -48,3 +53,4 @@ COPY ./docker/entrypoint.sh /entrypoint.sh
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
+
