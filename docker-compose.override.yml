@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.override  # Dockerfile específico para el entorno local
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www
+      - ./logs/apache:/var/log/apache2 # Logs de Apache
+      - ./logs/php:/var/log/php        # Logs de PHP
+      - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf # Archivo vhost.conf
+    env_file:
+      - .env
+    environment:
+      APP_ENV: ${APP_ENV}
+      APP_DEBUG: ${APP_DEBUG}
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  db_data:
