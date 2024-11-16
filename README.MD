@@ -235,7 +235,7 @@ examples/
 docker-compose.yml
 docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
-
+```
 ---
 
 ---
