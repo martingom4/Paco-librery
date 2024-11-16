@@ -238,6 +238,8 @@ docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sen
 
 ---
 
+---
+
 # Guía para Mantener las Ramas Actualizadas sin Conflictos
 
 
