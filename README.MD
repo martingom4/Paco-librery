@@ -234,25 +234,7 @@ examples/
 docker-compose.yml
 docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
-# Directorios generados por Composer y dependencias
-/vendor/
-
-# Archivos y directorios que contienen configuraciones específicas de desarrollo
-# Ignorar archivos de configuración de Apache o Nginx si es necesario
-
-
-# Ignorar archivos de configuración en src
-src/.migraciones_completadas
-
-# Ignorar archivos de pruebas o ejemplos (si no son necesarios en producción)
-tests/
-examples/
-
-# Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
-docker-compose.yml
-docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
-
-
+```
 ---
 
 ---
