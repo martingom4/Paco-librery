@@ -4,6 +4,8 @@ Thumbs.db
 
 # Archivos de entorno
 .env
+docker-compose.override.yml
+docker/Dockerfile.override
 
 # Archivos de logs
 logs/
