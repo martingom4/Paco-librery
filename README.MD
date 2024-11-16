@@ -211,18 +211,30 @@ Se tendria que navegar dependiendo de lo que se quiera programar
 El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
 
 ```
+```
 # Archivos y carpetas del sistema
 .DS_Store
 Thumbs.db
 
 # Archivos de entorno
+# Archivos de entorno
 .env
+docker-compose.override.yml
+docker/Dockerfile.override
 docker-compose.override.yml
 docker/Dockerfile.override
 
 # Archivos de logs
 logs/
 logs/*
+
+# Configuración de Docker
+docker/db_data
+
+# Archivos de bases de datos y backups
+*.sql
+*.tar.gz
+*.gz
 
 # Configuración de Docker
 docker/db_data
@@ -254,8 +266,6 @@ examples/
 docker-compose.yml
 docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
-
----
 
 ---
 
@@ -384,10 +394,6 @@ Aquí tienes un ejemplo del flujo completo, usando la rama `busqueda-libro` como
 
 Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y minimizar los conflictos en el proceso de colaboración. Si tienes dudas, consulta con el equipo antes de proceder.
 
-
----
-
-Aquí tienes una sección de documentación para incluir en tu archivo `README.md`, explicando el uso de `docker-compose.override.yml` y `Dockerfile.override` para configuraciones locales:
 
 ---
 
