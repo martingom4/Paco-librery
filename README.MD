@@ -193,49 +193,50 @@ Se tendria que navegar dependiendo de lo que se quiera programar
 
 El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
 
-```gitignore
+```
 # Archivos y carpetas del sistema
 .DS_Store
 Thumbs.db
 
-# Archivos de entorno (no incluir el archivo .env en producción)
+# Archivos de entorno
 .env
+docker-compose.override.yml
+docker/Dockerfile.override
 
 # Archivos de logs
 logs/
 logs/*
 
+# Configuración de Docker
+docker/db_data
+
+# Archivos de bases de datos y backups
+*.sql
+*.tar.gz
+*.gz
+
 # Archivos temporales de PHP
 *.log
 *.cache
 
-# Configuración de Docker
-docker/db_data
+# Directorios generados por Composer y dependencias
+/vendor/
 
-# Archivos y configuraciones de Docker que no deben subirse
-docker/entrypoint.sh
-Dockerfile
-```
-
-## **importante**
-
-para que los cambios de archivos de contenedor se debe usar este comando despues de haber configurado todo en tu sistema
-
-```
-git update-index --no-assume-unchanged docker/Dockerfile
-git update-index --no-assume-unchanged docker/apache/vhost.conf
-git update-index --no-assume-unchanged docker/entrypoint.sh
-git update-index --no-assume-unchanged docker-compose.yml
-```
-
-Esto lo que hace es que ignora los cambios que se pudieron hacer en la instalacion sin que dañe produccion
-
-Ejecutar estos comandos en la terminal bash para que se vean reflejados
+# Archivos y directorios que contienen configuraciones específicas de desarrollo
+# Ignorar archivos de configuración de Apache o Nginx si es necesario
 
 
+# Ignorar archivos de configuración en src
+src/.migraciones_completadas
 
+# Ignorar archivos de pruebas o ejemplos (si no son necesarios en producción)
+tests/
+examples/
 
-Aquí tienes una guía en formato de README para que tu equipo pueda seguir los pasos y mantener sus ramas actualizadas sin generar conflictos:
+# Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
+docker-compose.yml
+docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
+
 
 ---
 
@@ -364,9 +365,6 @@ Aquí tienes un ejemplo del flujo completo, usando la rama `busqueda-libro` como
 
 Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y minimizar los conflictos en el proceso de colaboración. Si tienes dudas, consulta con el equipo antes de proceder.
 
----
-
-Aquí tienes una sección de documentación para incluir en tu archivo `README.md`, explicando el uso de `docker-compose.override.yml` y `Dockerfile.override` para configuraciones locales:
 
 ---
 
