@@ -6,7 +6,6 @@ Este es un sistema de gestión de librerías desarrollado en PHP sin el uso de f
 
 Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) instalados en tu sistema.
 Despues de esto recuerda que es importante ejecutar Docker para su funcionamiento
-
 ## Configuración del Proyecto
 
 ---
@@ -105,27 +104,52 @@ Esto evita que Git convierta los saltos de línea automáticamente al formato `C
 
 1. **Clonar el repositorio**:
    ```
+   ```
    git clone <URL del repositorio>
    cd Paco-librery
    ```
 
-#### **1.1. Da permisos de ejecución al archivo `entrypoint.sh`**
+---
 
-Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
+   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
-1.  Abre una terminal en Visual Studio Code.
-2.  Asegurate que la terminal sea bash
-3.  Asegúrate de estar en el directorio raíz de tu proyecto.
-4.  Ejecuta el siguiente comando:
+   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
+   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
 
-    ```bash
-    chmod +x ./docker/entrypoint.sh
-    ```
+   1. Abre Visual Studio Code.
+   2. Ve a: **Archivo > Preferencias > Configuración**.
+   3. En la barra de búsqueda, escribe `eol`.
+   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
-    Esto asignará permisos de ejecución al archivo.
+   ---
 
-5.  **Crear el archivo de entorno**:
-    Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
+   #### **2. Configura los saltos de línea en Git**
+   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
+
+   1. Abre una terminal Git.
+   2. Ejecuta el siguiente comando:
+      ```bash
+      git config --global core.autocrlf input
+      ```
+      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
+
+   ---
+
+   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
+   Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
+
+   1. Abre una terminal en Visual Studio Code.
+   2. Asegúrate de estar en el directorio raíz de tu proyecto.
+   3. Ejecuta el siguiente comando:
+      ```bash
+      chmod +x ./docker/entrypoint.sh
+      ```
+      Esto asignará permisos de ejecución al archivo.
+
+---
+
+2. **Crear el archivo de entorno**:
+   Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
 
     ```env
     # Configuración general del entorno
@@ -431,146 +455,3 @@ Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y mi
 
 ---
 
-## Configuración de Docker para Desarrollo Local
-
-### Archivos de Configuración
-
-1. **`docker-compose.override.yml`**: Este archivo complementa el archivo `docker-compose.yml` principal y se utiliza para personalizar configuraciones de Docker Compose para el entorno de desarrollo local.
-
-2. **`Dockerfile.override`**: Este archivo es una versión personalizada del `Dockerfile` principal y contiene configuraciones adicionales o específicas para el desarrollo local, como herramientas de depuración o dependencias adicionales.
-
-### Cómo Configurar el Entorno de Desarrollo Local
-
-1. Crea los archivos `docker-compose.override.yml` y `Dockerfile.override` en las ubicaciones donde estan los archivos semejantes.
-
-2. **Ejemplo de `docker-compose.override.yml`**:
-
-   ```
-   version: '3.9'
-   services:
-     web:
-       build:
-         context: .
-         dockerfile: docker/Dockerfile.override  # Dockerfile específico para el entorno local
-       ports:
-         - "8000:80"
-       volumes:
-         - ./src:/var/www
-         - ./logs/apache:/var/log/apache2
-         - ./logs/php:/var/log/php
-         - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf
-       env_file:
-         - .env
-       environment:
-         APP_ENV: ${APP_ENV}
-         APP_DEBUG: ${APP_DEBUG}
-         DB_CONNECTION: ${DB_CONNECTION}
-         DB_HOST: ${DB_HOST}
-         DB_PORT: ${DB_PORT}
-         DB_DATABASE: ${DB_DATABASE}
-         DB_USERNAME: ${DB_USERNAME}
-         DB_PASSWORD: ${DB_PASSWORD}
-       depends_on:
-         db:
-           condition: service_healthy
-       command: >
-         /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
-     db:
-       image: postgres:13
-       environment:
-         POSTGRES_DB: ${DB_DATABASE}
-         POSTGRES_USER: ${DB_USERNAME}
-         POSTGRES_PASSWORD: ${DB_PASSWORD}
-       volumes:
-         - db_data:/var/lib/postgresql/data
-         - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
-       healthcheck:
-         test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
-         interval: 30s
-         timeout: 10s
-         retries: 5
-
-   volumes:
-     db_data:
-   ```
-
-3. **Ejemplo de `Dockerfile.override`**:
-
-   ```
-   # Usar una imagen base de PHP con Apache
-   FROM php:7.4-apache
-
-   # Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
-   RUN apt-get update && apt-get install -y \
-       libpq-dev \
-       unzip \
-       git \
-       && docker-php-ext-install pdo pdo_pgsql \
-       && rm -rf /var/lib/apt/lists/*
-
-   # Habilitar el módulo de reescritura de Apache
-   RUN a2enmod rewrite
-
-   # Habilitar el módulo de headers para CORS
-   RUN a2enmod headers
-
-   # Copiar el archivo de configuración de Apache
-   COPY ./docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
-
-   # Descargar e instalar Composer
-   RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-   # Configurar el directorio de trabajo para Composer y el proyecto
-   WORKDIR /var/www/
-
-   # Copiar composer.json en el contenedor
-   COPY ./src/composer.json ./
-
-   # Instalar dependencias de Composer en /var/www/vendor
-   RUN composer install --no-dev --optimize-autoloader
-
-   # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
-   COPY ./src /var/www/
-
-   # Exponer el puerto 80
-   EXPOSE 80
-
-   # Cambiar la propiedad de los archivos a www-data para Apache
-   RUN chown -R www-data:www-data /var/www
-
-   # Copiar el script de entrada y darle permisos de ejecución
-   COPY ./docker/entrypoint.sh /entrypoint.sh
-
-   # Configurar el script de entrada
-   ENTRYPOINT ["/entrypoint.sh"]
-   ```
-
-4. **Ignorar Archivos de Override en el Repositorio**
-
-   Para evitar que estos archivos de configuración local se suban al repositorio, agrégalos a tu archivo `.gitignore`:
-
-   ```gitignore
-   # Ignorar archivos de configuración local
-   docker-compose.override.yml
-   docker/Dockerfile.override
-   ```
-
-### Ejecución del Entorno de Desarrollo con Override
-
-Para ejecutar Docker usando estas configuraciones de override, usa el siguiente comando:
-
-```
-docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
-```
-
-Este comando carga tanto el archivo principal `docker-compose.yml` como el archivo de override `docker-compose.override.yml`, aplicando las configuraciones adicionales sin afectar el entorno de producción o las configuraciones de otros desarrolladores.
-
-### Ventajas de Usar Override
-
-- **Aislamiento de configuraciones**: Mantén las configuraciones de producción separadas de las de desarrollo.
-- **Evita conflictos**: Cada desarrollador puede tener su configuración sin afectar al proyecto principal.
-- **Flexibilidad**: Puedes agregar o eliminar configuraciones según el entorno sin modificar el `Dockerfile` y `docker-compose.yml` principal.
-
----
-
-Esta configuración ayuda a mantener un entorno de desarrollo limpio y flexible, permitiendo personalizar el entorno local sin interferir con el flujo de trabajo del equipo o el entorno de producción.
