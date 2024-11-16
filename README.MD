@@ -409,6 +409,10 @@ Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y mi
 
 ---
 
+Aquí tienes una sección de documentación para incluir en tu archivo `README.md`, explicando el uso de `docker-compose.override.yml` y `Dockerfile.override` para configuraciones locales:
+
+---
+
 ## Configuración de Docker para Desarrollo Local
 
 ### Archivos de Configuración
