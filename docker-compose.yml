@@ -13,8 +13,6 @@ services:
       - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf # Archivo vhost.conf
     env_file:
       - .env
-    env_file:
-      - .env
     environment:
       APP_ENV: ${APP_ENV}
       APP_DEBUG: ${APP_DEBUG}
