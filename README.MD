@@ -6,8 +6,6 @@ Este es un sistema de gestión de librerías desarrollado en PHP sin el uso de f
 
 Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) instalados en tu sistema.
 Despues de esto recuerda que es importante ejecutar Docker para su funcionamiento
-Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) instalados en tu sistema.
-Despues de esto recuerda que es importante ejecutar Docker para su funcionamiento
 ## Configuración del Proyecto
 
 
@@ -37,105 +35,6 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
       Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
 
    ---
-
-
----
-
-
-
----
-
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
-
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
-
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
-
-   ---
-
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
-
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
-
-   ---
-
-   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
-
-
----
-
-
-
----
-
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
-
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
-
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
-
-   ---
-
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
-
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
-
-   ---
-
-   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
-
-
----
-
-
-
----
-
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
-
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
-
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
-
-   ---
-
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
-
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
-
-   ---
-
-   #### **3. Da permisos de ejecución al archivo `entrypoint.sh`**
 
 
 ---
@@ -246,30 +145,18 @@ Se tendria que navegar dependiendo de lo que se quiera programar
 El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
 
 ```
-```
 # Archivos y carpetas del sistema
 .DS_Store
 Thumbs.db
 
 # Archivos de entorno
-# Archivos de entorno
 .env
-docker-compose.override.yml
-docker/Dockerfile.override
 docker-compose.override.yml
 docker/Dockerfile.override
 
 # Archivos de logs
 logs/
 logs/*
-
-# Configuración de Docker
-docker/db_data
-
-# Archivos de bases de datos y backups
-*.sql
-*.tar.gz
-*.gz
 
 # Configuración de Docker
 docker/db_data
@@ -301,8 +188,6 @@ examples/
 docker-compose.yml
 docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
-
----
 
 ---
 
