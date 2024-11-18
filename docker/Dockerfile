@@ -1,17 +1,16 @@
 # Usar una imagen base de PHP con Apache
 FROM php:7.4-apache
 
-# Instalar extensiones necesarias de PHP y las bibliotecas de desarrollo de PostgreSQL
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
+# Instalar dependencias y las bibliotecas necesarias
+RUN apt-get update && \
+    apt-get install -y \
+    libonig-dev \
+    libzip-dev \
     unzip \
     git \
-    && docker-php-ext-install pdo pdo_pgsql \
-    && rm -rf /var/lib/apt/lists/*  # Limpiar la cache de apt para reducir el tamaño de la imagen
-
-# Instalar el cliente de PostgreSQL
-RUN apt-get update && apt-get install -y postgresql-client \
-    && rm -rf /var/lib/apt/lists/*  # Limpiar la cache de apt
+    default-mysql-client \
+    && docker-php-ext-install pdo pdo_mysql \
+    && rm -rf /var/lib/apt/lists/*
 
 # Habilitar el módulo de reescritura de Apache
 RUN a2enmod rewrite
@@ -48,4 +47,3 @@ COPY ./docker/entrypoint.sh /entrypoint.sh
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
-
