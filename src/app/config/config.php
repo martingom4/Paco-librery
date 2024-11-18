@@ -1,6 +1,5 @@
 <?php
 // config.php
-define ('APP_PATH', __DIR__); # que tengo una nueva path llamada app_path que apunta a src/app
 define ('ROOT_PATH', dirname(__DIR__,2)); # que tengo una nueva path llamada root_path que apunta a src
 
 function loadEnv($path) {

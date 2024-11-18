@@ -1,9 +1,3 @@
-<?php
-
-define ("BASE_PATH",dirname(__DIR__));
-require_once BASE_PATH . '/app/config/config.php';
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
