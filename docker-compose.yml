@@ -27,17 +27,20 @@ services:
         condition: service_healthy
     command: >
       /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
+
   db:
-    image: postgres:13
+    image: mysql:8.0
+    container_name: paco_libreria_db
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root_password
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/mysql
       - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u${DB_USERNAME}", "-p${DB_PASSWORD}"]
       interval: 30s
       timeout: 10s
       retries: 5

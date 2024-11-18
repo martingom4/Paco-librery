@@ -6,36 +6,36 @@ Este es un sistema de gestión de librerías desarrollado en PHP sin el uso de f
 
 Asegúrate de tener [Docker](https://docs.docker.com/get-docker/) instalados en tu sistema.
 Despues de esto recuerda que es importante ejecutar Docker para su funcionamiento
+
 ## Configuración del Proyecto
-
-
 
 ---
 
-   ### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
+### **Antes de ejecutar el contenedor, realiza los siguientes ajustes:**
 
-   #### **1. Cambia el formato de salto de línea en Visual Studio Code**
-   Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
+#### **1. Cambia el formato de salto de línea en Visual Studio Code**
 
-   1. Abre Visual Studio Code.
-   2. Ve a: **Archivo > Preferencias > Configuración**.
-   3. En la barra de búsqueda, escribe `eol`.
-   4. Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
+Esto es necesario para asegurarte de que los archivos tengan saltos de línea compatibles con entornos Linux (`LF`).
 
-   ---
+1.  Abre Visual Studio Code.
+2.  Ve a: **Archivo > Preferencias > Configuración**.
+3.  En la barra de búsqueda, escribe `eol`.
+4.  Encuentra la configuración **Files: Eol** y cámbiala de `auto` a `\n (LF)`.
 
-   #### **2. Configura los saltos de línea en Git**
-   Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
+---
 
-   1. Abre una terminal Git.
-   2. Ejecuta el siguiente comando:
-      ```bash
-      git config --global core.autocrlf input
-      ```
-      Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
+#### **2. Configura los saltos de línea en Git**
 
-   ---
+Esto evita que Git convierta los saltos de línea automáticamente al formato `CRLF` al clonar o extraer repositorios.
 
+1.  Abre una terminal Git.
+2.  Ejecuta el siguiente comando:
+    ```bash
+    git config --global core.autocrlf input
+    ```
+    Esto asegura que Git conserve los saltos de línea en el formato original (`LF`) del repositorio.
+
+---
 
 ---
 
@@ -44,35 +44,39 @@ Despues de esto recuerda que es importante ejecutar Docker para su funcionamient
    git clone <URL del repositorio>
    cd Paco-librery
    ```
- #### **1.1. Da permisos de ejecución al archivo `entrypoint.sh`**
-   Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
 
-   1. Abre una terminal en Visual Studio Code.
-   2. Asegurate que la terminal sea bash
-   3. Asegúrate de estar en el directorio raíz de tu proyecto.
-   4. Ejecuta el siguiente comando:
-      ```bash
-      chmod +x ./docker/entrypoint.sh
-      ```
-      Esto asignará permisos de ejecución al archivo.
+#### **1.1. Da permisos de ejecución al archivo `entrypoint.sh`**
 
+Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro del contenedor.
 
-2. **Crear el archivo de entorno**:
-   Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
+1.  Abre una terminal en Visual Studio Code.
+2.  Asegurate que la terminal sea bash
+3.  Asegúrate de estar en el directorio raíz de tu proyecto.
+4.  Ejecuta el siguiente comando:
 
-   ```env
-   # Configuración general del entorno
-   APP_ENV=development
-   APP_DEBUG=true
+    ```bash
+    chmod +x ./docker/entrypoint.sh
+    ```
 
-   # Configuración de la base de datos
-   DB_CONNECTION=pgsql
-   DB_HOST=db
-   DB_PORT=5432
-   DB_DATABASE=paco_librery_db
-   DB_USERNAME=paco_user
-   DB_PASSWORD=paco1234
-   ```
+    Esto asignará permisos de ejecución al archivo.
+
+5.  **Crear el archivo de entorno**:
+    Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
+
+    ```env
+    # Configuración general del entorno
+    APP_ENV=development
+    APP_DEBUG=true
+
+    # Configuración de la base de datos
+    DB_CONNECTION=mysql
+    DB_HOST=db
+    DB_PORT=3306
+    DB_DATABASE=paco_librery_db
+    DB_USERNAME=paco_user
+    DB_PASSWORD=paco1234
+
+    ```
 
 ## Configuración de Entornos
 
@@ -189,13 +193,12 @@ docker-compose.yml
 docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
 
 ```
+
 ---
 
 ---
 
 # Guía para Mantener las Ramas Actualizadas sin Conflictos
-
-
 
 ## 1. **Usar `git fetch` para Traer Cambios sin Fusionarlos Automáticamente**
 
@@ -317,6 +320,5 @@ Aquí tienes un ejemplo del flujo completo, usando la rama `busqueda-libro` como
 ---
 
 Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y minimizar los conflictos en el proceso de colaboración. Si tienes dudas, consulta con el equipo antes de proceder.
-
 
 ---
