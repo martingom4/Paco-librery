@@ -4,7 +4,7 @@ RewriteEngine On
 # Redirigir todo el tráfico a index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ home.php [QSA,L]
+RewriteRule ^(.*)$ index.php [QSA,L]
 
 # Configuración de CORS (si es necesario)
 Header always set Access-Control-Allow-Origin "*"

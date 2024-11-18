@@ -13,7 +13,8 @@ class ClientesController {
         // Código para crear un nuevo cliente
     }
 
-    public function mostrarPerfilCliente() {
-        // Código para mostrar el perfil del cliente
+    public function mostrarLogin() {
+
+        include __DIR__ ."/../views/cliente/PerfilCliente.html";
     }
 }
