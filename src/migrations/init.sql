@@ -127,7 +127,6 @@ CREATE TABLE IF NOT EXISTS Pago (
     metodo_pago VARCHAR(50) NOT NULL,          -- Método de pago (e.g., Tarjeta, PayPal)
     monto DECIMAL(10, 2) NOT NULL,             -- Monto total en USD
     estado ENUM('pendiente', 'completado', 'fallido', 'cancelado') DEFAULT 'pendiente', -- Estado del pago
-    referencia_externa VARCHAR(255),          -- Identificador de pasarela de pago (si aplica)
     fecha_pago DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha y hora del pago
     FOREIGN KEY (ID_venta) REFERENCES Venta(ID_venta) ON DELETE CASCADE
 );
