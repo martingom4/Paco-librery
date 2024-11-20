@@ -142,8 +142,8 @@ CREATE TABLE IF NOT EXISTS Carrito (
 );
 
 CREATE TABLE IF NOT EXISTS Factura (
-    ID_factura INT AUTO_INCREMENT PRIMARY KEY,     
-    numero_factura VARCHAR(10) GENERATED ALWAYS AS (LPAD(ID_factura, 5, '0')) STORED, -- Número formateado
+    ID_factura INT AUTO_INCREMENT PRIMARY KEY,
+    numero_factura VARCHAR(10) NOT NULL,          -- Número formateado
     ID_venta INT NOT NULL,
     fecha_emision DATETIME DEFAULT CURRENT_TIMESTAMP,
     nombre_cliente VARCHAR(100),
