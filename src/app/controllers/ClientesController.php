@@ -15,6 +15,6 @@ class ClientesController {
 
     public function mostrarLogin() {
 
-        include __DIR__ ."/../views/cliente/PerfilCliente.html";
+        include __DIR__ ."/../views/cliente/logincliente.html";
     }
 }

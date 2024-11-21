@@ -10,6 +10,6 @@ function configurarRutas()
         $r->addRoute('GET','/home.php', [HomeController::class,'index']);
 
         //rutas para el cliente
-        $r->addRoute('GET', '/clientes/perfil', [ClientesController::class, 'mostrarLogin']);
+        $r->addRoute('GET', '/cliente/login', [ClientesController::class, 'mostrarLogin']);//muestra log in cliente
     });
 }
