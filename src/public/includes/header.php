@@ -3,7 +3,7 @@
         <!--LOGO Y REDES-->
         <div class="LogoRedes">
             <div class="logo">
-                <img src="../images/LOGO.png" alt="LibrerÃ­a Â¡Donde Paco!">
+                <img src="../images/LOGO.png" alt="Librerí­a ¡Donde Paco!">
             </div>
             <div class="Redes">
                 <ul>
