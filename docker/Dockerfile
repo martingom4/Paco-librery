@@ -47,3 +47,4 @@ COPY ./docker/entrypoint.sh /entrypoint.sh
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
+
