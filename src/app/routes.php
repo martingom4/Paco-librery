@@ -11,5 +11,12 @@ function configurarRutas()
 
         //rutas para el cliente
         $r->addRoute('GET', '/clientes/perfil', [ClientesController::class, 'mostrarLogin']);
+
+
+        // rutas sobre la factura
+
+        $r->addRoute('GET','/factura', [VentasController::class, 'verCompra']);
+        $r->addRoute('GET','/factura/detalles', [VentasController::class,'detallesCompra']);
+
     });
 }

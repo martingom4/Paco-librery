@@ -1,11 +1,19 @@
 <?php
 
+require_once ROOT_PATH ."/models/Venta.php";
+
 class VentasController {
-    public function index() {
-        // Código para mostrar la lista de ventas
+
+    private $Venta;
+
+    public function __construct($db) {
+        $this->Venta = $Venta;
+    }
+    public function verCompra() {
+        include __DIR__ ."/../views/Compras/comprar.php";
     }
 
-    public function registrarVenta() {
-        // Código para registrar una venta
+    public function detallesCompra() {
+        include __DIR__ ."/../views/Compras/VerDetalles.html";
     }
 }

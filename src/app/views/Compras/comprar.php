@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprar</title>
@@ -17,47 +17,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <jsp:include page="header.jsp" />
+    <?php include 'includes/header.php'; ?>
 
     <main>
-
         <div class="header-volver">
             <a href="../pages/catalogo.html" class="volver">Volver</a>
         </div>
 
         <div class="producto-detalle">
             <div class="imagen">
-                <img src="../images/cienanosdesoledad.jpg" alt="Imagen del producto">
+                <img src="../images/<?= htmlspecialchars($producto['imagen']) ?>" alt="Imagen del producto">
             </div>
             <div class="informacion">
-                <h1>Cien años de soledad</h1> <!--NOMBRE DEL LIBRO EN INVENTARIO-->
-                <form>
+                <h1><?= htmlspecialchars($producto['nombre']) ?></h1> <!-- Nombre del libro -->
+                <form action="comprar.php" method="POST">
                     <div class="input-group">
-                        <label for="metodo-pago">Método de pago</label>
-                        <select id="metodo-pago" name="metodo-pago">
-                            <option value="tarjeta">Tarjeta de crédito</option>
-                            <option value="efectivo">Efectivo</option>
-                        </select>
+                        <label for="precio">Precio:</label>
+                        <span><?= htmlspecialchars($producto['precio']) ?> USD</span>
                     </div>
                     <div class="input-group">
                         <label for="sucursal">Sucursal donde retira</label>
                         <select id="sucursal" name="sucursal">
                             <option value="sucursal1">Panamá</option>
                             <option value="sucursal2">Arraiján</option>
-                            <option value="sucursal2">Chiriquí</option>
+                            <option value="sucursal3">Chiriquí</option>
                         </select>
                     </div>
                     <div class="input-group">
                         <label for="cantidad">Cantidad</label>
-                        <input type="number" id="cantidad" name="cantidad" value="0">
+                        <input type="number" id="cantidad" name="cantidad" min="1" value="1">
                     </div>
-                    <button type="submit">Pedir</button>
+                    <input type="hidden" name="producto_id" value="<?= htmlspecialchars($producto['id']) ?>">
+                    <button type="submit">Comprar</button>
                 </form>
             </div>
         </div>
     </main>
 
-   <jsp:include page="footer.jsp" />
+    <?php include 'includes/footer.php'; ?>
     <script src="../scripts/home.js"></script>
 </body>
 </html>

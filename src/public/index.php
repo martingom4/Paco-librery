@@ -6,6 +6,7 @@ require_once __DIR__ . '/../app/routes.php';
 //toda la definicion de los controladores
 require_once __DIR__ .'/../app/controllers/HomeController.php';
 require_once __DIR__ .'/../app/controllers/ClientesController.php';
+require_once __DIR__ .'/../app/controllers/VentasController.php';
 
 // Configurar rutas
 $dispatcher = configurarRutas();
