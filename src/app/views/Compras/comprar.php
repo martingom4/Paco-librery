@@ -26,14 +26,14 @@
 
         <div class="producto-detalle">
             <div class="imagen">
-                <img src="../images/<?= htmlspecialchars($producto['imagen']) ?>" alt="Imagen del producto">
+                <img src="../images/<?= htmlspecialchars($Libro['imagen']) ?>" alt="Imagen del producto">
             </div>
             <div class="informacion">
-                <h1><?= htmlspecialchars($producto['nombre']) ?></h1> <!-- Nombre del libro -->
+                <h1><?= htmlspecialchars($Libro['nombre']) ?></h1> <!-- Nombre del libro -->
                 <form action="comprar.php" method="POST">
                     <div class="input-group">
                         <label for="precio">Precio:</label>
-                        <span><?= htmlspecialchars($producto['precio']) ?> USD</span>
+                        <span><?= htmlspecialchars($Libro['precio']) ?> USD</span>
                     </div>
                     <div class="input-group">
                         <label for="sucursal">Sucursal donde retira</label>

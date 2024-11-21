@@ -3,6 +3,8 @@
 // Autoload de Composer (si usas Composer)
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/routes.php';
+
+require_once __DIR__.'/../app/config/config.php';
 //toda la definicion de los controladores
 require_once __DIR__ .'/../app/controllers/HomeController.php';
 require_once __DIR__ .'/../app/controllers/ClientesController.php';
@@ -10,6 +12,7 @@ require_once __DIR__ .'/../app/controllers/VentasController.php';
 
 // Configurar rutas
 $dispatcher = configurarRutas();
+
 
 // Obtener la solicitud HTTP
 $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -43,7 +46,7 @@ switch ($routeInfo[0]) {
         $params = $routeInfo[2];
 
         // Instanciar el controlador y llamar al método correspondiente
-        $controllerInstance = new $controller();
+        $controllerInstance = new $controller($pdo);
         call_user_func_array([$controllerInstance, $method], $params);
         break;
 }

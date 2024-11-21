@@ -1,16 +1,28 @@
 <?php
 
-require_once ROOT_PATH ."/models/Venta.php";
+require_once __DIR__ ."/../models/Venta.php";
 
 class VentasController {
 
-    private $Venta;
+    private $ventaModel;
 
     public function __construct($db) {
-        $this->Venta = $Venta;
+        $this-> ventaModel = new Venta($db);
     }
-    public function verCompra() {
-        include __DIR__ ."/../views/Compras/comprar.php";
+
+    //mostrar el catalogo
+    public function mostrarCatalogo() {
+        $catalogo = $this->ventaModel->getCatalogo();
+        include __DIR__ . '/../views/Compras/catalogo.php';
+    }
+
+    // Mostrar la vista de compra
+    public function verCompra($isbn) {
+        $Libro = $this->ventaModel->getLibroISBN($isbn);
+        if (!$Libro) {
+            die("El libro no existe.");
+        }
+        require __DIR__. '/../views/Compras/comprar.php';
     }
 
     public function detallesCompra() {
