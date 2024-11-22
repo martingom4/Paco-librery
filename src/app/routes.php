@@ -11,5 +11,6 @@ function configurarRutas()
 
         //rutas para el cliente
         $r->addRoute('GET', '/cliente/login', [ClientesController::class, 'mostrarLogin']);//muestra log in cliente
+        $r->addRoute('POST', '/cliente/login', [ClientesController::class, 'procesarLogin']);
     });
 }

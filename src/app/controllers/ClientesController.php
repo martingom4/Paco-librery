@@ -15,6 +15,10 @@ class ClientesController {
 
     public function mostrarLogin() {
 
-        include __DIR__ ."/../views/cliente/logincliente.html";
+        include __DIR__ ."/../views/cliente/logincliente.php";
     }
+    publica function procesarLogin() {
+
+    }
+    public function
 }
