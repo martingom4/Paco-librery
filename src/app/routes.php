@@ -18,5 +18,8 @@ function configurarRutas()
         $r->addRoute('GET','/comprar/{isbn}', [VentasController::class, 'verCompra']);
         $r->addRoute('GET','/factura-detalles', [VentasController::class,'detallesCompra']);
 
+        //rutas para editorial
+        $r->addRoute('GET','/editorial/editoriales', [EditorialesController::class,'verEditorial']);
+
     });
 }
