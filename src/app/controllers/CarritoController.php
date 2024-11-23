@@ -21,10 +21,16 @@ class CarritoController {
             }
             $_SESSION['carrito'][$isbn] = $libro;
 
-            // Guardar en la base de datos
-            $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
-            $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
+            if($_SESSION['cliente_id']=== null){
+                header('Location: /cliente/login');
+                exit();
+
+            }else{
+                $clienteId = $_SESSION['cliente_id']; 
+                $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
+            }
         }
+
         header('Location: /carrito'); // Redirigir al carrito
         exit();
     }
@@ -44,7 +50,7 @@ class CarritoController {
     }
 
     public function mostrarCarrito() {
-        $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+        $clienteId = $_SESSION['cliente_id']; 
         $carrito = $this->carritoModel->obtenerCarrito($clienteId);
         require __DIR__ . '/../views/Compras/carrito.php';
     }
@@ -54,8 +60,8 @@ class CarritoController {
         if ($isbn && isset($_SESSION['carrito'][$isbn])) {
             unset($_SESSION['carrito'][$isbn]);
 
-            // Eliminar de la base de datos
-            $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+
+            $clienteId = $_SESSION['cliente_id'];
             $this->carritoModel->eliminarCarrito($clienteId, $isbn);
         }
         header('Location: /carrito'); // Redirigir al carrito
@@ -63,7 +69,7 @@ class CarritoController {
     }
 
     public function finalizarCompra() {
-        $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+        $clienteId = $_SESSION['cliente_id'];
         $carrito = $_SESSION['carrito'] ?? [];
         $total = array_reduce($carrito, function($carry, $item) {
             return $carry + ($item['precio'] * $item['cantidad']);
