@@ -21,7 +21,7 @@
 
     <main>
         <div class="header-volver">
-            <a href="../pages/catalogo.html" class="volver">Volver</a>
+            <a href="/catalogo" class="volver">Volver</a>
         </div>
 
         <div class="producto-detalle">
