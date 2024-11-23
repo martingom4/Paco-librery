@@ -8,6 +8,7 @@ class VentasController {
 
     public function __construct($db) {
         $this-> ventaModel = new Venta($db);
+        session_start();
     }
 
     //mostrar el catalogo
