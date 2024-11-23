@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/header_footerEmpleado.css">
+<body>
     <!--HEADER PARA EMPLEADO-->
     <header>
         <!--LOGO Y REDES-->
@@ -48,7 +50,7 @@
         <div class="Menu">
             <ul>
                 <li><a href="/home.php">Home</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="/catalogo">Catálogo</a></li>
                 <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
                 <li><a href="sucursal.html">Contacto</a></li>
             </ul>
@@ -58,5 +60,9 @@
             </div>
         </div>
     </header>
+    </body>
+    </html>
+
+
 
 

@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="/css/header_footerEmpleado.css">
     <!--FOOTER PARA EMPLEADO-->
     <footer>
         <!--MENU-->
@@ -20,7 +20,7 @@
         </div>
         <!--COPYRIGHT-->
         <div class="Copyright">
-            <p>Â© 2024, Libreria ¡Donde Paco!</p>
+            <p>© 2024, Libreria ¡Donde Paco!</p>
         </div>
     </footer>
 
