@@ -18,5 +18,7 @@ function configurarRutas()
         $r->addRoute('GET','/comprar/{isbn}', [VentasController::class, 'verCompra']);
         $r->addRoute('GET','/factura-detalles', [VentasController::class,'detallesCompra']);
 
+        //rutas de inventario
+        $r->addRoute('GET', '/inventario', [InventarioController:: class, 'mostrarInventario']);
     });
 }
