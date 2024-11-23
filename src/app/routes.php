@@ -21,7 +21,6 @@ function configurarRutas()
         $r->addRoute('GET','/cliente/actualizar', [ClientesController::class,'mostrarUpdate']);
         $r->addRoute('POST','/cliente/actualizar', [ClientesController::class,'actualizarPerfil']);
 
-
         //rutas para editorial
         $r->addRoute('GET','/editorial', [EditorialesController::class,'verEditorial']);
         $r->addRoute('GET', '/editorial/agregar',[EditorialesController::class,'viewRegister']);
