@@ -28,5 +28,7 @@ function configurarRutas()
         $r->addRoute('GET', '/cliente/login', [ClientesController::class, 'mostrarLogin']);//muestra log in cliente
         $r->addRoute('POST', '/cliente/login', [ClientesController::class, 'procesarLogin']);       
 
+        //rutas de inventario
+        $r->addRoute('GET', '/inventario', [InventarioController:: class, 'mostrarInventario']);
     });
 }
