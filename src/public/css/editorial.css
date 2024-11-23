@@ -8,6 +8,10 @@ html, body {
     display: flex;
     flex-direction: column;
 }
+h1{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
 
 /*HEADER*/
 /*HEADER DONDE ESTA EL LOGO Y LAS REDES*/
@@ -141,112 +145,143 @@ html, body {
     display: flex;
     justify-content: center;
 }
+/*CONTENIDO*/
+/* General */
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f6f0;
+}
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 40px); /* Ajusta la altura restando el espacio del header */
     padding: 20px;
+    background-color: #f9f9f9;
 }
 
-.header-volver {
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 20px; /* Agregamos margen inferior para separar del contenido */
-}
-
-.header-volver .volver {
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
-}
-
-.header-volver .volver::before {
-    content: '←';
-    margin-right: 10px;
-}
-
-.producto-detalle {
-    background-color: #EDEDED;
-    border-radius: 15px;
-    display: flex;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Contenedor del formulario */
+.registro-container {
+    margin: 20px auto;
     max-width: 800px;
-    width: 100%;
-    margin: 0 auto; /* Centra el contenedor */
-    flex-direction: row; /* Mantener los elementos en fila */
-}
-
-.producto-detalle .imagen {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    width: 50%;
-    height: auto;
-    padding: 2%;
-    margin-left: 25px;
-    border-radius: 25px;
-}
-
-
-.producto-detalle .imagen img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    justify-content: center;
-    margin: 2%;
-}
-
-.producto-detalle .informacion {
-    flex: 2;
+    background-color: #fff7eb;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.producto-detalle .informacion h1 {
-    margin-top: 0;
-    font-size: 1.5rem;
+.registro-box {
+    text-align: center;
+}
+
+.registro-box h2 {
+    font-size: 24px;
+    color: #6d4c41;
+}
+
+.registro-box hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
 }
 
 .input-group {
-    margin-bottom: 1rem;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.input-group select, .input-group input {
-    width: 70%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-}
-h1{
-    font-family: 'Playwrite GB S', cursive;
-    color: #1B3F48;
-}
-button {
+.input-group input, textarea {
     width: 100%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 25px;
-    background-color: #004d40;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: 'Nunito', sans-serif;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-button:hover {
-    background-color: #00332e;
+textarea {
+    resize: none;
+}
+
+.btn {
+    background-color: #6d4c41;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5c3b34;
+}
+
+/* Tabla */
+.tabla-container {
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.tabla-container p {
+    font-size: 30px;
+    color: #6d4c41;
+    text-align: center;
+    margin-bottom: 10px;
+}
+/*header de editoriales*/
+.editorial-header {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección a columna */
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+    gap: 10px; /* Espacio entre el título y el botón */
+    margin-bottom: 20px;
+}
+
+.editorial-header p {
+    margin: 0;
+    font-size: 50px;
+    color: #6d4c41; /* Marrón oscuro */
+    font-weight: bolder;
+}
+
+.btn-registrar {
+    background-color: #274E50; /* Color basado en la imagen */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; /* Bordes redondeados */
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.btn-registrar:hover {
+    background-color: #193C3D; /* Hover: color más oscuro */
+}
+
+/*termina*/
+
+/*tabla*/
+.editorial-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que los bordes redondeados no se corten */
+}
+
+.editorial-table th, .editorial-table td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+
+.editorial-table th {
+    background-color: #d7c4b8;
+    color: #6d4c41;
+}
+
+.editorial-table tr:nth-child(even) {
+    background-color: #f9f6f0;
+}
+
+.editorial-table tr:hover {
+    background-color: #f1e8de;
 }
