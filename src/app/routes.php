@@ -37,11 +37,6 @@ function configurarRutas()
         $r->addRoute('POST','/carrito/actualizar-cantidad', [CarritoController::class, 'actualizarCantidad']);
         $r->addRoute('GET','/carrito/factura', [CarritoController::class, 'comprar']);
 
-        // rutas sobre la factura
-        $r->addRoute('GET','/catalogo', [VentasController:: class,'mostrarCatalogo']);
-        $r->addRoute('GET','/comprar/{isbn}', [VentasController::class, 'verCompra']);
-        $r->addRoute('GET','/factura-detalles', [VentasController::class,'detallesCompra']);
-
         // rutas para libreria
         $r->addRoute('GET', '/registrarLibrerias', [LibreriasController::class, 'formularioRegistro']);
         $r->addRoute('POST', '/registrarLibrerias', [LibreriasController::class, 'registrarLibreria']);
@@ -49,6 +44,6 @@ function configurarRutas()
         $r->addRoute('POST', '/formularioActualizar', [LibreriasController::class, 'actualizarLibreria']);
         $r->addRoute('GET', '/detallesLibrerias/{id:\d+}', [LibreriasController::class, 'mostrarDetallesLibreria']);
         $r->addRoute('GET', '/Librerias.php', [LibreriasController::class, 'listarLibrerias']);
-     
+
     });
 }
