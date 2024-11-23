@@ -14,8 +14,14 @@ function configurarRutas()
         //rutas para el cliente
         $r->addRoute('GET','/cliente/registro',[ClientesController::class,'mostrarRegistro']);
         $r->addRoute('POST','/cliente/registro',[ClientesController::class,'crearCliente']);
+
         $r->addRoute('GET', '/cliente/login', [ClientesController::class, 'mostrarLogin']);//muestra log in cliente
         $r->addRoute('POST', '/cliente/login', [ClientesController::class, 'procesarLogin']);
+
+        
+        $r->addRoute('GET', '/cliente/login', [ClientesController::class, 'mostrarLogin']);//muestra log in cliente
+        $r->addRoute('POST', '/cliente/login', [ClientesController::class, 'procesarLogin']);
+        
         $r->addRoute('GET','/cliente/perfil',[ClientesController::class,'mostrarPerfil']);//mostrar perfil cliente
         $r->addRoute('GET','/cliente/actualizar', [ClientesController::class,'mostrarUpdate']);
         $r->addRoute('POST','/cliente/actualizar', [ClientesController::class,'actualizarPerfil']);

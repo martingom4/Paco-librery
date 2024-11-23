@@ -24,7 +24,12 @@
             <div class="login">
                 <h2>Inicio de sesión</h2>
                 <hr>
-                <form action="logincliente.jsp" method="post">
+                
+                <?php if (isset($error)): ?>
+                <p style="color: red;"><?php echo $error; ?></p>
+                <?php endif; ?>
+
+                <form action="/cliente/login" method="POST">
                     <div class="input-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
@@ -36,7 +41,7 @@
                     <button type="submit">Acceder</button>
                 </form>
                 <div class="registrar">
-                    <p>¿No tienes cuenta? <a href="registrocliente1.jsp">registrate aquí</a></p>
+                    <p>¿No tienes cuenta? <a href="/cliente/registro">registrate aquí</a></p>
                 </div>
             </div>
         </div>
