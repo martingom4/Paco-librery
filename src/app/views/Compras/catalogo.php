@@ -6,7 +6,7 @@
     <title>Cátalogo</title>
     <link rel="shortcut icon" href="../images/LOGO.PNG" alt="logo">
     <!--Documentos CSS utilizados-->
-    <link rel="stylesheet" href="../css/catalogo.css">
+    <link rel="stylesheet" href="/css/catalogo.css">
     <!---Fuente Nunito de Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,9 +44,23 @@
                 <?php foreach ($catalogo as $libro): ?>
                     <div class="product-card">
                         <img src="../images/<?= htmlspecialchars($libro['imagen']) ?>" alt="Imagen del producto">
-                        <h4><?= htmlspecialchars($libro['nombre']) ?></h4>
+                        <h4>
+                            <a href="/comprar/<?= htmlspecialchars($libro['ISBN']) ?>">
+                                <?= htmlspecialchars($libro['nombre']) ?>
+                            </a>
+                        </h4>
                         <p>Precio: <?= htmlspecialchars($libro['precio']) ?> USD</p>
-                        <button><a href="/comprar/<?= htmlspecialchars($libro['ISBN']) ?>">Comprar</a></button>
+                        <form method="POST" action="/carrito/agregar" class="cart-form">
+                            <input type="hidden" name="isbn" value="<?= htmlspecialchars($libro['ISBN']) ?>">
+                            <div class="quantity-container">
+                                <label for="cantidad">Cantidad:</label>
+                                <div class="quantity-wrapper">
+                                    <input type="number" name="cantidad" id="cantidad" min="1" value="1" class="quantity-input">
+                                </div>
+                            </div>
+                            <button type="submit" class="add-to-cart-btn">Añadir al carrito</button>
+                        </form>
+
                     </div>
                 <?php endforeach; ?>
             </section>
@@ -54,8 +68,5 @@
     </main>
 
     <?php include 'includes/footer.php'; ?>
-    <script src="../scripts/home.js"></script>
 </body>
 </html>
-
-
