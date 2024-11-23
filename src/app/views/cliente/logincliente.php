@@ -1,55 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.logging.*" %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="shortcut icon" href="../images/LOGO.PNG" alt="logo">
+    <!--Documentos CSS utilizados-->
+    <link rel="stylesheet" href="/css/login.css">
+    <!---Fuente Nunito de Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <!---Fuente Playwrite England SemiJoined de Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <jsp:include page="header.jsp" />
 
-<%
-    // Crear una instancia del logger
-    Logger logger = Logger.getLogger("MyLogger");
+    <main>
+        <div class="login-contenedor">
+            <div class="login">
+                <h2>Inicio de sesión</h2>
+                <hr>
+                
+                <?php if (isset($error)): ?>
+                <p style="color: red;"><?php echo $error; ?></p>
+                <?php endif; ?>
 
-    String email = request.getParameter("email");
-    String contrasena = request.getParameter("password");
+                <form action="/cliente/login" method="POST">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Acceder</button>
+                </form>
+                <div class="registrar">
+                    <p>¿No tienes cuenta? <a href="/cliente/registro">registrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    Connection conexion = null;
-    PreparedStatement orden = null;
-    ResultSet resultado = null;
-
-    try {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-        String username = "martin1"; 
-        String password = "1234"; 
-        conexion = DriverManager.getConnection(jdbcUrl, username, password);
-
-        String verificacion_sql = "SELECT * FROM regiscliente WHERE EMAIL = ? AND CONTRASENA = ?";
-        orden = conexion.prepareStatement(verificacion_sql);
-        orden.setString(1, email);
-        orden.setString(2, contrasena);
-
-        // Log the exact query being executed
-        logger.info("Executing query: " + verificacion_sql + " with parameters email=" + email + " and password " + contrasena);
-        resultado = orden.executeQuery();
-
-        if (resultado.next()) {
-            // Log the response of the query
-            logger.info("Query successful: User found with email=" + email);
-            session.setAttribute("usuario", resultado.getString("nombre"));
-            session.setAttribute("email", resultado.getString("email"));
-            session.setAttribute("tipoUsuario", "cliente");
-            response.sendRedirect("home.jsp");
-        } else {
-            // Log the response of the query
-            logger.info("Query result: No user found with email=" + email);
-            out.println("<h2>Correo o contraseña incorrectos. Por favor, intente nuevamente.</h2>");
-        }
-    } catch (Exception e) {
-        // Log the exception
-        logger.severe("Error during query execution: " + e.getMessage());
-        e.printStackTrace();
-        out.println("<h2>Hubo un error en el inicio de sesión. Por favor, intente nuevamente.</h2>");
-        out.println("<p>Error: " + e.getMessage() + "</p>");
-    } finally {
-        if (resultado != null) try { resultado.close(); } catch (SQLException ignore) {}
-        if (orden != null) try { orden.close(); } catch (SQLException ignore) {}
-        if (conexion != null) try { conexion.close(); } catch (SQLException ignore) {}
-    }
-%>
+     <jsp:include page="footer.jsp" />
+    <script src="../scripts/home.js"></script>
+</body>
+</html>
