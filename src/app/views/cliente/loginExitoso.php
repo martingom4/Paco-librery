@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registro de Cliente</title>
+        <title>Iniciar Sesión</title>
         <link rel="shortcut icon" href="../images/LOGO.png" alt="logo">
         <link rel="stylesheet" href="/css/registrocliente.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +47,7 @@
                     <div class="mensaje-exito">
                         <h2>INICIO DE SESIÓN EXITOSO</h2>
                         <p>Ha iniciado sesión exitosamente.</p>
-                        <a href="/catalogo">Continuar</a>
+                        <a href="/cliente/perfil">Continuar</a>
                     </div>
                 </div>
             </div>

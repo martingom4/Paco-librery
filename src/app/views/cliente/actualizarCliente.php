@@ -1,17 +1,17 @@
 <?php 
-    session_start();
-    if(!isset($_SESSION['nombre'])){
-        header("Location: /cliente/login");
-        exit();
-    }
-?>
+     session_start();
 
+     if (!isset($_SESSION['cliente_id'])) {
+         header('Location: /cliente/login');
+         exit;
+     }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi cuenta</title>
+    <title>Actualizar</title>
     <link rel="shortcut icon" href="../images/LOGO.png" alt="logo">
     <link rel="stylesheet" href="/css/PerfilCliente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,50 +49,23 @@
 
     <main>
         <section class="titulo">
-            <h1>Mi cuenta</h1>
+            <h1>Actualizar mis datos</h1>
         </section>
         <section class="Container-infoper">
             <div class="campoizquierdo">
                 <div class="fotoperfil">
                     <img src="../images/sinfotoperfil.png" alt="FotoPerfil" title="Foto de Perfil">
                 </div>
-                <div class="boton">
-                    <button id="boton-editar"><a href="/cliente/actualizar">Actualizar perfil</a></button>
-                </div>
             </div>
             <div class="infop">
-                <h4>Nombre: <?php echo $_SESSION['nombre']; ?></h4>
-                <h4>Apellido: <?php echo $_SESSION['apellido']; ?></h4>
-                <h4>Email: <?php echo $_SESSION['email']; ?></h4>
-                <h4>Teléfono: <?php echo $_SESSION['telefono']; ?></h4>
-                <br>
-                <h4>Último acceso: <?php echo $_COOKIE['ultimo_acceso'] ?? 'Es tu primer acceso o la cookie ha expirado'?> </h4>
-            </div>
-        </section>
-
-        <section class="titulo">
-            <h1>Historial de Compras</h1>
-        </section>
-        <section class="Container-historial">
-            <div class="imagenlibro">
-                <img src="../images/cienanosdesoledad.jpg">
-            </div>
-            <div class="infolibro">
-                <h2>Cien años de soledad</h2>
-                <p>Cien años de soledad es una novela del escritor colombiano Gabriel García Márquez, ganador del Premio Nobel de Literatura en 1982. Es considerada una obra maestra de la literatura hispanoamericana y universal, así como una de las obras más traducidas y leídas en español.</p>
-                <h4>Fecha compra: 01/07/2024</h4>
-                <h4>Precio: $15.00</h4>
-            </div>
-        </section>
-        <section class="Container-historial">
-            <div class="imagenlibro">
-                <img src="../images/rayuela.jpg">
-            </div>
-            <div class="infolibro">
-                <h2>Rayuela</h2>
-                <p>Rayuela es la segunda novela del escritor argentino Julio Cortázar. Constituye una de las obras centrales del boom latinoamericano y de la literatura en español.</p>
-                <h4>Fecha compra: 30/06/2024</h4>
-                <h4>Precio: $20.00</h4>
+                <form action="/cliente/actualizar" method="POST">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nuevo nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>" required><br>
+                    <input type="text" name="apellido" id="apellido" placeholder="Nuevo apellido" value="<?php echo htmlspecialchars($_SESSION['apellido']); ?>" required><br>
+                    <input type="text" name="correo" id="correo" placeholder="Nuevo correo electrónico" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" required><br>
+                    <input type="text" name="telefono" id="telefono" placeholder="Nuevo teléfono" value="<?php echo htmlspecialchars($_SESSION['telefono']); ?>" required>
+                    <br>
+                    <button type="submit">Guardar Cambios</button>
+                </form>
             </div>
         </section>
     </main>
