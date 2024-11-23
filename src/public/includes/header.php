@@ -1,10 +1,9 @@
-
     <!--HEADER PARA EMPLEADO-->
     <header>
         <!--LOGO Y REDES-->
         <div class="LogoRedes">
             <div class="logo">
-                <img src="../images/LOGO.png" alt="LibrerÃ­a Â¡Donde Paco!">
+                <img src="../images/LOGO.png" alt="Librerí­a ¡Donde Paco!">
             </div>
             <div class="Redes">
                 <ul>
@@ -17,7 +16,7 @@
         <!--MENU-->
         <div class="Menu">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="/home.php">Home</a></li>
                 <li><a href="Inventario.html">Inventario</a></li>
                 <li><a href="HistorialVentas.html">Ventas</a></li>
                 <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
@@ -48,14 +47,14 @@
         <!--MENU-->
         <div class="Menu">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="/home.php">Home</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>
                 <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
                 <li><a href="sucursal.html">Contacto</a></li>
             </ul>
             <div class="Usuario">
-                <a href="PerfilCliente.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                <a href="PerfilCliente.html">Mi cuenta</a>
+                <a href="/clientes/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
+                <a href="/clientes/perfil">Mi cuenta</a>
             </div>
         </div>
     </header>

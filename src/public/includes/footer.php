@@ -4,7 +4,7 @@
         <!--MENU-->
         <div class="Menu-footer">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="Inventario.jsp">Inventario</a></li>
                 <li><a href="HistorialVentas.html">Ventas</a></li>
                 <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
@@ -29,7 +29,7 @@
         <!--MENU-->
         <div class="Menu-footer">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="catalogo.jsp">Catálogo</a></li>
                 <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
                 <li><a href="sucursal.html">Contacto</a></li>
