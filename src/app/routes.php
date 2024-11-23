@@ -21,7 +21,6 @@ function configurarRutas()
         $r->addRoute('GET','/cliente/actualizar', [ClientesController::class,'mostrarUpdate']);
         $r->addRoute('POST','/cliente/actualizar', [ClientesController::class,'actualizarPerfil']);
 
-        
         //rutas para editorial
         $r->addRoute('GET','/editorial', [EditorialesController::class,'verEditorial']);
         $r->addRoute('GET', '/editorial/agregar',[EditorialesController::class,'viewRegister']);
@@ -36,7 +35,8 @@ function configurarRutas()
         $r->addRoute('GET', '/carrito', [CarritoController::class, 'mostrarCarrito']);
         $r->addRoute('POST', '/carrito/agregar', [CarritoController::class, 'agregarAlCarrito']);
         $r->addRoute('POST', '/carrito/eliminar', [CarritoController::class, 'eliminarDelCarrito']);
-        $r->addRoute('POST','/carrito/agregar-cantidad', [CarritoController::class, 'actualizarCantidad']);
+        $r->addRoute('POST','/carrito/actualizar-cantidad', [CarritoController::class, 'actualizarCantidad']);
+        $r->addRoute('GET','/carrito/factura', [CarritoController::class, 'comprar']);
 
         //rutas de inventario
         $r->addRoute('GET', '/inventario', [InventarioController:: class, 'mostrarInventario']);
