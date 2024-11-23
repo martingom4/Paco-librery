@@ -48,13 +48,10 @@ class ClientesController {
             $registroExitoso= $this->clienteModel->registrarCliente($nombre, $apellido, $contrasena, $telefono, $correo);
             
             if ($registroExitoso) {
-                header('Location: /cliente/login');
-                exit;
+                include __DIR__ . '/../views/cliente/registroExitoso.php';
             } else {
-                $error= 'Hubo un problema al registrar el cliente';
-                include __DIR__ . '/../views/cliente/registrocliente1.php';
+                include __DIR__ . '/../views/cliente/registroFallido.php';
             }
-
         }
     }
 
@@ -62,6 +59,33 @@ class ClientesController {
         include __DIR__ ."/../views/cliente/logincliente.php";
     }
     public function procesarLogin() {
-
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $correo = trim($_POST['email'] ?? '');
+                $password = trim($_POST['password'] ?? '');
+    
+                // Validación de campos vacíos
+                if (empty($correo) || empty($password)) {
+                    $error = 'Por favor, complete todos los campos.';
+                    include __DIR__ . "/../views/cliente/logincliente.php";
+                    return;
+                }
+    
+                // Verificar si el cliente existe en la base de datos
+                $clienteExistente = $this->clienteModel->buscarPorCorreo($correo);
+    
+                if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
+                    // Si las credenciales son correctas, iniciar sesión
+                    session_start();  // Iniciar la sesión
+                    $_SESSION['cliente_id'] = $clienteExistente['ID_cliente'];  // Almacenar ID del cliente en la sesión
+                    $_SESSION['nombre']= $clienteExistente['nombre'];
+    
+                    // Redirigir al catálogo o a cualquier página deseada
+                    include __DIR__ . "/../views/cliente/loginExitoso.php";
+                } else {
+                    // Si las credenciales no son correctas
+                    $error = 'Correo o contraseña incorrectos.';
+                    include __DIR__ . "/../views/cliente/logincliente.php";
+                }
+            }
+        }
     }
-}
