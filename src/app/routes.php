@@ -9,7 +9,11 @@ function configurarRutas()
         $r->addRoute('GET', '/', [HomeController::class, 'index']);
         $r->addRoute('GET', '/home.php', [HomeController::class, 'index']);
 
-
+        //rutas para editorial
+        $r->addRoute('GET','/editorial', [EditorialesController::class,'verEditorial']);
+        $r->addRoute('GET', '/editorial/agregar',[EditorialesController::class,'viewRegister']);
+        $r->addRoute('POST','/editorial/registrar', [EditorialesController::class,'addEditorial']);
+        $r->addRoute('POST','/editorial/eliminar', [EditorialesController::class,'eliminarEditorial']);
         // Rutas para el cliente
         $r->addRoute('GET', '/clientes/perfil', [ClientesController::class, 'mostrarLogin']);
 
@@ -24,9 +28,9 @@ function configurarRutas()
         //rutas para el cliente
         $r->addRoute('GET','/cliente/registro',[ClientesController::class,'mostrarRegistro']);
         $r->addRoute('POST','/cliente/registro',[ClientesController::class,'crearCliente']);
-        
+
         $r->addRoute('GET', '/cliente/login', [ClientesController::class, 'mostrarLogin']);//muestra log in cliente
-        $r->addRoute('POST', '/cliente/login', [ClientesController::class, 'procesarLogin']);       
+        $r->addRoute('POST', '/cliente/login', [ClientesController::class, 'procesarLogin']);
 
         //rutas de inventario
         $r->addRoute('GET', '/inventario', [InventarioController:: class, 'mostrarInventario']);

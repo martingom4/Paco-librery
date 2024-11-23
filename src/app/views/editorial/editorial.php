@@ -22,49 +22,43 @@
         <div class="tabla-container">
             <div class="editorial-header">
                 <p>Editoriales</p>
-                <button class="btn-registrar" onclick="window.location.href='registro_editorial.php'">Registrar Editorial</button>
+                <form action="/editorial/agregar" method="GET">
+                <button type="submit" class="btn-registrar">Registrar Editorial</button>
+                </form>
             </div>
 
             <table class="editorial-table">
                 <thead>
                     <tr>
-                        <th>CIP</th>
                         <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Nacionalidad</th>
-                        <th>Fecha de contrato</th>
-                        <th>Fecha nacimiento</th>
-                        <th>Sueldo</th>
-                        <th>Cargo</th>
-                        <th>Contraseña</th>
-                        <th>ID librería</th>
+                        <th>Corregimiento</th>
+                        <th>Calle</th>
+                        <th>Numero de local</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                    include '';
-                    $query = "SELECT * FROM Editorial";
-                    $result = $conn->query($query);
+                    <?php foreach ($editorial as $data): ?>
+                        <tr>
 
-                    if ($result && $result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>
-                                <td>{$row['cip']}</td>
-                                <td>{$row['nombre']}</td>
-                                <td>{$row['apellido']}</td>
-                                <td>{$row['nacionalidad']}</td>
-                                <td>{$row['fecha_contrato']}</td>
-                                <td>{$row['fecha_nacimiento']}</td>
-                                <td>\${$row['sueldo']}</td>
-                                <td>{$row['cargo']}</td>
-                                <td>###</td>
-                                <td>{$row['id_libreria']}</td>
-                            </tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='10'>No hay datos disponibles</td></tr>";
-                    }
-                    ?>
+                            <td><?= htmlspecialchars($data['nombre']) ?></td>
+                            <td><?= htmlspecialchars($data['corregimiento']) ?></td>
+                            <td><?= htmlspecialchars($data['calle']) ?></td>
+                            <td><?= htmlspecialchars($data['num_loc']) ?></td>
+                            <td><?= htmlspecialchars($data['telefono']) ?></td>
+                            <td><?= htmlspecialchars($data['correo']) ?></td>
+                            <td>
+                                <form action="/editorial/eliminar" method="POST">
+                                    <input type="hidden" name="id" value="<?= $data['ID_editorial'] ?>">
+                                    <button type="submit" class="btn-registrar">Eliminar</button>
+
+                                </form>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
