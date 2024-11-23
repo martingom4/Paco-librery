@@ -3,16 +3,17 @@
 // Autoload de Composer (si usas Composer)
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/routes.php';
+require_once __DIR__ . '/../app/config/config.php';
 
-require_once __DIR__.'/../app/config/config.php';
-//toda la definicion de los controladores
-require_once __DIR__ .'/../app/controllers/HomeController.php';
-require_once __DIR__ .'/../app/controllers/ClientesController.php';
-require_once __DIR__ .'/../app/controllers/VentasController.php';
-require_once __DIR__ .'/../app/controllers/EditorialesController.php';
+// Toda la definición de los controladores
+require_once __DIR__ . '/../app/controllers/HomeController.php';
+require_once __DIR__ . '/../app/controllers/ClientesController.php';
+require_once __DIR__ . '/../app/controllers/VentasController.php';
+require_once __DIR__ . '/../app/controllers/EditorialesController.php';
+require_once __DIR__ . '/../app/controllers/CarritoController.php';
+
 // Configurar rutas
 $dispatcher = configurarRutas();
-
 
 // Obtener la solicitud HTTP
 $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -44,6 +45,11 @@ switch ($routeInfo[0]) {
         // Obtener controlador, método y parámetros
         [$controller, $method] = $routeInfo[1];
         $params = $routeInfo[2];
+
+        // Si es una solicitud POST, obtener los parámetros del cuerpo de la solicitud
+        if ($httpMethod === 'POST') {
+            $params = array_merge($params, $_POST);
+        }
 
         // Instanciar el controlador y llamar al método correspondiente
         $controllerInstance = new $controller($pdo);
