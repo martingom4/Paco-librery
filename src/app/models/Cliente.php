@@ -29,4 +29,18 @@ class Cliente {
 
         return $stmt->execute();
     }
+    
+    public function actualizarCliente($id, $nombre, $apellido, $telefono, $email) {
+        $query = "UPDATE Cliente SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo WHERE ID_cliente = :id";
+        $stmt = $this->db->prepare($query);
+
+        return $stmt->execute([
+            ':nombre' => $nombre,
+            ':apellido'=> $apellido,
+            ':telefono' => $telefono,
+            ':correo' => $email,
+            ':id' => $id
+        ]);
+    }
+    
 }

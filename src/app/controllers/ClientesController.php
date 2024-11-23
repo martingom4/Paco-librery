@@ -48,13 +48,10 @@ class ClientesController {
             $registroExitoso= $this->clienteModel->registrarCliente($nombre, $apellido, $contrasena, $telefono, $correo);
             
             if ($registroExitoso) {
-                header('Location: /cliente/login');
-                exit;
+                include __DIR__ . '/../views/cliente/registroExitoso.php';
             } else {
-                $error= 'Hubo un problema al registrar el cliente';
-                include __DIR__ . '/../views/cliente/registrocliente1.php';
+                include __DIR__ . '/../views/cliente/registroFallido.php';
             }
-
         }
     }
 
@@ -62,6 +59,95 @@ class ClientesController {
         include __DIR__ ."/../views/cliente/logincliente.php";
     }
     public function procesarLogin() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $correo = trim($_POST['email'] ?? '');
+                $password = trim($_POST['password'] ?? '');
+    
+                // Validación de campos vacíos
+                if (empty($correo) || empty($password)) {
+                    $error = 'Por favor, complete todos los campos.';
+                    include __DIR__ . "/../views/cliente/logincliente.php";
+                    return;
+                }
+    
+                // Verificar si el cliente existe en la base de datos
+                $clienteExistente = $this->clienteModel->buscarPorCorreo($correo);
+    
+                if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
+                    // Si las credenciales son correctas, iniciar sesión
+                    session_start();  // Iniciar la sesión
+                    $_SESSION['cliente_id'] = $clienteExistente['ID_cliente'];  // Almacenar ID del cliente en la sesión
+                    $_SESSION['nombre']= $clienteExistente['nombre'];
+                    $_SESSION['email']=$clienteExistente['correo'];
+                    $_SESSION['telefono']=$clienteExistente['telefono'];
+                    $_SESSION['apellido']=$clienteExistente['apellido'];
+
+                    //cookie de ultimo acceso
+                    $ultimoAcceso = date("Y-m-d H:i:s"); // La fecha y hora actual
+                    setcookie('ultimo_acceso', $ultimoAcceso, time() + 30*24*60*60, "/");  // La cookie durará 30 días
+        
+    
+                    // Redirigir al catálogo o a cualquier página deseada
+                    include __DIR__ . "/../views/cliente/loginExitoso.php";
+                } else {
+                    // Si las credenciales no son correctas
+                    $error = 'Correo o contraseña incorrectos.';
+                    include __DIR__ . "/../views/cliente/logincliente.php";
+                }
+            }
+        }
+
+    public function mostrarPerfil(){
+
+        include __DIR__ . '/../views/cliente/PerfilCliente.php';
+    }
+
+    public function mostrarUpdate(){
+        include __DIR__ . '/../views/cliente/actualizarCliente.php';
+    }
+
+    public function actualizarPerfil(){
+        session_start();
+
+        if (!isset($_SESSION['cliente_id'])) {
+            header('Location: /cliente/login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_SESSION['cliente_id'];
+            $nombre = trim($_POST['nombre']);
+            $email = trim($_POST['correo']);
+            $telefono = trim($_POST['telefono']);
+            $apellido = trim($_POST['apellido']);
+
+            // Validar datos
+            if (empty($nombre) || empty($email) || empty($telefono) || empty($apellido)) {
+                $_SESSION['error'] = 'Todos los campos son obligatorios.';
+                header('Location: /cliente/actualizar');
+                exit;
+            }
+
+             // Actualizar en la base de datos
+            $perfilActualizado = $this->clienteModel->actualizarCliente($id, $nombre, $apellido, $telefono, $email);
+
+            if ($perfilActualizado) {
+                // Actualizar datos en la sesión
+                $_SESSION['nombre'] = $nombre;
+                $_SESSION['apellido'] = $apellido;
+                $_SESSION['email'] = $email;
+                $_SESSION['telefono'] = $telefono;
+
+                $_SESSION['mensaje'] = 'Datos actualizados con éxito.';
+                header('Location: /cliente/perfil');
+            } else {
+                $_SESSION['error'] = 'Hubo un problema al actualizar los datos.';
+                header('Location: /cliente/actualizar');
+            }
+            exit;
+        }
+
 
     }
-}
+
+    }

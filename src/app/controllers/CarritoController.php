@@ -26,7 +26,7 @@ class CarritoController {
                 exit();
 
             }else{
-                $clienteId = $_SESSION['cliente_id']; 
+                $clienteId = $_SESSION['cliente_id'];
                 $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
             }
         }
@@ -50,7 +50,7 @@ class CarritoController {
     }
 
     public function mostrarCarrito() {
-        $clienteId = $_SESSION['cliente_id']; 
+        $clienteId = $_SESSION['cliente_id'];
         $carrito = $this->carritoModel->obtenerCarrito($clienteId);
         require __DIR__ . '/../views/Compras/carrito.php';
     }
