@@ -9,6 +9,7 @@ require_once __DIR__.'/../app/config/config.php';
 require_once __DIR__ .'/../app/controllers/HomeController.php';
 require_once __DIR__ .'/../app/controllers/ClientesController.php';
 require_once __DIR__ .'/../app/controllers/VentasController.php';
+require_once __DIR__ . '/../app/controllers/LibreriasController.php';
 
 // Configurar rutas
 $dispatcher = configurarRutas();
