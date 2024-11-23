@@ -53,10 +53,13 @@
                         <form method="POST" action="/carrito/agregar" class="cart-form">
                             <input type="hidden" name="isbn" value="<?= htmlspecialchars($libro['ISBN']) ?>">
                             <div class="quantity-container">
-                                <label for="cantidad">Cantidad:</label>
+                                <label id="cantidad">Cantidad:</label>
                                 <div class="quantity-wrapper">
-                                    <input type="number" name="cantidad" id="cantidad" min="1" value="1" class="quantity-input">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <input type="number" name="cantidad" id="input-number" min="1" value="1" class="quantity-input">
+                                    <button type="button" class="quantity-btn plus">+</button>
                                 </div>
+
                             </div>
                             <button type="submit" class="add-to-cart-btn">Añadir al carrito</button>
                         </form>
@@ -66,7 +69,7 @@
             </section>
         </div>
     </main>
-
+    <script src="scripts/catalogo.js"></script>
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
