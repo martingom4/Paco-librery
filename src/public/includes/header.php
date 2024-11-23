@@ -19,6 +19,7 @@
                 <li><a href="/home.php">Home</a></li>
                 <li><a href="Inventario.html">Inventario</a></li>
                 <li><a href="HistorialVentas.html">Ventas</a></li>
+                <li><a href="/Librerias.php">Registros</a></li>
                 <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
                 <li><a href="sucursal.html">Contacto</a></li>
             </ul>
