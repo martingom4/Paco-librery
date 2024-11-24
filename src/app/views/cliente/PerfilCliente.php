@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['cliente_id'])){
         header("Location: /cliente/login");
@@ -49,30 +49,25 @@ include 'includes/header.php'
         </section>
 
         <section class="titulo">
-            <h1>Historial de Compras</h1>    
+            <h1>Historial de Compras</h1>
         </section>
-        <section class="Container-historial">
-            <div class="imagenlibro">
-                <img src="../images/cienanosdesoledad.jpg">
-            </div>
-            <div class="infolibro">
-                <h2>Cien años de soledad</h2>
-                <p>Cien años de soledad es una novela del escritor colombiano Gabriel García Márquez, ganador del Premio Nobel de Literatura en 1982. Es considerada una obra maestra de la literatura hispanoamericana y universal, así como una de las obras más traducidas y leídas en español.</p>
-                <h4>Fecha compra: 01/07/2024</h4>
-                <h4>Precio: $15.00</h4>
-            </div>
-        </section>
-        <section class="Container-historial">
-            <div class="imagenlibro">
-                <img src="../images/rayuela.jpg">
-            </div>
-            <div class="infolibro">
-                <h2>Rayuela</h2>
-                <p>Rayuela es la segunda novela del escritor argentino Julio Cortázar. Constituye una de las obras centrales del boom latinoamericano y de la literatura en español.</p>
-                <h4>Fecha compra: 30/06/2024</h4>
-                <h4>Precio: $20.00</h4>
-            </div>
-        </section>
+        <?php if (empty($historialCompras)): ?>
+            <p>No has realizado ninguna compra.</p>
+        <?php else: ?>
+            <?php foreach ($historialCompras as $compra): ?>
+                <section class="Container-historial">
+                    <div class="imagenlibro">
+                        <img src="../images/<?= htmlspecialchars($compra['imagen']) ?>" alt="Imagen del libro">
+                    </div>
+                    <div class="infolibro">
+                        <h2><?= htmlspecialchars($compra['titulo']) ?></h2>
+                        <h4>Cantidad: <?= htmlspecialchars($compra['cantidad']) ?></h4>
+                        <h4>Fecha compra: <?= htmlspecialchars($compra['fecha']) ?></h4>
+                        <h4>Precio: $<?= htmlspecialchars($compra['precio']) ?></h4>
+                    </div>
+                </section>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </main>
 <?php include 'includes/footer.php';?>
 </body>
