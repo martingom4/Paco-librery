@@ -57,6 +57,7 @@
                             <th>Título</th>
                             <th>Autor</th>
                             <th>Sucursal</th>
+                            <th>ID_Sucursal</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
                             <th>Acciones</th>
@@ -70,12 +71,13 @@
                                     <td><?= htmlspecialchars($producto['Titulo']) ?></td>
                                     <td><?= htmlspecialchars($producto['Autor']) ?></td>
                                     <td><?= htmlspecialchars($producto['Sucursal']) ?></td>
+                                    <td><?= htmlspecialchars($producto['ID_Libreria']) ?></td>
                                     <td>$<?= htmlspecialchars($producto['Precio']) ?></td>
                                     <td><?= htmlspecialchars($producto['Cantidad']) ?></td>
                                     <td>
                                     <form method="post" action="/inventario/eliminarLibro" style="display:inline;">
                                         <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['ISBN']) ?>">
-                                        <input type="hidden" name="Sucursal" value="<?= htmlspecialchars($producto['ID_Libreria']) ?>">
+                                        <input type="hidden" name="ID_Libreria" value="<?= htmlspecialchars($producto['ID_Libreria']) ?>">
                                         <button type="submit" id="boton-eliminar">Eliminar</button>
                                     </form>
                                     <!-- Formulario para editar libro -->
