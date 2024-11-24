@@ -147,6 +147,26 @@ class ClientesController {
             exit;
         }
     }
+    public function eliminarCliente(){
+        session_start();
+        if (!isset($_SESSION['cliente_id'])) {
+            header("Location: /cliente/login");
+            exit();
+        }
+        
+        if ($_SERVER['REQUEST_METHOD']==='POST'){
+            $id = $_POST['cliente_id'] ?? null;
+            $correo = $_POST['correo'] ?? null;
+            if ($id && $correo) {
+                $this->clienteModel->eliminarCliente($id,$correo);
+                header("Location: /");
+                exit();
+            } else {
+                echo "Datos no encontrados";
+            }
+        }
+    }
+
     public function logout(){
         session_start();
         if (!isset($_SESSION['cliente_id'])) {
