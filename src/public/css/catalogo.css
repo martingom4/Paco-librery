@@ -5,6 +5,7 @@ body {
     padding: 0;
     font-family: 'Nunito', sans-serif;
     color: #333;
+    
 }
 
 h3 {
@@ -13,28 +14,38 @@ h3 {
     text-align: center;
     margin-bottom: 1.5rem;
 }
-
+main{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    min-height: 450px;
+    margin: 0; /* Elimina márgenes predeterminados */
+    padding: 0; /* Opcional: elimina cualquier padding extra */
+}
 /* Contenedor principal */
 .main-content {
     display: flex;
     flex-wrap: nowrap; /* Mantener filtros y catálogo en una fila */
-    gap: 2rem;
-    padding: 2rem;
+    gap: 40px;
+    padding: 50px;
     max-width: 100%; /* Ocupa todo el ancho disponible */
     margin: 0; /* Elimina márgenes laterales */
     align-items: flex-start; /* Alineación superior */
     box-sizing: border-box; /* Incluir padding en el ancho total */
 }
 
-
 /* Sección de filtros */
 .filter-section {
     background-color: #fff;
-    padding: 1.5rem;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-    flex: 0 0 250px; /* Ancho fijo más compacto */
-    max-width: 250px; /* Limitar ancho de los filtros */
+    flex: 0 0 250px; /* Ancho fijo */
+    max-width: 250px; /* Limita el ancho del aside */
+    height: calc(100vh - var(--header-height) - var(--footer-height)); /* Altura dinámica */
+    overflow-y: auto; /* Habilita el desplazamiento si el contenido es mayor */
+    position: sticky;
+    top: var(--header-height); /* Ajusta su posición debajo del header */
 }
 
 .filter-section h3 {
