@@ -13,7 +13,8 @@ class VentasController {
 
     //mostrar el catalogo
     public function mostrarCatalogo() {
-        $catalogo = $this->ventaModel->getCatalogo();
+        $nombre = $_POST['nombre'] ?? null;
+        $catalogo = $this->ventaModel->getCatalogo($nombre);
         include __DIR__ . '/../views/Compras/catalogo.php';
     }
 

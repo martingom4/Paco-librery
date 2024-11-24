@@ -81,11 +81,45 @@
 }
 
 .btn-finalizar:hover {
-    background-color: #1B3F48;
+    background-color: #406068;
 }
 
 .btn-finalizar:disabled {
     background-color: #E0E0E0;
     color: #B0B0B0;
     cursor: not-allowed;
+}
+/* Estilos para el botón Actualizar */
+.carrito-tabla form button[type="submit"] {
+    background-color: #1B3F48;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.carrito-tabla form button[type="submit"]:hover {
+    background-color: #406068;
+}
+
+/* Estilos para el botón Eliminar */
+.carrito-tabla form button[type="submit"][name="eliminar"] {
+    background-color: #1B3F48;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.carrito-tabla form button[type="submit"][name="eliminar"]:hover {
+    background-color:#406068;
 }

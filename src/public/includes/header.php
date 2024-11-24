@@ -45,7 +45,7 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
             <!--HEADER PARA CLIENTE-->
             <?php elseif ($perfilCliente): ?>
                 <ul>
-                    <li><a href="/perfil">¿Qué buscas hoy?, <?php echo htmlspecialchars($_SESSION['nombre']); ?></a></li>
+                    <li class="username">¿Qué buscas hoy?, <?php echo htmlspecialchars($_SESSION['nombre']); ?></li>
                     <li><a href="/home.php">Home</a></li>
                     <li><a href="/catalogo">Catálogo</a></li>
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>

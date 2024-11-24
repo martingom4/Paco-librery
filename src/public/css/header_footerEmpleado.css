@@ -69,7 +69,17 @@ body{
     gap: 10px;
 }
 
+.Menu li{
+    color:white;
+}
 
+.username{
+    font-weight: bold; /* Coloca el texto en negrita */
+    display: flex;
+    justify-content: space-between; /* Separa los elementos izquierda y derecha */
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 0 50px;
+}
 /*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
 .Menu ul li a::after,.Usuario a::after{
     content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/
