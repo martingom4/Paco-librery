@@ -50,6 +50,7 @@ class InventarioController {
         }
         include __DIR__ . '/../views/empleado/EditarLibro.php';
     }
+    
     // Actualizar un libro en el inventario
     public function actualizarLibro($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad) {
         $this->inventarioModel->actualizarProducto($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad);
@@ -70,12 +71,13 @@ class InventarioController {
     // Función para mostrar inventario filtrado por ISBN o sucursal
     public function mostrarInventarioFiltrado() {
         // Revisa si la solicitud tiene filtros
-        $isbn = $_POST['isbn'] ?? null;
-        $sucursal = $_POST['Sucursal'] ?? null;
+        $isbn = $_GET['isbn'] ?? null;
+        $sucursal = $_GET['Sucursal'] ?? null;
         
         // Si se tiene ISBN o Sucursal, se realiza el filtrado
         if ($isbn || $sucursal) {
             $inventario = $this->inventarioModel->getLibrosFiltrados($isbn, $sucursal);
+            var_dump($inventario);  // Esto te permitirá ver los resultados de la consulta
         } else {
             $inventario = $this->inventarioModel->getInventario();
         }

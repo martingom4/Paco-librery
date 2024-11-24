@@ -80,7 +80,7 @@ select{
 }
 
 #boton-editar {
-    width: 140px;
+    width: 100px;
     padding: 8px;
     font-size:medium;
     background-color: #308499;
@@ -92,10 +92,25 @@ select{
     font-weight: 500;
 }
 
+#boton-eliminar {
+    width: 100px;
+    padding: 8px;
+    font-size:medium;
+    background-color: #993030;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    margin-right: 20px;
+}
 
-#boton-enviar:hover{
+
+#boton-enviar:hover, #boton-editar:hover, #boton-eliminar:hover{
     transform: scale(1.1);
 }
+
 /*FIN AREA DE CONSULTA*/
 
 /*INVENTARIO - ESTILO A LAS TABLAS*/

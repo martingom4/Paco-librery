@@ -34,12 +34,7 @@
                         </div>
                         <div>
                             <label for="Sucursal">Sucursal:</label>
-                            <select name="Sucursal" id="Sucursal" title="Seleccione una sucursal">
-                                <option value="">Seleccione una sucursal</option>
-                                <option value="San Miguelito">San Miguelito</option>
-                                <option value="La Chorrera">La Chorrera</option>
-                                <option value="Santiago">Santiago</option>
-                            </select>
+                            <input type="number" id="Sucursal" name="Sucursal" placeholder="Ingrese el ID de Sucursal">
                         </div>
                         <div>
                             <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 70px">                    
@@ -80,7 +75,7 @@
                                     <td>
                                         <form method="post" action="InventarioController.php?action=eliminarLibro" style="display:inline;">
                                             <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['ISBN']) ?>">
-                                            <button type="submit" id="btn-delete">Eliminar</button>
+                                            <button type="submit" id="boton-eliminar">Eliminar</button>
                                         </form>
                                         <form method="post" action="/inventario/editarLibro" style="display:inline;">
                                             <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['ISBN']) ?>">

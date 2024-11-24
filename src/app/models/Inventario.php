@@ -39,37 +39,49 @@ class Inventario {
 
     // Obtener el inventario con los filtros
     public function getLibrosFiltrados($isbn = null, $sucursal = null) {
-        $sql = "SELECT * FROM Inventario WHERE 1=1";  // Esto garantiza que la consulta siempre sea válida.
+            // Construcción de la consulta base con los JOIN para obtener los datos necesarios
+            $sql = "
+            SELECT 
+                i.ISBN_inv AS ISBN, 
+                l.titulo AS Titulo, 
+                CONCAT(a.nombre, ' ', a.apellido) AS Autor, 
+                lib.nom_lib AS Sucursal, 
+                l.precio AS Precio, 
+                i.cantidad_disponible AS Cantidad
+            FROM 
+                Inventario i
+            LEFT JOIN 
+                Libro l ON i.ISBN_inv = l.ISBN
+            LEFT JOIN 
+                Libreria lib ON i.ID_libreria_inv = lib.ID_libreria
+            LEFT JOIN 
+                Autor a ON l.L_ID_autor = a.ID_autor
+            WHERE 1=1"; // Esto asegura que la consulta siempre sea válida
+
         $params = [];
-        $types = '';
-        
-        // Si se proporciona un ISBN, añadirlo a la consulta
-        if ($isbn) {
-            $sql .= " AND isbn = ?";
-            $params[] = $isbn;
-            $types .= 'i';  // 'i' indica que el parámetro es un número entero.
+
+        // Agregar filtro de ISBN si se proporciona
+        if (!empty($isbn)) {
+            $sql .= " AND i.ISBN_inv = :isbn";
+            $params[':isbn'] = $isbn;
         }
-    
-        // Si se proporciona una sucursal, añadirla a la consulta
-        if ($sucursal) {
-            $sql .= " AND sucursal = ?";
-            $params[] = $sucursal;
-            $types .= 's';  // 's' indica que el parámetro es una cadena de texto.
+
+        // Agregar filtro de Sucursal por ID si se proporciona
+        if (!empty($sucursal)) {
+            $sql .= " AND i.ID_libreria_inv = :sucursal";
+            $params[':sucursal'] = $sucursal;
         }
     
         // Preparar y ejecutar la consulta
         $stmt = $this->db->prepare($sql);
-        
-        // Si hay parámetros, se deben vincular a la consulta
-        if ($params) {
-            $stmt->bind_param($types, ...$params);
-        }
+        $stmt->execute($params);
     
-        $stmt->execute();
-        
-        // Retornar el resultado de la consulta (todos los productos que coincidan con los filtros)
+        // Retornar el resultado de la consulta en formato de array asociativo
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+
+
     
 
     public function registrarLibroYInventario( $isbn, $nombre, $titulo, $edicion, $precio, $fecha_publi, $id_edit, $id_autor, $imagen, $cantidad, $id_libreria, $id_genero) {
