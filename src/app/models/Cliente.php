@@ -51,4 +51,10 @@ class Cliente {
         return $stmt->execute();
     }
     
+    // Obtener todos los clientes
+    public function obtenerClientes(): array {
+        $query = "SELECT * FROM Cliente";
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

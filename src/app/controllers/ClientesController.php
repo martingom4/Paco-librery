@@ -180,6 +180,12 @@ class ClientesController {
         }
     }
 
+    // Ver lista de clientes 
+    public function listarClientes() {
+        $clienteExistente = $this->clienteModel->obtenerClientes();
+        include __DIR__ . '/../views/empleado/listaClientes.php';
+    }
+
     public function logout(){
         session_start();
         if (!isset($_SESSION['cliente_id'])) {

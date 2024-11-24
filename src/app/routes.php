@@ -13,8 +13,6 @@ function configurarRutas()
         $r->addRoute('GET','/contacto',[HomeController::class,'sucursales']);
 
         //rutas para el cliente
-        $r->addRoute('GET', '/clientes/perfil', [ClientesController::class, 'mostrarLogin']);
-
         $r->addRoute('GET','/cliente/registro',[ClientesController::class,'mostrarRegistro']);
         $r->addRoute('POST','/cliente/registro',[ClientesController::class,'crearCliente']);
 
@@ -27,6 +25,7 @@ function configurarRutas()
         $r->addRoute('POST','/cliente/eliminar', [ClientesController::class,'eliminarCliente']);
         $r->addRoute('GET','/logout',[ClientesController::class,'logout']);//LOGOUT
 
+        $r->addRoute('GET','/registros/clientes', [ClientesController::class,'listarClientes']);
         //rutas para editorial
         $r->addRoute('GET','/editorial', [EditorialesController::class,'verEditorial']);
         $r->addRoute('GET', '/editorial/agregar',[EditorialesController::class,'viewRegister']);
