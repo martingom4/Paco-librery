@@ -16,6 +16,7 @@
 
     <div class="payment-gateway">
         <h1>Finalizar Compra</h1>
+        <p>Total a pagar: <strong><?= htmlspecialchars($total) ?> USD</strong></p>
         <form id="payment-form" action="/procesar_pago" method="POST" aria-label="Formulario de pago">
             <div class="form-group">
                 <label for="card-number">Número de Tarjeta</label>
