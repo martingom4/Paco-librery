@@ -3,49 +3,48 @@
 require_once __DIR__ . "/../models/Inventario.php";
 
 class InventarioController {
-
-    private $Inventario;
+    private $inventarioModel;
 
     public function __construct($db) {
-        $this->Inventario = new Inventario($db);
+        $this->inventarioModel = new Inventario($db);
     }
 
-    // Mostrar la vista del inventario con todos los registros
-    public function mostrarInventario() {
-        $productos = $this->Inventario->getInventario();
-        include __DIR__ . '/../views/empleado/Inventario.php';
+    // Redirigir a la vista de registro de un nuevo libro
+    public function mostrarRegistrarLibro() {
+        include __DIR__ . '/../views/empleado/RegistrarLibro.php';
     }
 
-    // Filtrar el inventario por ISBN y/o sucursal
-    public function filtrarInventario($isbn = null, $sucursal = null) {
-        $productos = $this->Inventario->getLibrosFiltrados($isbn, $sucursal);
-        include __DIR__ . '/../views/empleado/Inventario.php';
+    // Redirigir a la vista de edición de un libro
+    public function mostrarEditarLibro($isbn, $sucursal) {
+        $libro = $this->inventarioModel->getLibrosFiltrados($isbn, $sucursal);
+        if (!$libro) {
+            die("El libro no existe en esta sucursal.");
+        }
+        include __DIR__ . '/../views/empleado/EditarLibro.php';
     }
 
     // Registrar un nuevo libro en el inventario
     public function registrarLibro($isbn, $titulo, $autor, $editorial, $precio, $cantidad, $sucursal) {
-        $this->Inventario->registrarProducto($isbn, $titulo, $autor, $editorial, $precio, $cantidad, $sucursal);
+        $this->inventarioModel->registrarProducto($isbn, $titulo, $autor, $editorial, $precio, $cantidad, $sucursal);
         $this->mostrarInventario();
-    }
-
-    // Eliminar un libro del inventario por ISBN
-    public function eliminarLibro($isbn, $sucursal) {
-        $this->Inventario->eliminarProducto($isbn, $sucursal);
-        $this->mostrarInventario();
-    }
-
-    // Redirigir a la vista de edición
-    public function editarLibro($isbn, $sucursal) {
-        $producto = $this->Inventario->getProductoPorISBNySucursal($isbn, $sucursal);
-        if (!$producto) {
-            die("El producto no existe.");
-        }
-        include __DIR__ . '/../views/EditarProducto.php';
     }
 
     // Actualizar un libro en el inventario
     public function actualizarLibro($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad) {
-        $this->Inventario->actualizarProducto($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad);
+        $this->inventarioModel->actualizarProducto($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad);
         $this->mostrarInventario();
     }
+
+    // Mostrar todo el inventario
+    public function mostrarInventario() {
+        $inventario = $this->inventarioModel->getInventario();
+        include __DIR__ . '/../views/empleado/Inventario.php';
+    }
+
+    // Mostrar todo el inventario
+    public function filtrarInventario() {
+        $inventario = $this->inventarioModel->getLibrosFiltrados();
+        include __DIR__ . '/../views/empleado/Inventario.php';
+    }
 }
+

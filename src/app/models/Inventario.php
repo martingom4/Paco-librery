@@ -46,7 +46,7 @@ class Inventario {
         
         // Retornar el resultado de la consulta (todos los productos que coincidan con los filtros)
         return $stmt->get_result()->fetchAll(PDO::FETCH_ASSOC);
-    }
+        }
     
 
     // Registrar un nuevo producto

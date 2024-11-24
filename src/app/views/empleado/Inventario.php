@@ -26,7 +26,7 @@
             <div class="titulo-suc1">
                 <h1>Gestión de Inventario</h1>
             </div>
-            <form method="post" action="InventarioController.php?action=filtrarInventario">
+            <form method="post" action="inventario/filtrar">
                 <div class="Consulta-sucursal">
                     <div>
                         <label for="isbn">ISBN:</label>
@@ -42,11 +42,12 @@
                         </select>
                     </div>
                     <div>
-                        <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 70px">
+                        <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 70px">                    
                         <button type="submit" action="InventarioController.php?action=registrarLibro" class="btn" id="boton-enviar">Registrar Libro</button>
                     </div>
                 </div>
             </form>
+
         </section>
 
         <!-- Contenedor para la tabla de inventario -->
@@ -65,32 +66,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($productos as $producto): ?>
+                        <?php if (!empty($productos) && is_array($productos)): ?>
+                            <?php foreach ($productos as $producto): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($producto['isbn']) ?></td>
+                                    <td><?= htmlspecialchars($producto['titulo']) ?></td>
+                                    <td><?= htmlspecialchars($producto['autor']) ?></td>
+                                    <td><?= htmlspecialchars($producto['editorial']) ?></td>
+                                    <td>$<?= htmlspecialchars($producto['precio']) ?></td>
+                                    <td><?= htmlspecialchars($producto['cantidad']) ?></td>
+                                    <td>
+                                        <form method="post" action="InventarioController.php?action=eliminarLibro" style="display:inline;">
+                                            <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['isbn']) ?>">
+                                            <button type="submit" class="btn-delete">Eliminar</button>
+                                        </form>
+                                        <form method="post" action="InventarioController.php?action=editarLibro" style="display:inline;">
+                                            <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['isbn']) ?>">
+                                            <button type="submit" class="btn-edit">Editar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td><?= htmlspecialchars($producto['isbn']) ?></td>
-                                <td><?= htmlspecialchars($producto['titulo']) ?></td>
-                                <td><?= htmlspecialchars($producto['autor']) ?></td>
-                                <td><?= htmlspecialchars($producto['editorial']) ?></td>
-                                <td>$<?= htmlspecialchars($producto['precio']) ?></td>
-                                <td><?= htmlspecialchars($producto['cantidad']) ?></td>
-                                <td>
-                                    <form method="post" action="InventarioController.php?action=eliminarLibro" style="display:inline;">
-                                        <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['isbn']) ?>">
-                                        <button type="submit" class="btn-delete">Eliminar</button>
-                                    </form>
-                                    <form method="post" action="InventarioController.php?action=editarLibro" style="display:inline;">
-                                        <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['isbn']) ?>">
-                                        <button type="submit" class="btn-edit">Editar</button>
-                                    </form>
-                                </td>
+                                <td colspan="7" style="text-align: center;">No hay libros disponibles en el inventario.</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
-
 
     <?php include 'includes/footer.php'; ?>
 </body>
