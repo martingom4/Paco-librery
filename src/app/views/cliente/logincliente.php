@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,8 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <jsp:include page="header.jsp" />
-
     <main>
         <div class="login-contenedor">
             <div class="login">

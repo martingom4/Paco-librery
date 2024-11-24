@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
 
    <main>
         <div class="welcome-message">
@@ -75,6 +75,6 @@
         </div>
     </main>
 
-    <?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
 </body>
 </html>
