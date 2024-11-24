@@ -9,7 +9,8 @@ function configurarRutas()
         $r->addRoute('GET', '/', [HomeController::class, 'index']);
         $r->addRoute('GET', '/home.php', [HomeController::class, 'index']);
         $r->addRoute('GET','/perfiles',[HomeController::class,'choosePerfil']);//ruta para escoger perfiles entre admin y cliente
-
+        $r->addRoute('GET','/sobrenosotros',[HomeController::class,'sobreNosotros']);
+        $r->addRoute('GET','/contacto',[HomeController::class,'sucursales']);
 
         //rutas para el cliente
         $r->addRoute('GET','/cliente/registro',[ClientesController::class,'mostrarRegistro']);

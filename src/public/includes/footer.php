@@ -13,8 +13,8 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
             <?php if (!$perfilCliente && !$perfilAdmin): ?>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario-footer">
                     <a href="/perfiles"><img src="../images/Usuario.png" alt="Usuario"></a>
@@ -25,10 +25,10 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
             <?php elseif ($perfilAdmin): ?>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="Inventario.jsp">Inventario</a></li>
+                    <li><a href="/inventario">Inventario</a></li>
                     <li><a href="HistorialVentas.html">Ventas</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario-footer">
                     <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
@@ -43,8 +43,8 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/catalogo">Catálogo</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario-footer">
                     <a href="/cliente/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
