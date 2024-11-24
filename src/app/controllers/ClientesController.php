@@ -56,46 +56,46 @@ class ClientesController {
     }
 
     public function mostrarLogin() {
-        include __DIR__ ."/../views/cliente/logincliente.php";
+            include __DIR__ ."/../views/cliente/logincliente.php";
     }
     public function procesarLogin() {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $correo = trim($_POST['email'] ?? '');
-                $password = trim($_POST['password'] ?? '');
-    
-                // Validación de campos vacíos
-                if (empty($correo) || empty($password)) {
-                    $error = 'Por favor, complete todos los campos.';
-                    include __DIR__ . "/../views/cliente/logincliente.php";
-                    return;
-                }
-    
-                // Verificar si el cliente existe en la base de datos
-                $clienteExistente = $this->clienteModel->buscarPorCorreo($correo);
-    
-                if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
-                    // Si las credenciales son correctas, iniciar sesión
-                    session_start();  // Iniciar la sesión
-                    $_SESSION['cliente_id'] = $clienteExistente['ID_cliente'];  // Almacenar ID del cliente en la sesión
-                    $_SESSION['nombre']= $clienteExistente['nombre'];
-                    $_SESSION['email']=$clienteExistente['correo'];
-                    $_SESSION['telefono']=$clienteExistente['telefono'];
-                    $_SESSION['apellido']=$clienteExistente['apellido'];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $correo = trim($_POST['email'] ?? '');
+            $password = trim($_POST['password'] ?? '');
 
-                    //cookie de ultimo acceso
-                    $ultimoAcceso = date("Y-m-d H:i:s"); // La fecha y hora actual
-                    setcookie('ultimo_acceso', $ultimoAcceso, time() + 30*24*60*60, "/");  // La cookie durará 30 días
-        
+            // Validación de campos vacíos
+            if (empty($correo) || empty($password)) {
+                $error = 'Por favor, complete todos los campos.';
+                include __DIR__ . "/../views/cliente/logincliente.php";
+                return;
+            }
+
+            // Verificar si el cliente existe en la base de datos
+            $clienteExistente = $this->clienteModel->buscarPorCorreo($correo);
+
+            if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
+                // Si las credenciales son correctas, iniciar sesión
+                session_start();  // Iniciar la sesión
+                $_SESSION['cliente_id'] = $clienteExistente['ID_cliente'];  // Almacenar ID del cliente en la sesión
+                $_SESSION['nombre']= $clienteExistente['nombre'];
+                $_SESSION['email']=$clienteExistente['correo'];
+                $_SESSION['telefono']=$clienteExistente['telefono'];
+                $_SESSION['apellido']=$clienteExistente['apellido'];
+
+                //cookie de ultimo acceso
+                $ultimoAcceso = date("Y-m-d H:i:s"); // La fecha y hora actual
+                setcookie('ultimo_acceso', $ultimoAcceso, time() + 30*24*60*60, "/");  // La cookie durará 30 días
     
-                    // Redirigir al catálogo o a cualquier página deseada
-                    include __DIR__ . "/../views/cliente/loginExitoso.php";
-                } else {
-                    // Si las credenciales no son correctas
-                    $error = 'Correo o contraseña incorrectos.';
-                    include __DIR__ . "/../views/cliente/logincliente.php";
-                }
+
+                // Redirigir al catálogo o a cualquier página deseada
+                include __DIR__ . "/../views/cliente/loginExitoso.php";
+            } else {
+                // Si las credenciales no son correctas
+                $error = 'Correo o contraseña incorrectos.';
+                include __DIR__ . "/../views/cliente/logincliente.php";
             }
         }
+    }
 
     public function mostrarPerfil(){
 
@@ -121,14 +121,14 @@ class ClientesController {
             $telefono = trim($_POST['telefono']);
             $apellido = trim($_POST['apellido']);
 
-            // Validar datos
-            if (empty($nombre) || empty($email) || empty($telefono) || empty($apellido)) {
-                $_SESSION['error'] = 'Todos los campos son obligatorios.';
-                header('Location: /cliente/actualizar');
-                exit;
-            }
+        // Validar datos
+        if (empty($nombre) || empty($email) || empty($telefono) || empty($apellido)) {
+            $_SESSION['error'] = 'Todos los campos son obligatorios.';
+            header('Location: /cliente/actualizar');
+            exit;
+        }
 
-             // Actualizar en la base de datos
+            // Actualizar en la base de datos
             $perfilActualizado = $this->clienteModel->actualizarCliente($id, $nombre, $apellido, $telefono, $email);
 
             if ($perfilActualizado) {
@@ -147,6 +147,7 @@ class ClientesController {
             exit;
         }
     }
+
     public function eliminarCliente() {
         session_start();
         if (!isset($_SESSION['cliente_id'])) {
@@ -192,6 +193,7 @@ class ClientesController {
         exit(); 
     }
 
+    
     //VER CLIENTES DESDE ROL EMPLEADO
     // Ver lista de clientes 
     public function listarClientes() {

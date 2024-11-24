@@ -6,7 +6,6 @@ if(!isset($_SESSION['cliente_id'])){
 }
 include 'includes/header.php'
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -50,7 +49,7 @@ include 'includes/header.php'
         </section>
 
         <section class="titulo">
-            <h1>Historial de Compras</h1>
+            <h1>Historial de Compras</h1>    
         </section>
         <section class="Container-historial">
             <div class="imagenlibro">
