@@ -146,8 +146,16 @@ class ClientesController {
             }
             exit;
         }
-
-
     }
-
+    public function logout(){
+        session_start();
+        if (!isset($_SESSION['cliente_id'])) {
+            header("Location: /cliente/login");
+            exit();
+        }
+        session_unset();
+        session_destroy();
+        header('Location: /');
+        exit(); 
     }
+}
