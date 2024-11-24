@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editoriales</title>
+    <title>Clientes</title>
     <link rel="shortcut icon" href="../images/LOGO.PNG" alt="logo">
     <!-- Documentos CSS utilizados -->
     <link rel="stylesheet" href="/css/editorial.css">
@@ -18,7 +18,7 @@
         <!-- Contenedor de la tabla -->
         <div class="tabla-container">
             <div class="editorial-header">
-                <p>Clientes</p>
+                <h1>Clientes</h1>
 
             <?php if (!empty($clienteExistente)): ?>
                 <table class="editorial-table">
@@ -43,11 +43,10 @@
                             <td><?= htmlspecialchars($data['telefono']) ?></td>
                             <td><?= htmlspecialchars($data['correo']) ?></td>
                             <td>
-                                <form action="/formsActualizar" method="POST">
-                                    <input type="hidden" name="cliente_id" value="<?= $data['ID_cliente'] ?>">
-                                    <button type="submit" class="btn-registrar">Actualizar</button>
-
-                                </form>
+                            <form action="/actualizar/<?= $data['ID_cliente'] ?> " method="GET">
+                                <input type="hidden" name="cliente_id" value="<?= $data['ID_cliente'] ?>">
+                                <button type="submit" class="btn-registrar">Actualizar</button>
+                            </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>

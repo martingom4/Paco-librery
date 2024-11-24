@@ -180,12 +180,6 @@ class ClientesController {
         }
     }
 
-    // Ver lista de clientes 
-    public function listarClientes() {
-        $clienteExistente = $this->clienteModel->obtenerClientes();
-        include __DIR__ . '/../views/empleado/listaClientes.php';
-    }
-
     public function logout(){
         session_start();
         if (!isset($_SESSION['cliente_id'])) {
@@ -196,5 +190,60 @@ class ClientesController {
         session_destroy();
         header('Location: /');
         exit(); 
+    }
+
+    //VER CLIENTES DESDE ROL EMPLEADO
+    // Ver lista de clientes 
+    public function listarClientes() {
+        $clienteExistente = $this->clienteModel->obtenerClientes();
+        include __DIR__ . '/../views/empleado/listaClientes.php';
+    }
+
+    // Mostrar formulario de actualización solo para administradores
+    public function mostrarFormsActualizar($cliente_id) {
+        /* Verificar si el usuario está autenticado y si es administrador
+        if (!isset($_SESSION['cliente_id']) || $_SESSION['rol'] !== 'admin') {
+            // Si no es administrador, redirigir al perfil del cliente o mostrar mensaje de acceso restringido
+            header("Location: /perfil"); // O cualquier otra página de acceso
+            exit();
+        }*/
+        // Obtener los datos del cliente para mostrar en el formulario
+        $cliente = $this->clienteModel->obtenerClientePorId($cliente_id);
+        if ($cliente) {
+            include __DIR__ . '/../views/empleado/formsActualizar.php';
+        } else {
+            echo "Cliente no encontrado.";
+        }
+    }
+
+    // Actualizar los datos del cliente
+    public function actualizarClientAdmin() {
+        /* Verificar si el usuario está autenticado y si es administrador
+        if (!isset($_SESSION['cliente_id']) || $_SESSION['rol'] !== 'admin') {
+            // Si no es administrador, redirigir o mostrar mensaje de error
+            header("Location: /perfil"); 
+            exit();
+        }*/
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obtener datos del formulario
+            $cliente_id = $_POST['cliente_id'] ?? null;
+            $nombre = $_POST['nombre'] ?? null;
+            $apellido = $_POST['apellido'] ?? null;
+            $telefono = $_POST['telefono'] ?? null;
+            $correo = $_POST['correo'] ?? null;
+
+            // Verificar que los datos sean válidos
+            if ($cliente_id && $nombre && $apellido && $telefono && $correo) {
+                // Actualizar los datos del cliente en la base de datos
+                $this->clienteModel->actualizarCliente($cliente_id, $nombre, $apellido, $telefono, $correo);
+
+                // Redirigir a la página de clientes o donde corresponda
+                header("Location: /registros/clientes");
+                exit();
+            } else {
+                // En caso de que los datos sean inválidos o faltantes
+                echo "Error al actualizar cliente";
+            }
+        }
     }
 }

@@ -25,7 +25,14 @@ function configurarRutas()
         $r->addRoute('POST','/cliente/eliminar', [ClientesController::class,'eliminarCliente']);
         $r->addRoute('GET','/logout',[ClientesController::class,'logout']);//LOGOUT
 
+        //(solo admins)
         $r->addRoute('GET','/registros/clientes', [ClientesController::class,'listarClientes']);
+        // Mostrar formulario de actualización de cliente (solo administradores)
+        $r->addRoute('GET', '/actualizar/{id}', [ClientesController::class, 'mostrarFormsActualizar']);
+        // Actualizar los datos del cliente
+        $r->addRoute('POST', '/actualizar', [ClientesController::class, 'actualizarClientAdmin']);
+
+
         //rutas para editorial
         $r->addRoute('GET','/editorial', [EditorialesController::class,'verEditorial']);
         $r->addRoute('GET', '/editorial/agregar',[EditorialesController::class,'viewRegister']);

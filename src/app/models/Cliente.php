@@ -57,4 +57,13 @@ class Cliente {
         $stmt = $this->db->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function obtenerClientePorId($id) {
+        $query = "SELECT * FROM Cliente WHERE ID_cliente = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
