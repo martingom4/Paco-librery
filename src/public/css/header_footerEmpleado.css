@@ -62,6 +62,9 @@ body{
 .Usuario img{
     height: 30px;
 }
+.carrito{
+    padding: 0 20px;
+}
 
 .Usuario{
     display: flex;
