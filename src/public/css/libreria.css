@@ -1,0 +1,336 @@
+/* Establecer el body y el html para ocupar toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: #F2E5D5;
+    display: flex;
+    flex-direction: column;
+}
+
+/*HEADER*/
+/*HEADER DONDE ESTA EL LOGO Y LAS REDES*/
+.logo img{
+    height: 85px;
+    margin-left: 35px;
+}
+.LogoRedes{
+    margin-bottom:0%;
+    background-color: white;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+h3,h4{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
+.LogoRedes a{
+    text-decoration: none;
+    color: black;
+}
+
+.Redes img{
+    height: 35px;
+    margin-right: 5px;
+}
+
+/*HEADER DONDE ESTA EL MENU NAVEGACION*/
+.Menu{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.Menu ul, .Redes ul{
+    display: flex;
+    gap:20px;
+    list-style: none;
+}
+
+.Menu ul{
+    margin-left:auto;
+}
+
+.Menu a{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    position: relative;
+}
+
+/*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
+.Menu ul li a::after,.Usuario a::after{
+    content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    bottom: -5px; /*para colocar la linea debajo del texto*/
+    left: 0;
+    transform: scaleX(0); /*reducir la escala*/
+    transform-origin: bottom right; /*el origen de la transformacion*/
+    transition: transform 0.25s ease-out; /*una transicion suave*/
+}
+/*HOVER EN LA LISTA DEL HEADER*/
+.Menu ul li a:hover::after, .Usuario a:hover::after{
+    transform: scaleX(1); /*expansion de la linea a tamaño completo*/
+    transform-origin: bottom left; /*cambiar el origen de la transformacion*/
+}
+
+/*FOOTER DONDE ESTA EL MENU NAVEGACION*/
+.Menu-footer{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    justify-content: center;
+}
+
+.Menu-footer ul{
+    list-style: none;
+    display: flex;
+    gap: 100px;
+}
+
+.Menu-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.Menu-footer a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.Usuario-footer img{
+    height: 30px;
+}
+
+.Usuario-footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*FOOTER COPYRIGHT*/
+.Copyright{
+    margin: 0%;
+    background-color: #284F58;
+    height: 30px;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/*HEADER*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #e0e0e0;
+}
+
+.header button, header input {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #004d40;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.header input[type="search"] {
+    flex-grow: 1;
+    margin: 0 1rem;
+    padding: 0.5rem;
+}
+
+.Usuario img{
+    height: 30px;
+}
+
+.Usuario{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Contenedor principal */
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2rem;
+    color: #1D3E36;
+    margin-bottom: 10px;
+}
+
+/* Botones de acción */
+.btn-action {
+    background-color: #1D3E36;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn-action:hover {
+    background-color: #154A3E;
+}
+
+.btn-action a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Estilo para la tabla de librerías */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Encabezado de la tabla */
+thead tr {
+    background-color: #89673A;
+    color: #FFFFFF;
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Cuerpo de la tabla */
+tbody tr {
+    background-color: #EED3AD;
+    color: #000000;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Alternar colores para filas pares */
+tbody tr:nth-child(even) {
+    background-color: #E4C8A3;
+}
+
+/* Estilo para los botones */
+.action-buttons-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    background-color: #1E3F48;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-action:hover {
+    background-color: #1E3F48;
+    color: #FFFFFF;
+}
+
+/* Agregar bordes a la tabla */
+table, th, td {
+    border: 1px solid #89673A;
+}
+
+/* Uniformar el estilo de los enlaces dentro de los botones */
+.action-buttons-group .btn-action a {
+    font-size: 14px; 
+    color: #FFFFFF; 
+    text-decoration: none; 
+    display: inline-block; 
+    padding: 5px 10px; 
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mantener consistencia en el tamaño del texto de todos los botones */
+.action-buttons-group .btn-action {
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+}
+
+/*FOOTER DONDE ESTA EL MENU NAVEGACION*/
+.Menu-footer{
+    margin-top: 0%;
+    background-color: #1B3F48;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 90px; /*cambio para que se centre el nav abajo*/
+    justify-content: center;
+}
+
+.Menu-footer ul{
+    list-style: none;
+    display: flex;
+    gap: 90px; /*cambio para que se centre el nav abajo*/
+    padding: 0px; /*cambio para que se centre el nav abajo*/
+}
+
+
+.Menu-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.Menu-footer a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.Usuario-footer img{
+    height: 30px;
+}
+
+.Usuario-footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*FOOTER COPYRIGHT*/
+.Copyright{
+    margin: 0%;
+    background-color: #284F58;
+    height: 30px;
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}

@@ -1,68 +1,61 @@
+<?php
+session_start();
+//detectar sesion para determinar pefil
+$perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
+//aqui debe ir  los parametros de la sesion de admin admin_id  email
+?>
 <link rel="stylesheet" href="/css/header_footerEmpleado.css">
 <body>
-    <!--HEADER PARA EMPLEADO-->
     <header>
         <!--LOGO Y REDES-->
         <div class="LogoRedes">
             <div class="logo">
                 <img src="../images/LOGO.png" alt="Librerí­a ¡Donde Paco!">
             </div>
-            <div class="Redes">
-                <ul>
-                    <li><a href="https://www.instagram.com"><img src="../images/Instagram.png" alt="Instagram"></a></li>
-                    <li><a href="https://www.facebook.com"><img src="../images/Facebook.png" alt="Facebook"></a></li>
-                    <li><a href="https://www.google.com"><img src="../images/Buscar.png" alt="Buscar"></a></li>
-                </ul>
-            </div>
         </div>
-        <!--MENU-->
+
         <div class="Menu">
-            <ul>
-                <li><a href="/home.php">Home</a></li>
-                <li><a href="Inventario.html">Inventario</a></li>
-                <li><a href="HistorialVentas.html">Ventas</a></li>
-                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                <li><a href="sucursal.html">Contacto</a></li>
-            </ul>
+            <!--HEADER PARA VISITANTE-->
+            <?php if (!$perfilCliente && !$perfilAdmin): ?>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/catalogo">Catálogo</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
             <div class="Usuario">
-                <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                <a href="PerfilEmpleado.html">Mi cuenta</a>
+                <a href="/perfiles"><img src="../images/Usuario.png" alt="Usuario"></a>
+                <a href="/perfiles">Iniciar Sesión</a>
             </div>
+
+            <!--HEADER PARA EMPLEADO-->
+            <?php elseif ($perfilAdmin): ?>
+                <ul>
+                    <li><a href="/home.php">Home</a></li>
+                    <li><a href="/inventario">Inventario</a></li>
+                    <li><a href="HistorialVentas.html">Ventas</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
+                <div class="Usuario">
+                    <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
+                    <a href="PerfilEmpleado.html">Mi cuenta</a>
+                </div>
+
+            <!--HEADER PARA CLIENTE-->
+            <?php elseif ($perfilCliente): ?>
+                <ul>
+                    <li><a href="/perfil">¿Qué buscas hoy?, <?php echo htmlspecialchars($_SESSION['nombre']); ?></a></li>
+                    <li><a href="/home.php">Home</a></li>
+                    <li><a href="/catalogo">Catálogo</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
+                <div class="Usuario">
+                    <a href="/cliente/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
+                    <a href="/cliente/perfil">Mi cuenta</a>
+                </div>
+            <?php endif; ?>
         </div>
     </header>
-
-    <!--HEADER PARA CLIENTE-->
-    <header>
-        <!--LOGO Y REDES-->
-        <div class="LogoRedes">
-            <div class="logo">
-                <img src="../images/LOGO.png" alt="LibrerÃ­a Â¡Donde Paco!">
-            </div>
-            <div class="Redes">
-                <ul>
-                    <li><a href="https://www.instagram.com"><img src="../images/Instagram.png" alt="Instagram"></a></li>
-                    <li><a href="https://www.facebook.com"><img src="../images/Facebook.png" alt="Facebook"></a></li>
-                    <li><a href="https://www.google.com"><img src="../images/Buscar.png" alt="Buscar"></a></li>
-                </ul>
-            </div>
-        </div>
-        <!--MENU-->
-        <div class="Menu">
-            <ul>
-                <li><a href="/home.php">Home</a></li>
-                <li><a href="/catalogo">Catálogo</a></li>
-                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                <li><a href="sucursal.html">Contacto</a></li>
-            </ul>
-            <div class="Usuario">
-                <a href="/clientes/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
-                <a href="/clientes/perfil">Mi cuenta</a>
-            </div>
-        </div>
-    </header>
-    </body>
-    </html>
-
-
-
-
+</body>

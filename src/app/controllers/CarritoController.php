@@ -10,7 +10,11 @@ class CarritoController {
         session_start(); // Iniciar la sesión
     }
 
-    public function agregarAlCarrito($isbn, $cantidad){
+    public function mostrarCatalogo($isbn) {
+        $catalogo = $this->carritoModel->getLibro($isbn);
+        include __DIR__ . '/../views/Compras/catalogo.php';
+    }
+    public function agregarAlCarrito($isbn, $cantidad) {
         $libro = $this->carritoModel->getLibro($isbn);
         if (!$libro) {
             $libro = ['error' => 'Libro no encontrado'];
@@ -22,7 +26,7 @@ class CarritoController {
             $_SESSION['carrito'][$isbn] = $libro;
 
             // Guardar en la base de datos
-            $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+            $clienteId = $_SESSION['cliente_id'];
             $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
         }
         header('Location: /carrito'); // Redirigir al carrito
@@ -35,16 +39,16 @@ class CarritoController {
         if ($isbn && $cantidad && isset($_SESSION['carrito'][$isbn])) {
             $_SESSION['carrito'][$isbn]['cantidad'] = $cantidad;
 
-            // Actualizar en la base de datos
-            $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
-            $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
+
+            $clienteId = $_SESSION['cliente_id'];
+            $this->carritoModel->actualizarCantidad($cantidad ,$isbn,$clienteId,);
         }
         header('Location: /carrito'); // Redirigir al carrito
         exit();
     }
 
     public function mostrarCarrito() {
-        $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+        $clienteId = $_SESSION['cliente_id'];
         $carrito = $this->carritoModel->obtenerCarrito($clienteId);
         require __DIR__ . '/../views/Compras/carrito.php';
     }
@@ -55,7 +59,7 @@ class CarritoController {
             unset($_SESSION['carrito'][$isbn]);
 
             // Eliminar de la base de datos
-            $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+            $clienteId = $_SESSION['cliente_id'];
             $this->carritoModel->eliminarCarrito($clienteId, $isbn);
         }
         header('Location: /carrito'); // Redirigir al carrito
@@ -63,7 +67,7 @@ class CarritoController {
     }
 
     public function finalizarCompra() {
-        $clienteId = $_SESSION['cliente_id']; // Asumiendo que el ID del cliente está en la sesión
+        $clienteId = $_SESSION['cliente_id'];
         $carrito = $_SESSION['carrito'] ?? [];
         $total = array_reduce($carrito, function($carry, $item) {
             return $carry + ($item['precio'] * $item['cantidad']);
@@ -79,4 +83,9 @@ class CarritoController {
         header('Location: /factura?venta_id=' . $ventaId); // Redirigir a la página de factura
         exit();
     }
+   public function comprar() {
+    $clienteId = $_SESSION['cliente_id'];
+    $carrito = $_SESSION['carrito'] ?? [];
+    require_once __DIR__ . '/../views/Compras/pasarela.php';
+   }
 }

@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,14 +18,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <jsp:include page="header.jsp" />
-
     <main>
         <div class="login-contenedor">
             <div class="login">
                 <h2>Inicio de sesión</h2>
                 <hr>
-                <form action="logincliente.jsp" method="post">
+                
+                <?php if (isset($error)): ?>
+                <p style="color: red;"><?php echo $error; ?></p>
+                <?php endif; ?>
+
+                <form action="/cliente/login" method="POST">
                     <div class="input-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
@@ -36,13 +40,12 @@
                     <button type="submit">Acceder</button>
                 </form>
                 <div class="registrar">
-                    <p>¿No tienes cuenta? <a href="registrocliente1.jsp">registrate aquí</a></p>
+                    <p>¿No tienes cuenta? <a href="/cliente/registro">registrate aquí</a></p>
                 </div>
             </div>
         </div>
     </main>
-
-     <jsp:include page="footer.jsp" />
+<?php include 'includes/footer.php';?>
     <script src="../scripts/home.js"></script>
 </body>
 </html>
