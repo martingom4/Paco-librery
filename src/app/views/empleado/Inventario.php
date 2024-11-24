@@ -26,7 +26,7 @@
             <div class="titulo-suc1">
                 <h1>Gestión de Inventario</h1>
             </div>
-            <form method="post" action="inventario/filtrar">
+            <form method="post" action="/inventario">
                 <div class="Consulta-sucursal">
                     <div>
                         <label for="isbn">ISBN:</label>

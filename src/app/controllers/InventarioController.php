@@ -35,16 +35,21 @@ class InventarioController {
         $this->mostrarInventario();
     }
 
-    // Mostrar todo el inventario
     public function mostrarInventario() {
-        $inventario = $this->inventarioModel->getInventario();
+        // Revisa si la solicitud tiene filtros
+        $isbn = $_POST['isbn'] ?? null;
+        $sucursal = $_POST['Sucursal'] ?? null;
+    
+        // Decide qué datos cargar: todo el inventario o filtrado
+        if ($isbn || $sucursal) {
+            $inventario = $this->inventarioModel->getLibrosFiltrados($isbn, $sucursal);
+        } else {
+            $inventario = $this->inventarioModel->getInventario();
+        }
+    
+        // Carga la vista con los datos
         include __DIR__ . '/../views/empleado/Inventario.php';
     }
-
-    // Mostrar todo el inventario
-    public function filtrarInventario() {
-        $inventario = $this->inventarioModel->getLibrosFiltrados();
-        include __DIR__ . '/../views/empleado/Inventario.php';
-    }
+    
 }
 
