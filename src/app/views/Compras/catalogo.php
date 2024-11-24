@@ -23,19 +23,10 @@
         <div class="main-content">
             <aside class="filter-section">
                 <h1>Filtrar</h1>
-                <form method="post" action="catalogo.jsp">
+                <form method="post" action="/catalogo">
                     <div class="filter-group">
-                        <label for="autor">Por autor</label>
-                        <input type="text" id="autor" name="autor" title="Escriba el Autor" placeholder="Gabriel García Márquez">
-                    </div>
-                    <div class="filter-group">
-                        <label for="editorial">Por editorial</label>
-                        <select id="editorial" name="editorial">
-                            <option value="" selected>Seleccione una editorial</option>
-                            <option value="Oceano">Oceano</option>
-                            <option value="Sudamericana">Sudamericana</option>
-                            <option value="Universitaria">Universitaria</option>
-                        </select>
+                        <label for="nombre">Por nombre</label>
+                        <input type="text" id="nombre" name="nombre" title="Escriba el Nombre" placeholder="Cien Años de Soledad">
                     </div>
                     <button type="submit" class="btn-filtrar">Filtrar</button>
                 </form>

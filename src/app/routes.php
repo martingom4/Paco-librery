@@ -41,6 +41,8 @@ function configurarRutas()
 
         // Rutas para las comras y ventas
         $r->addRoute('GET', '/catalogo', [VentasController::class, 'mostrarCatalogo']);
+        $r->addRoute('POST', '/catalogo', [VentasController::class, 'mostrarCatalogo']);
+        $r->addRoute('GET', '/comprar/{isbn}', [VentasController::class, 'verCompra']); 
         $r->addRoute('GET', '/factura-detalles', [VentasController::class, 'detallesCompra']);
         $r->addRoute('GET', '/carrito', [CarritoController::class, 'mostrarCarrito']);
         $r->addRoute('POST', '/carrito/agregar', [CarritoController::class, 'agregarAlCarrito']);

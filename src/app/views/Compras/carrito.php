@@ -46,7 +46,7 @@
                             <td>
                                 <form method="POST" action="/carrito/eliminar">
                                     <input type="hidden" name="isbn" value="<?= htmlspecialchars($item['ISBN']) ?>">
-                                    <button type="submit">Eliminar</button>
+                                    <button type="submit" name="eliminar">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

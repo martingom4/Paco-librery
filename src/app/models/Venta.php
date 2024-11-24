@@ -7,10 +7,18 @@ Class Venta {
     }
 
     //mostrar catalogo
-    public function getCatalogo(): array {
+    public function getCatalogo($nombre = null): array {
         $query = "SELECT ISBN, nombre, precio, imagen
                   FROM Libro";
-        $stmt = $this->db->query($query);
+        if ($nombre) {
+            $query .= " WHERE nombre LIKE :nombre";
+        }
+        $stmt = $this->db->prepare($query);
+        if ($nombre) {
+            $nombre = "%$nombre%";
+            $stmt->bindParam(':nombre', $nombre);
+        }
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

@@ -15,20 +15,25 @@ class CarritoController {
         include __DIR__ . '/../views/Compras/catalogo.php';
     }
 
-    public function agregarAlCarrito($isbn, $cantidad) {
-        $libro = $this->carritoModel->getLibro($isbn);
-        if (!$libro) {
-            $libro = ['error' => 'Libro no encontrado'];
-        } else {
-            $libro['cantidad'] = $cantidad;
-            if (!isset($_SESSION['carrito'])) {
-                $_SESSION['carrito'] = [];
-            }
-            $_SESSION['carrito'][$isbn] = $libro;
+    public function agregarAlCarrito() {
+        $isbn = $_POST['isbn'] ?? null;
+        $cantidad = $_POST['cantidad'] ?? 1;
 
-            // Guardar en la base de datos
-            $clienteId = $_SESSION['cliente_id'];
-            $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
+        if ($isbn) {
+            $libro = $this->carritoModel->getLibro($isbn);
+            if (!$libro) {
+                $libro = ['error' => 'Libro no encontrado'];
+            } else {
+                $libro['cantidad'] = $cantidad;
+                if (!isset($_SESSION['carrito'])) {
+                    $_SESSION['carrito'] = [];
+                }
+                $_SESSION['carrito'][$isbn] = $libro;
+
+                // Guardar en la base de datos
+                $clienteId = $_SESSION['cliente_id'];
+                $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
+            }
         }
         header('Location: /carrito'); // Redirigir al carrito
         exit();
