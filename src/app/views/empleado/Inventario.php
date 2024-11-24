@@ -26,27 +26,31 @@
             <div class="titulo-suc1">
                 <h1>Gestión de Inventario</h1>
             </div>
-            <form method="post" action="/inventario">
-                <div class="Consulta-sucursal">
-                    <div>
-                        <label for="isbn">ISBN:</label>
-                        <input type="number" id="isbn" name="isbn" placeholder="Ingrese el ISBN">
+            <div class="Consulta-sucursal">
+                <form method="post" action="/inventario">
+                    <div class="Consulta-sucursal">
+                        <div>
+                            <label for="isbn">ISBN:</label>
+                            <input type="number" id="isbn" name="isbn" placeholder="Ingrese el ISBN">
+                        </div>
+                        <div>
+                            <label for="Sucursal">Sucursal:</label>
+                            <select name="Sucursal" id="Sucursal" title="Seleccione una sucursal">
+                                <option value="">Seleccione una sucursal</option>
+                                <option value="San Miguelito">San Miguelito</option>
+                                <option value="La Chorrera">La Chorrera</option>
+                                <option value="Santiago">Santiago</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 70px">                    
+                        </div>
                     </div>
-                    <div>
-                        <label for="Sucursal">Sucursal:</label>
-                        <select name="Sucursal" id="Sucursal" title="Seleccione una sucursal">
-                            <option value="">Seleccione una sucursal</option>
-                            <option value="San Miguelito">San Miguelito</option>
-                            <option value="La Chorrera">La Chorrera</option>
-                            <option value="Santiago">Santiago</option>
-                        </select>
-                    </div>
-                    <div>
-                        <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 70px">                    
-                        <button type="submit" action="InventarioController.php?action=registrarLibro" class="btn" id="boton-enviar">Registrar Libro</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+                <form method = "POST" action = "/inventario/registrarLibro">
+                    <input type="submit" value="Registrar Libro" id="boton-enviar" style="margin-right: 70px">                    
+                </form>
+            </div>
 
         </section>
 
