@@ -40,21 +40,35 @@ class InventarioController {
         }
     }
     
-    
-
-    // Redirigir a la vista de edición de un libro
-    public function mostrarEditarLibro($isbn, $sucursal) {
-        $libro = $this->inventarioModel->getLibrosFiltrados($isbn, $sucursal);
-        if (!$libro) {
-            die("El libro no existe en esta sucursal.");
+    public function editarLibro() {
+        // Si el método es GET, mostramos el formulario de registro
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            include __DIR__ . '/../views/empleado/EditarLibro.php';
         }
-        include __DIR__ . '/../views/empleado/EditarLibro.php';
-    }
     
-    // Actualizar un libro en el inventario
-    public function actualizarLibro($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad) {
-        $this->inventarioModel->actualizarProducto($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad);
-        $this->mostrarInventario();
+        // Si el método es POST, procesamos el registro del libro
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obtener los datos del formulario
+            $isbn = $_POST['isbn'];
+            $nombre = $_POST['nombre'];
+            $titulo = $_POST['titulo'];
+            $edicion = $_POST['edicion'];
+            $precio = $_POST['precio'];
+            $fecha_publi = $_POST['fecha_publi'];
+            $id_edit = $_POST['id_edit'];
+            $id_autor = $_POST['id_autor'];
+            $imagen = $_POST['imagen'];
+            $cantidad = $_POST['cantidad'];
+            $id_libreria = $_POST['id_libreria'];
+            $id_genero = $_POST['id_genero'];
+            // Registrar el libro en la base de datos
+            $this->inventarioModel->editarLibro(
+                $isbn, $nombre, $titulo, $edicion, $precio, $fecha_publi, $id_edit, $id_autor, $imagen, $cantidad, $id_libreria, $id_genero 
+            );
+    
+            // Después de registrar, redirigimos o mostramos el inventario
+            $this->mostrarInventario();
+        }
     }
 
     // Función para mostrar todo el inventario
@@ -63,7 +77,6 @@ class InventarioController {
         $inventario = $this->inventarioModel->getInventario();
         
         // Carga la vista con los datos del inventario completo
-        var_dump($inventario);  // Esto te permitirá ver los resultados de la consulta
         include __DIR__ . '/../views/empleado/Inventario.php';
 
     }
@@ -77,7 +90,6 @@ class InventarioController {
         // Si se tiene ISBN o Sucursal, se realiza el filtrado
         if ($isbn || $sucursal) {
             $inventario = $this->inventarioModel->getLibrosFiltrados($isbn, $sucursal);
-            var_dump($inventario);  // Esto te permitirá ver los resultados de la consulta
         } else {
             $inventario = $this->inventarioModel->getInventario();
         }
@@ -86,5 +98,21 @@ class InventarioController {
         include __DIR__ . '/../views/empleado/Inventario.php';
     }
 
+    public function eliminarLibro() {
+        // Verificar si la solicitud es POST (para eliminar)
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obtener el ISBN del formulario enviado
+            $isbn = $_POST['isbn'];
+            $ID_Libreria = $_POST['ID_Libreria'];
+            try {
+                // Llamar al modelo para eliminar el libro y su inventario
+                $this->inventarioModel->eliminarLibro($isbn, $ID_Libreria);
+                // Redirigir al inventario después de eliminar
+                $this->mostrarInventario();
+            } catch (Exception $e) {
+                // Manejar errores y mostrar un mensaje
+                echo "Error al eliminar el libro: " . $e->getMessage();
+            }
+        }
+    }
 }
-
