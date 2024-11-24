@@ -32,10 +32,10 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
             <?php elseif ($perfilAdmin): ?>
                 <ul>
                     <li><a href="/home.php">Home</a></li>
-                    <li><a href="Inventario.html">Inventario</a></li>
+                    <li><a href="/inventario">Inventario</a></li>
                     <li><a href="HistorialVentas.html">Ventas</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario">
                     <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
@@ -48,8 +48,8 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                     <li><a href="/perfil">¿Qué buscas hoy?, <?php echo htmlspecialchars($_SESSION['nombre']); ?></a></li>
                     <li><a href="/home.php">Home</a></li>
                     <li><a href="/catalogo">Catálogo</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
+                    <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario">
                     <a href="/cliente/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
