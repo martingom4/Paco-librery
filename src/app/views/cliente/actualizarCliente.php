@@ -43,4 +43,6 @@ include 'includes/header.php'
             </div>
         </section>
     </main>
-    <jsp:include page="footer.jsp" />
+<?php include 'includes/footer.php';?>
+</body>
+</html>

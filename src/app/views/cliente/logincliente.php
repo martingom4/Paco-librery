@@ -45,8 +45,7 @@
             </div>
         </div>
     </main>
-
-     <jsp:include page="footer.jsp" />
+<?php include 'includes/footer.php';?>
     <script src="../scripts/home.js"></script>
 </body>
 </html>

@@ -45,25 +45,7 @@
             </div>
         </div>
     </main>
-
-    <footer>
-        <!--MENU-->
-        <div class="Menu-footer">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                <li><a href="sucursal.html">Contacto</a></li>
-            </ul>
-            <div class="Usuario-footer">
-                <a href="perfiles.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                <a href="perfiles.html">Iniciar Sesión</a>
-            </div>
-        </div>
-        <!--COPYRIGHT-->
-        <div class="Copyright">
-            <p>© 2024, Libreria ¡Donde Paco!</p>
-        </div>
-    </footer>
+<?php include 'includes/footer.php';?>
 </body>
 </html>
 
