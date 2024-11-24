@@ -62,6 +62,7 @@ function configurarRutas()
         $r->addRoute('POST', '/formularioActualizar', [LibreriasController::class, 'actualizarLibreria']);
         $r->addRoute('GET', '/detallesLibrerias/{id:\d+}', [LibreriasController::class, 'mostrarDetallesLibreria']);
         $r->addRoute('GET', '/Librerias.php', [LibreriasController::class, 'listarLibrerias']);
+        $r->addRoute('POST', '/libreria/eliminar', [LibreriasController::class, 'eliminarLibreria']);
 
     });
 }

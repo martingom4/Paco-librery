@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
+    
 
     <main>
         <div class="main-content">
@@ -29,6 +30,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Corregimiento</th>
                                     <th>Dirección</th>
@@ -40,6 +42,7 @@
                             <tbody>
                                 <?php foreach ($librerias as $libreria): ?>
                                     <tr>
+                                        <td><?= htmlspecialchars($libreria['ID_libreria']); ?></td>
                                         <td><?= htmlspecialchars($libreria['nom_lib']); ?></td>
                                         <td><?= htmlspecialchars($libreria['corregimiento']); ?></td>
                                         <td><?= htmlspecialchars($libreria['calle'] . ' ' . $libreria['num_loc']); ?></td>
@@ -49,7 +52,11 @@
                                             <div class="action-buttons-group">
                                                 <a class="btn-action" href="/detallesLibrerias/<?= htmlspecialchars($libreria['ID_libreria']); ?>">Ver Detalles</a>
                                                 <button class="btn-action" onclick="window.location.href='/formularioActualizar/<?= htmlspecialchars($libreria['ID_libreria']); ?>'">Actualizar</button>
-                                                <button class="btn-action" onclick="window.location.href='/librerias/eliminar/<?= htmlspecialchars($libreria['ID_libreria']); ?>'">Eliminar</button>
+                                                <!-- Nuevo formulario para eliminar -->
+                                                <form method="POST" action="/libreria/eliminar" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta librería?');" style="display:inline; margin:0;">
+                                                    <input type="hidden" name="id_libreria" value="<?= htmlspecialchars($libreria['ID_libreria']); ?>">
+                                                    <button type="submit" class="btn-action" style="display:inline-block;">Eliminar</button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
