@@ -15,7 +15,6 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
         </div>
 
         <div class="Menu">
-<<<<<<< HEAD
             <!--HEADER PARA VISITANTE-->
             <?php if (!$perfilCliente && !$perfilAdmin): ?>
                 <ul>
@@ -24,16 +23,6 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
                     <li><a href="/contacto">Contacto</a></li>
                 </ul>
-=======
-            <ul>
-                <li><a href="/home.php">Home</a></li>
-                <li><a href="Inventario.html">Inventario</a></li>
-                <li><a href="HistorialVentas.html">Ventas</a></li>
-                <li><a href="/Librerias.php">Registros</a></li>
-                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                <li><a href="sucursal.html">Contacto</a></li>
-            </ul>
->>>>>>> c166dff234933cf0ad470393e7eeb3ece783c567
             <div class="Usuario">
                 <a href="/perfiles"><img src="../images/Usuario.png" alt="Usuario"></a>
                 <a href="/perfiles">Iniciar Sesión</a>
@@ -56,7 +45,7 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
             <!--HEADER PARA CLIENTE-->
             <?php elseif ($perfilCliente): ?>
                 <ul>
-                    <li><a href="/perfil">¿Qué buscas hoy?, <?php echo htmlspecialchars($_SESSION['nombre']); ?></a></li>
+                    <li>¿Qué buscas hoy?, <?php echo htmlspecialchars($_SESSION['nombre']); ?></li>
                     <li><a href="/home.php">Home</a></li>
                     <li><a href="/catalogo">Catálogo</a></li>
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>

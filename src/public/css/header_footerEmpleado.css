@@ -69,6 +69,9 @@ body{
     gap: 10px;
 }
 
+.Menu li{
+    color:white;
+}
 
 /*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
 .Menu ul li a::after,.Usuario a::after{

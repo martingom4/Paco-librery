@@ -42,5 +42,13 @@ class Cliente {
             ':id' => $id
         ]);
     }
+
+    public function eliminarCliente($id, $correo) {
+        $query = "DELETE FROM Cliente WHERE ID_cliente = :id AND correo = :correo";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); // ID del cliente
+        $stmt->bindParam(':correo', $correo, PDO::PARAM_STR); // Correo del cliente
+        return $stmt->execute();
+    }
     
 }

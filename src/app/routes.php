@@ -24,6 +24,7 @@ function configurarRutas()
         $r->addRoute('GET','/cliente/perfil',[ClientesController::class,'mostrarPerfil']);//mostrar perfil cliente
         $r->addRoute('GET','/cliente/actualizar', [ClientesController::class,'mostrarUpdate']);
         $r->addRoute('POST','/cliente/actualizar', [ClientesController::class,'actualizarPerfil']);
+        $r->addRoute('POST','/cliente/eliminar', [ClientesController::class,'eliminarCliente']);
         $r->addRoute('GET','/logout',[ClientesController::class,'logout']);//LOGOUT
 
         //rutas para editorial

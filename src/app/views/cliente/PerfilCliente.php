@@ -31,7 +31,12 @@ include 'includes/header.php'
                     <img src="../images/sinfotoperfil.png" alt="FotoPerfil" title="Foto de Perfil">
                 </div>
                 <div class="boton">
-                    <button id="boton-editar"><a href="/cliente/actualizar">Actualizar perfil</a></button>
+                    <button id="boton-editar"><a href="/cliente/actualizar">Actualizar perfil</a></button><br>
+                        <form method="POST" action="/cliente/eliminar">
+                        <button id="boton-eliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">
+                                Eliminar cuenta
+                        </button>
+                        </form>
                 </div>
             </div>
             <div class="infop">

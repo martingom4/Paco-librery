@@ -147,22 +147,35 @@ class ClientesController {
             exit;
         }
     }
-    public function eliminarCliente(){
+    public function eliminarCliente() {
         session_start();
         if (!isset($_SESSION['cliente_id'])) {
             header("Location: /cliente/login");
             exit();
         }
-        
-        if ($_SERVER['REQUEST_METHOD']==='POST'){
-            $id = $_POST['cliente_id'] ?? null;
-            $correo = $_POST['correo'] ?? null;
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Recuperar los datos enviados por el formulario
+            $id = $_SESSION['cliente_id']; // ID almacenado en la sesión
+            $correo = $_SESSION['email']; // Correo almacenado en la sesión
+    
             if ($id && $correo) {
-                $this->clienteModel->eliminarCliente($id,$correo);
+                $this->clienteModel->eliminarCliente($id, $correo);
+    
+                // Destruir la sesión
+                session_unset();
+                session_destroy();
+    
+                // Eliminar cookies relacionadas
+                if (isset($_COOKIE['ultimo_acceso'])) {
+                    setcookie('cliente_id', '', time() - 3600, '/');
+                }
+                
+                // Redirigir al inicio
                 header("Location: /");
                 exit();
             } else {
-                echo "Datos no encontrados";
+                echo "No se pudieron encontrar los datos necesarios para eliminar la cuenta.";
             }
         }
     }
