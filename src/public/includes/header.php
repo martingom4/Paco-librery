@@ -52,8 +52,10 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                     <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario">
+                    <a href="/carrito" class="carrito"><img src="../images/shopcart.png" alt="carrito"></a>
                     <a href="/cliente/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
                     <a href="/cliente/perfil">Mi cuenta</a>
+
                 </div>
             <?php endif; ?>
         </div>
