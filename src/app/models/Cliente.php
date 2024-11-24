@@ -42,5 +42,28 @@ class Cliente {
             ':id' => $id
         ]);
     }
+
+    public function eliminarCliente($id, $correo) {
+        $query = "DELETE FROM Cliente WHERE ID_cliente = :id AND correo = :correo";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); // ID del cliente
+        $stmt->bindParam(':correo', $correo, PDO::PARAM_STR); // Correo del cliente
+        return $stmt->execute();
+    }
     
+    // Obtener todos los clientes
+    public function obtenerClientes(): array {
+        $query = "SELECT * FROM Cliente";
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerClientePorId($id) {
+        $query = "SELECT * FROM Cliente WHERE ID_cliente = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

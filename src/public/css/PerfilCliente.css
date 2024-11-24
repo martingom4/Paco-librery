@@ -202,7 +202,7 @@ h2{
 }
 
 #boton-editar{
-    width: 130px;
+    width: 150px;
     padding: 10px;
     font-size: medium;
     background-color: #308499;
@@ -214,7 +214,30 @@ h2{
     font-weight: 500;
 }
 
+#boton-editar a {
+    text-decoration: none;
+    color: white;
+}
+
 #boton-editar:hover{
+    transform: scale(1.1);
+}
+
+#boton-eliminar{
+    width: 150px;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: medium;
+    background-color: #a02222;
+    color: #ffffff;
+    border: 3px solid #5a1212;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+#boton-eliminar:hover{
     transform: scale(1.1);
 }
 
