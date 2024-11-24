@@ -79,6 +79,20 @@ select{
     font-weight: 500;
 }
 
+#boton-editar {
+    width: 140px;
+    padding: 8px;
+    font-size:medium;
+    background-color: #308499;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+}
+
+
 #boton-enviar:hover{
     transform: scale(1.1);
 }

@@ -1,5 +1,4 @@
 <?php include 'includes/header.php'; ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -81,11 +80,11 @@
                                     <td>
                                         <form method="post" action="InventarioController.php?action=eliminarLibro" style="display:inline;">
                                             <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['ISBN']) ?>">
-                                            <button type="submit" class="btn-delete">Eliminar</button>
+                                            <button type="submit" id="btn-delete">Eliminar</button>
                                         </form>
                                         <form method="post" action="/inventario/editarLibro" style="display:inline;">
                                             <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['ISBN']) ?>">
-                                            <button type="submit" class="btn-edit">Editar</button>
+                                            <button type="submit" id="boton-editar">Editar</button>
                                         </form>
                                     </td>
                                 </tr>
