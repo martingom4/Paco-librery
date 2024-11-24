@@ -1,11 +1,14 @@
 /* Contenedor general del carrito */
 .carrito-contenedor {
-    max-width: 80%;
+    max-width: 70%;
     margin: 2rem auto;
     padding: 2rem;
     background-color: #FFFFFF;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    min-height: 615px; /* Establece una altura mínima */
+
 }
 
 /* Título del carrito */
@@ -20,9 +23,9 @@
 /* Tabla de productos */
 .carrito-tabla {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: 15px;
     margin-top: 1rem;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 10px; /* Bordes redondeados */
     overflow: hidden; /* Evita que sobresalgan los bordes */
 }
 
@@ -39,8 +42,7 @@
     color: #FFFFFF;
     text-transform: uppercase;
     padding: 1.5rem;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-radius: 10px;
 }
 
 .carrito-tabla td {
@@ -59,7 +61,8 @@
 
 /* Total y botón */
 .carrito-total {
-    margin-top: 2.5rem;
+    margin: 30px;
+    margin-top: 80px; /* Espacio adicional hacia arriba */
     text-align: right;
     font-family: 'Nunito', sans-serif;
     font-size: 1.5rem;
@@ -70,14 +73,14 @@
 .btn-finalizar {
     background-color: #1B3F48;
     color: white;
-    padding: 1rem 2rem;
+    padding: 20px;
     border: none;
     border-radius: 8px;
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin-top: 1rem;
+
 }
 
 .btn-finalizar:hover {
