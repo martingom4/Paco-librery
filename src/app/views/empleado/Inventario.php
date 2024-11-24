@@ -26,24 +26,24 @@
             <div class="titulo-suc1">
                 <h1>Gestión de Inventario</h1>
             </div>
-            <form method="post" action="InventarioController.php?action=filter">
+            <form method="post" action="InventarioController.php?action=filtrarInventario">
                 <div class="Consulta-sucursal">
                     <div>
                         <label for="isbn">ISBN:</label>
-                        <input type="number" id="isbn" name="isbn" placeholder="Ingrese el ISBN" required>
+                        <input type="number" id="isbn" name="isbn" placeholder="Ingrese el ISBN">
                     </div>
                     <div>
                         <label for="Sucursal">Sucursal:</label>
-                        <select name="Sucursal" id="Sucursal" title="Seleccione una sucursal" required>
+                        <select name="Sucursal" id="Sucursal" title="Seleccione una sucursal">
                             <option value="">Seleccione una sucursal</option>
-                            <option value="Sucursal 1">Sucursal 1</option>
-                            <option value="Sucursal 2">Sucursal 2</option>
-                            <option value="Sucursal 3">Sucursal 3</option>
+                            <option value="San Miguelito">San Miguelito</option>
+                            <option value="La Chorrera">La Chorrera</option>
+                            <option value="Santiago">Santiago</option>
                         </select>
                     </div>
                     <div>
-                        <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 10px">
-                        <button type="submit" formaction="InventarioController.php?action=add" class="btn" id="boton-enviar">Registrar Libro</button>
+                        <input type="submit" value="Enviar Consulta" id="boton-enviar" style="margin-right: 70px">
+                        <button type="submit" action="InventarioController.php?action=registrarLibro" class="btn" id="boton-enviar">Registrar Libro</button>
                     </div>
                 </div>
             </form>
@@ -74,11 +74,11 @@
                                 <td>$<?= htmlspecialchars($producto['precio']) ?></td>
                                 <td><?= htmlspecialchars($producto['cantidad']) ?></td>
                                 <td>
-                                    <form method="post" action="InventarioController.php?action=delete" style="display:inline;">
+                                    <form method="post" action="InventarioController.php?action=eliminarLibro" style="display:inline;">
                                         <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['isbn']) ?>">
                                         <button type="submit" class="btn-delete">Eliminar</button>
                                     </form>
-                                    <form method="post" action="InventarioController.php?action=edit" style="display:inline;">
+                                    <form method="post" action="InventarioController.php?action=editarLibro" style="display:inline;">
                                         <input type="hidden" name="isbn" value="<?= htmlspecialchars($producto['isbn']) ?>">
                                         <button type="submit" class="btn-edit">Editar</button>
                                     </form>

@@ -18,7 +18,7 @@ class InventarioController {
 
     // Filtrar el inventario por ISBN y/o sucursal
     public function filtrarInventario($isbn = null, $sucursal = null) {
-        $productos = $this->Inventario->getProductosFiltrados($isbn, $sucursal);
+        $productos = $this->Inventario->getLibrosFiltrados($isbn, $sucursal);
         include __DIR__ . '/../views/empleado/Inventario.php';
     }
 

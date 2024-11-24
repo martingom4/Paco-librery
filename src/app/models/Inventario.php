@@ -14,30 +14,40 @@ class Inventario {
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Obtener productos filtrados por ISBN y/o sucursal
-    public function getProductosFiltrados($isbn = null, $sucursal = null) {
-        $sql = "SELECT * FROM Inventario WHERE 1=1";
+    // Obtener el inventario con los filtros
+    public function getLibrosFiltrados($isbn = null, $sucursal = null) {
+        $sql = "SELECT * FROM Inventario WHERE 1=1";  // Esto garantiza que la consulta siempre sea válida.
         $params = [];
         $types = '';
-
+        
+        // Si se proporciona un ISBN, añadirlo a la consulta
         if ($isbn) {
             $sql .= " AND isbn = ?";
             $params[] = $isbn;
-            $types .= 'i';
+            $types .= 'i';  // 'i' indica que el parámetro es un número entero.
         }
+    
+        // Si se proporciona una sucursal, añadirla a la consulta
         if ($sucursal) {
             $sql .= " AND sucursal = ?";
             $params[] = $sucursal;
-            $types .= 's';
+            $types .= 's';  // 's' indica que el parámetro es una cadena de texto.
         }
-
+    
+        // Preparar y ejecutar la consulta
         $stmt = $this->db->prepare($sql);
+        
+        // Si hay parámetros, se deben vincular a la consulta
         if ($params) {
             $stmt->bind_param($types, ...$params);
         }
+    
         $stmt->execute();
+        
+        // Retornar el resultado de la consulta (todos los productos que coincidan con los filtros)
         return $stmt->get_result()->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
     // Registrar un nuevo producto
     public function registrarProducto($isbn, $titulo, $autor, $editorial, $precio, $cantidad, $sucursal) {
@@ -56,14 +66,6 @@ class Inventario {
         $stmt->execute();
     }
 
-    // Obtener un producto por ISBN y sucursal
-    public function getProductoPorISBNySucursal($isbn, $sucursal) {
-        $sql = "SELECT * FROM Inventario WHERE isbn = ? AND sucursal = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('is', $isbn, $sucursal);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
-    }
 
     // Actualizar un producto por ISBN y sucursal
     public function actualizarProducto($isbn, $sucursal, $titulo, $autor, $editorial, $precio, $cantidad) {
