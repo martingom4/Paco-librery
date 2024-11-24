@@ -14,6 +14,7 @@ class CarritoController {
         $catalogo = $this->carritoModel->getLibro($isbn);
         include __DIR__ . '/../views/Compras/catalogo.php';
     }
+
     public function agregarAlCarrito($isbn, $cantidad) {
         $libro = $this->carritoModel->getLibro($isbn);
         if (!$libro) {
@@ -37,7 +38,8 @@ class CarritoController {
         $isbn = $_POST['isbn'] ?? null;
         $cantidad = $_POST['cantidad'] ?? null;
         if ($isbn && $cantidad && isset($_SESSION['carrito'][$isbn])) {
-            $_SESSION['carrito'][$isbn]['cantidad'] = $cantidad;            $clienteId = $_SESSION['cliente_id'];
+            $_SESSION['carrito'][$isbn]['cantidad'] = $cantidad;
+            $clienteId = $_SESSION['cliente_id'];
             $this->carritoModel->actualizarCantidad($cantidad, $isbn, $clienteId);
         }
         header('Location: /carrito'); // Redirigir al carrito
@@ -80,6 +82,7 @@ class CarritoController {
         header('Location: /factura?venta_id=' . $ventaId); // Redirigir a la página de factura
         exit();
     }
+
     public function comprar() {
         $clienteId = $_SESSION['cliente_id'];
         $carrito = $this->carritoModel->obtenerCarrito($clienteId);

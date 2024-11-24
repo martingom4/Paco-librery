@@ -39,14 +39,19 @@ function configurarRutas()
         $r->addRoute('POST','/editorial/registrar', [EditorialesController::class,'addEditorial']);
         $r->addRoute('POST','/editorial/eliminar', [EditorialesController::class,'eliminarEditorial']);
 
-        // Rutas sobre la factura
+        // Rutas para las comras y ventas
         $r->addRoute('GET', '/catalogo', [VentasController::class, 'mostrarCatalogo']);
         $r->addRoute('GET', '/factura-detalles', [VentasController::class, 'detallesCompra']);
         $r->addRoute('GET', '/carrito', [CarritoController::class, 'mostrarCarrito']);
         $r->addRoute('POST', '/carrito/agregar', [CarritoController::class, 'agregarAlCarrito']);
         $r->addRoute('POST', '/carrito/eliminar', [CarritoController::class, 'eliminarDelCarrito']);
         $r->addRoute('POST','/carrito/actualizar-cantidad', [CarritoController::class, 'actualizarCantidad']);
+
+        // Ruta para la factura
         $r->addRoute('GET','/carrito/factura', [CarritoController::class, 'comprar']);
+        $r->addRoute('POST', '/procesar_pago', [PagoController::class, 'procesarPago']);
+        $r->addRoute('GET', '/factura', [FacturaController::class, 'mostrarFactura']);
+
 
         // rutas para libreria
         $r->addRoute('GET', '/registrarLibrerias', [LibreriasController::class, 'formularioRegistro']);

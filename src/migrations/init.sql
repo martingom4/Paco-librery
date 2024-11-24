@@ -109,17 +109,26 @@ CREATE TABLE IF NOT EXISTS Venta (
     ID_venta INT AUTO_INCREMENT PRIMARY KEY,
     ISBN_v VARCHAR(20) NOT NULL,
     ID_cliente_v INT NOT NULL,
-    ID_libreria_v INT NOT NULL,
-    ID_empleado_v INT,
+    ID_libreria_v INT NULL,
+    ID_empleado_v INT NULL,
     cantidad INT NOT NULL,
     ITBMS DECIMAL(10, 2) NOT NULL,
     costo_total DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (ISBN_v) REFERENCES Libro(ISBN) ON DELETE CASCADE,
     FOREIGN KEY (ID_cliente_v) REFERENCES Cliente(ID_cliente) ON DELETE CASCADE,
-    FOREIGN KEY (ID_libreria_v) REFERENCES Libreria(ID_libreria) ON DELETE CASCADE,
+    FOREIGN KEY (ID_libreria_v) REFERENCES Libreria(ID_libreria) ON DELETE SET NULL,
     FOREIGN KEY (ID_empleado_v) REFERENCES Empleado(ID_empleado) ON DELETE SET NULL
 );
 
+CREATE TABLE IF NOT EXISTS VentaDetalle (
+    ID_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    ID_venta INT NOT NULL,
+    ISBN VARCHAR(20) NOT NULL,
+    cantidad INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (ID_venta) REFERENCES Venta(ID_venta),
+    FOREIGN KEY (ISBN) REFERENCES Libro(ISBN)
+);
 -- Tabla Pago
 CREATE TABLE IF NOT EXISTS Pago (
     ID_pago INT AUTO_INCREMENT PRIMARY KEY,    -- Identificador único del pago

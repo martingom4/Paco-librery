@@ -7,8 +7,7 @@ class ClientesController {
     private $clienteModel;
 
     public function __construct($db){
-        $this->clienteModel=new Cliente($db);
-
+        $this->clienteModel = new Cliente($db);
     }
 
     public function index() {
@@ -98,6 +97,14 @@ class ClientesController {
     }
 
     public function mostrarPerfil(){
+        session_start();
+        if (!isset($_SESSION['cliente_id'])) {
+            header('Location: /cliente/login');
+            exit;
+        }
+
+        $clienteId = $_SESSION['cliente_id'];
+        $historialCompras = $this->clienteModel->obtenerHistorialCompras($clienteId);
 
         include __DIR__ . '/../views/cliente/PerfilCliente.php';
     }
@@ -111,7 +118,7 @@ class ClientesController {
 
         if (!isset($_SESSION['cliente_id'])) {
             header('Location: /cliente/login');
-            exit;
+            exit();
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -125,7 +132,7 @@ class ClientesController {
         if (empty($nombre) || empty($email) || empty($telefono) || empty($apellido)) {
             $_SESSION['error'] = 'Todos los campos son obligatorios.';
             header('Location: /cliente/actualizar');
-            exit;
+            exit();
         }
 
             // Actualizar en la base de datos
@@ -144,7 +151,7 @@ class ClientesController {
                 $_SESSION['error'] = 'Hubo un problema al actualizar los datos.';
                 header('Location: /cliente/actualizar');
             }
-            exit;
+            exit();
         }
     }
 
