@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
     <head> 
@@ -16,38 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
     </head>
-
-
     <body>
-          <!--HEADER-->
-          <header>
-            <!--LOGO Y REDES-->
-            <div class="LogoRedes">
-                <div class="logo">
-                    <img src="../images/LOGO.png" alt="Librería ¡Donde Paco!">
-                </div>
-                <div class="Redes">
-                    <ul>
-                        <li><a href="https://www.instagram.com"><img src="../images/Instagram.png" alt="Instagram"></a></li>
-                        <li><a href="https://www.facebook.com"><img src="../images/Facebook.png" alt="Facebook"></a></li>
-                        <li><a href="https://www.google.com/webhp?hl=es&sa=X&ved=0ahUKEwjdofSloIGHAxVQmYQIHetICooQPAgI"><img
-                                    src="../images/Buscar.png" alt="Buscar"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!--MENU-->
-            <div class="Menu">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
-                </ul>  
-                <div class="Usuario">
-                    <a href="perfiles.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                    <a href="perfiles.html">Iniciar Sesión</a>
-                </div>
-            </div>
-        </header>
     <!-- MAIN -->
         <main>
             <h1>Sucursales</h1>
@@ -81,27 +51,6 @@
                 </div>
             </div>
         </main>
-        
-        <footer>
-            <!--MENU-->
-            <div class="Menu-footer">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="sucursal.html">Contacto</a></li>
-                </ul>  
-                <div class="Usuario-footer">
-                    <a href="perfiles.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                    <a href="perfiles.html">Iniciar Sesión</a>
-                </div>
-                <ul>
-                    <li><a href="perfiles.html">Cerrar Sesión</a></li>
-                </ul>
-            </div> 
-            <!--COPYRIGHT-->
-            <div class="Copyright">
-                <p>© 2024, Libreria ¡Donde Paco!</p>
-            </div>
-        </footer>
+        <?php include 'includes/footer.php';?>
     </body>
 </html>

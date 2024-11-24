@@ -31,22 +31,22 @@
                         <td colspan="5" style="text-align: center;">Tu carrito está vacío.</td>
                     </tr>
                 <?php else: ?>
-                    <?php foreach ($carrito as $isbn => $item): ?>
+                    <?php foreach ($carrito as $item): ?>
                         <tr>
                             <td><span><?= htmlspecialchars($item['titulo']) ?></span></td>
                             <td><span><?= htmlspecialchars($item['precio']) ?></span></td>
                             <td>
                                 <form method="POST" action="/carrito/actualizar-cantidad">
                                     <input type="number" name="cantidad" value="<?= htmlspecialchars($item['cantidad']) ?>" min="1">
-                                    <input type="hidden" name="isbn" value="<?= htmlspecialchars($isbn) ?>">
+                                    <input type="hidden" name="isbn" value="<?= htmlspecialchars($item['ISBN']) ?>">
                                     <button type="submit">Actualizar</button>
                                 </form>
                             </td>
                             <td><span><?= htmlspecialchars($item['precio'] * $item['cantidad']) ?></span></td>
                             <td>
                                 <form method="POST" action="/carrito/eliminar">
-                                    <input type="hidden" name="isbn" value="<?= htmlspecialchars($isbn) ?>">
-                                    <button type="submit">Eliminar</button>
+                                    <input type="hidden" name="isbn" value="<?= htmlspecialchars($item['ISBN']) ?>">
+                                    <button type="submit" name="eliminar">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -64,13 +64,12 @@
                 echo htmlspecialchars($total);
                 ?>
             </span> USD</p>
-            <form method="POST" action="/carrito/finalizar">
+            <form method="GET" action="/carrito/factura">
                 <button id="checkout-button" class="btn-finalizar" <?= empty($carrito) ? 'disabled' : '' ?> aria-label="Finalizar la compra">Finalizar Compra</button>
             </form>
         </div>
     </section>
 
-    <script src="../scripts/carrito.js" defer></script>
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>

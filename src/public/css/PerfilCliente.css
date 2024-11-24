@@ -202,7 +202,7 @@ h2{
 }
 
 #boton-editar{
-    width: 130px;
+    width: 150px;
     padding: 10px;
     font-size: medium;
     background-color: #308499;
@@ -214,15 +214,89 @@ h2{
     font-weight: 500;
 }
 
+#boton-editar a {
+    text-decoration: none;
+    color: white;
+}
+
 #boton-editar:hover{
     transform: scale(1.1);
 }
 
-/*estilo de los datos*/
-.infop h4{
-    margin:5px;
+#boton-eliminar{
+    width: 150px;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: medium;
+    background-color: #a02222;
     color: #ffffff;
+    border: 3px solid #5a1212;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
 }
+
+#boton-eliminar:hover{
+    transform: scale(1.1);
+}
+
+/*estilo de los datos  div a la derecha*/
+.infop {
+    width: 20%; /* Ajusta el ancho según sea necesario */
+    margin: 20px; /* Elimina el centrado automático horizontal */
+    position: relative;
+    top: 50%; /* Mueve el div hacia abajo */
+    left: 0; /* Alinea el div hacia la izquierda */
+    padding: 10px; 
+    background-color: #ffffff transparent; /* Fondo claro */
+    border: 1.5px solid #fefefe; /* Borde sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+.infop form {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en columna */
+    padding: 10px; /* Añade un relleno interno al formulario */
+    background-color: #f9f9f9 transparent; /* Fondo del formulario */
+}
+
+.infop input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1rem;
+    transition: border-color 0.3s ease; /* Animación suave */
+}
+
+.infop input[type="text"]:focus {
+    border-color: #105cae; /* Cambia el borde al enfocar */
+    outline: none; /* Elimina el contorno predeterminado */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra azul */
+}
+
+.infop button {
+    padding: 10px 15px;
+    background-color: #1059a7; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    font-size: 1rem;
+    font-weight: bold;
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Animación suave */
+}
+
+.infop button:hover {
+    background-color: #418cdb; /* Color más oscuro al pasar el cursor */
+}
+
+.infop button:active {
+    background-color: #003f7f; /* Color aún más oscuro al hacer clic */
+    transform: scale(0.98); /* Efecto de pulsación */
+}
+
 
 /*Estilo del historial de compra*/
 .Container-historial{

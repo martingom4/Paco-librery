@@ -57,7 +57,7 @@
                     <hr>
                     <p>Selecciona el tipo de acceso</p>
                     <div class="buttons">
-                        <a href="logincliente.html" class="text-content button">
+                        <a href="/cliente/login" class="text-content button">
                             <button class="btn">Cliente</button>
                         </a>
                         <a href="loginempleado.html" class="text-content button">

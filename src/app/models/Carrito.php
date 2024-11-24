@@ -43,6 +43,22 @@ class Carrito {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function actualizarCantidad($cantidad, $isbn, $clienteId) {
+        $query = "UPDATE Carrito SET cantidad = :cantidad WHERE ID_cliente = :clienteId AND ISBN = :isbn";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        $stmt->bindParam(':clienteId', $clienteId, PDO::PARAM_INT);
+        $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    public function vaciarCarrito($clienteId) {
+        $query = "DELETE FROM Carrito WHERE ID_cliente = :clienteId";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':clienteId', $clienteId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     public function guardarCompra($clienteId, $carrito, $total) {
         $query = "INSERT INTO Venta (ID_cliente_v, costo_total) VALUES (:clienteId, :total)";
         $stmt = $this->db->prepare($query);

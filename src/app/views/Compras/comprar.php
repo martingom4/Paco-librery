@@ -30,31 +30,25 @@
             </div>
             <div class="informacion">
                 <h1><?= htmlspecialchars($Libro['nombre']) ?></h1> <!-- Nombre del libro -->
-                <form action="comprar.php" method="POST">
+                <form method="POST" action="/carrito/agregar">
                     <div class="input-group">
                         <label for="precio">Precio:</label>
                         <span><?= htmlspecialchars($Libro['precio']) ?> USD</span>
                     </div>
-                    <div class="input-group">
-                        <label for="sucursal">Sucursal donde retira</label>
-                        <select id="sucursal" name="sucursal">
-                            <option value="sucursal1">Panamá</option>
-                            <option value="sucursal2">Arraiján</option>
-                            <option value="sucursal3">Chiriquí</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="cantidad">Cantidad</label>
-                        <input type="number" id="cantidad" name="cantidad" min="1" value="1">
-                    </div>
-                    <input type="hidden" name="producto_id" value="<?= htmlspecialchars($producto['id']) ?>">
-                    <button type="submit">Comprar</button>
+
+                    <div class="quantity-wrapper">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <input type="number" name="cantidad" id="input-number" min="1" value="1" class="quantity-input">
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                    <input type="hidden" name="isbn" value="<?= htmlspecialchars($Libro['ISBN']) ?>">
+                    <button type="submit">Agregar al Carrito</button>
                 </form>
             </div>
         </div>
     </main>
 
     <?php include 'includes/footer.php'; ?>
-    <script src="../scripts/home.js"></script>
+    <script src="../scripts/catalogo.js"></script>
 </body>
 </html>

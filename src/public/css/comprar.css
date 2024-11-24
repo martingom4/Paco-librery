@@ -73,7 +73,47 @@ html, body {
     gap: 10px;
 }
 
+/* Contenedor del input de cantidad */
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
+.quantity-input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+    border-color: #004d40;
+    outline: none;
+}
+
+.quantity-btn {
+    background-color: #004d40;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #00332e;
+}
 /*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
 .Menu ul li a::after,.Usuario a::after{
     content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/

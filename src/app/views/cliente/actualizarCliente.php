@@ -1,10 +1,11 @@
 <?php 
-     session_start();
+session_start();
 
-     if (!isset($_SESSION['cliente_id'])) {
+if (!isset($_SESSION['cliente_id'])) {
          header('Location: /cliente/login');
          exit;
      }
+include 'includes/header.php'
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,33 +21,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="LogoRedes">
-            <div class="logo">
-                <img src="../images/LOGO.png" alt="Librería ¡Donde Paco!">
-            </div>
-            <div class="Redes">
-                <ul>
-                    <li><a href="https://www.instagram.com"><img src="../images/Instagram.png" alt="Instagram"></a></li>
-                    <li><a href="https://www.facebook.com"><img src="../images/Facebook.png" alt="Facebook"></a></li>
-                    <li><a href="https://www.google.com/webhp?hl=es&sa=X&ved=0ahUKEwjdofSloIGHAxVQmYQIHetICooQPAgI"><img src="../images/Buscar.png" alt="Buscar"></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="Menu">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-                <li><a href="sucursal.html">Contacto</a></li>
-            </ul>
-            <div class="Usuario">
-                <a href="PerfilCliente.jsp"><img src="../images/Usuario.png" alt="Usuario"></a>
-                <a href="PerfilCliente.jsp">Mi cuenta</a>
-            </div>
-        </div>
-    </header>
-
     <main>
         <section class="titulo">
             <h1>Actualizar mis datos</h1>
@@ -69,4 +43,6 @@
             </div>
         </section>
     </main>
-    <jsp:include page="footer.jsp" />
+<?php include 'includes/footer.php';?>
+</body>
+</html>
