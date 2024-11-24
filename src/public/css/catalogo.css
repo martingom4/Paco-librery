@@ -8,8 +8,8 @@ body {
     
 }
 
-h3 {
-    font-size: 1.5rem;
+h1 {
+    font-size: 45px;
     color: #004d40;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -18,7 +18,7 @@ main{
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    min-height: 450px;
+    min-height: 740px;
     margin: 0; /* Elimina márgenes predeterminados */
     padding: 0; /* Opcional: elimina cualquier padding extra */
 }

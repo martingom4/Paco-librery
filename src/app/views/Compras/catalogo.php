@@ -22,7 +22,7 @@
     <main>
         <div class="main-content">
             <aside class="filter-section">
-                <h3>Filtrar</h3>
+                <h1>Filtrar</h1>
                 <form method="post" action="catalogo.jsp">
                     <div class="filter-group">
                         <label for="autor">Por autor</label>
