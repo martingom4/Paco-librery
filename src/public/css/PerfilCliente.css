@@ -249,7 +249,8 @@ h2{
     top: 50%; /* Mueve el div hacia abajo */
     left: 0; /* Alinea el div hacia la izquierda */
     padding: 10px; 
-    background-color: #ffffff transparent; /* Fondo claro */
+    color: #ffffff;
+    background-color:#537e88; /* Fondo claro */
     border: 1.5px solid #fefefe; /* Borde sutil */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
