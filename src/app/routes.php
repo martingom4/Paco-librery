@@ -63,5 +63,12 @@ function configurarRutas()
         $r->addRoute('GET', '/detallesLibrerias/{id:\d+}', [LibreriasController::class, 'mostrarDetallesLibreria']);
         $r->addRoute('GET', '/Librerias.php', [LibreriasController::class, 'listarLibrerias']);
 
+        //rutas de inventario
+        $r->addRoute(['GET', 'POST'], '/inventario', [InventarioController::class, 'mostrarInventario']);
+        $r->addRoute(['GET', 'POST'], '/inventario/filtro', [InventarioController::class, 'mostrarInventarioFiltrado']);
+        $r->addRoute(['GET', 'POST'], '/inventario/registrarLibro', [InventarioController:: class, 'registrarLibro']);
+        $r->addRoute(['GET', 'POST'], '/inventario/editarLibro', [InventarioController:: class, 'editarLibro']);
+        $r->addRoute(['GET', 'POST'], '/inventario/eliminarLibro', [InventarioController:: class, 'eliminarLibro']);
+
     });
 }
