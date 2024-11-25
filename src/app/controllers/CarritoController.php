@@ -10,12 +10,15 @@ class CarritoController {
         session_start(); // Iniciar la sesión
     }
 
-    public function mostrarCatalogo($isbn) {
-        $catalogo = $this->carritoModel->getLibro($isbn);
-        include __DIR__ . '/../views/Compras/catalogo.php';
+    private function verificarSesion() {
+        if (!isset($_SESSION['cliente_id'])) {
+            header('Location: /cliente/login');
+            exit();
+        }
     }
 
     public function agregarAlCarrito() {
+        $this->verificarSesion(); // Verificar la sesión
         $isbn = $_POST['isbn'] ?? null;
         $cantidad = $_POST['cantidad'] ?? 1;
 
@@ -40,6 +43,7 @@ class CarritoController {
     }
 
     public function actualizarCantidad() {
+        $this->verificarSesion(); // Verificar la sesión
         $isbn = $_POST['isbn'] ?? null;
         $cantidad = $_POST['cantidad'] ?? null;
         if ($isbn && $cantidad && isset($_SESSION['carrito'][$isbn])) {
@@ -52,12 +56,14 @@ class CarritoController {
     }
 
     public function mostrarCarrito() {
+        $this->verificarSesion(); // Verificar la sesión
         $clienteId = $_SESSION['cliente_id'];
         $carrito = $this->carritoModel->obtenerCarrito($clienteId);
         require __DIR__ . '/../views/Compras/carrito.php';
     }
 
     public function eliminarDelCarrito() {
+        $this->verificarSesion(); // Verificar la sesión
         $isbn = $_POST['isbn'] ?? null;
         if ($isbn && isset($_SESSION['carrito'][$isbn])) {
             unset($_SESSION['carrito'][$isbn]);
@@ -71,6 +77,7 @@ class CarritoController {
     }
 
     public function finalizarCompra() {
+        $this->verificarSesion(); // Verificar la sesión
         $clienteId = $_SESSION['cliente_id'];
         $carrito = $_SESSION['carrito'] ?? [];
         $total = array_reduce($carrito, function($carry, $item) {
@@ -89,6 +96,7 @@ class CarritoController {
     }
 
     public function comprar() {
+        $this->verificarSesion(); // Verificar la sesión
         $clienteId = $_SESSION['cliente_id'];
         $carrito = $this->carritoModel->obtenerCarrito($clienteId);
         $total = array_reduce($carrito, function($carry, $item) {
