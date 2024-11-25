@@ -5,6 +5,10 @@ body{
     background-color: #F2E5D5;
 }
 
+h2{
+    font-family: 'Playwrite GB S', cursive;
+    color: #1B3F48;
+}
 /*HEADER*/
 /*HEADER DONDE ESTA EL LOGO Y LAS REDES*/
 .logo img{
@@ -62,9 +66,6 @@ body{
 .Usuario img{
     height: 30px;
 }
-.carrito{
-    padding: 0 20px;
-}
 
 .Usuario{
     display: flex;
@@ -72,17 +73,7 @@ body{
     gap: 10px;
 }
 
-.Menu li{
-    color:white;
-}
 
-.username{
-    font-weight: bold; /* Coloca el texto en negrita */
-    display: flex;
-    justify-content: space-between; /* Separa los elementos izquierda y derecha */
-    align-items: center; /* Alinea verticalmente los elementos */
-    padding: 0 50px;
-}
 /*ESTILO PSEUDO-ELEMENTO ::AFTER EN LA LISTA*/
 .Menu ul li a::after,.Usuario a::after{
     content: ''; /*sin mostrar contenido pero crea la linea de decoracion*/
@@ -102,6 +93,104 @@ body{
     transform-origin: bottom left; /*cambiar el origen de la transformacion*/
 }
 
+
+main {
+    background-color: #F2E5D5;
+    padding: 10%;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(79vh - 165px); /* Ajusta la altura restando la altura del header y footer */
+}
+
+.registro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.registro-box {
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+    border: 1px solid #1B3F48;
+}
+
+.registro-box h2 {
+    margin: 0;
+    color: #000;
+    font-size: 24px; /* Ajuste del tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+}
+
+.registro-box hr {
+    border: none;
+    border-top: 1px solid #1B3F48;
+    margin: 20px 0; /* Ajuste del margen */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+}
+
+.input-one{
+    width: 100%;
+    justify-content: left;
+    text-align: left;
+}
+
+
+
+input {
+    width: 95%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #1B3F48;
+    outline: none;
+}
+
+#last_input{
+    width: 100%;
+}
+
+select{
+    background-color: #ffffff;
+    border: 1px solid #1B3F48;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+button.btn {
+    background-color: #1B3F48;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+button.btn:hover {
+    background-color: #163439;
+}
 /*FOOTER DONDE ESTA EL MENU NAVEGACION*/
 .Menu-footer{
     margin-top: 0%;
@@ -109,17 +198,15 @@ body{
     height: 70px;
     display: flex;
     align-items: center;
-    gap: 90px; /*cambio para que se centre el nav abajo*/
+    gap: 100px;
     justify-content: center;
 }
 
 .Menu-footer ul{
     list-style: none;
     display: flex;
-    gap: 90px; /*cambio para que se centre el nav abajo*/
-    padding: 0px; /*cambio para que se centre el nav abajo*/
+    gap: 100px;
 }
-
 
 .Menu-footer a{
     text-decoration: none;

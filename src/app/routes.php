@@ -42,7 +42,7 @@ function configurarRutas()
         // Rutas para las comras y ventas
         $r->addRoute('GET', '/catalogo', [VentasController::class, 'mostrarCatalogo']);
         $r->addRoute('POST', '/catalogo', [VentasController::class, 'mostrarCatalogo']);
-        $r->addRoute('GET', '/comprar/{isbn}', [VentasController::class, 'verCompra']); 
+        $r->addRoute('GET', '/comprar/{isbn}', [VentasController::class, 'verCompra']);
         $r->addRoute('GET', '/factura-detalles', [VentasController::class, 'detallesCompra']);
         $r->addRoute('GET', '/carrito', [CarritoController::class, 'mostrarCarrito']);
         $r->addRoute('POST', '/carrito/agregar', [CarritoController::class, 'agregarAlCarrito']);
@@ -63,6 +63,15 @@ function configurarRutas()
         $r->addRoute('GET', '/detallesLibrerias/{id:\d+}', [LibreriasController::class, 'mostrarDetallesLibreria']);
         $r->addRoute('GET', '/Librerias.php', [LibreriasController::class, 'listarLibrerias']);
         $r->addRoute('POST', '/libreria/eliminar', [LibreriasController::class, 'eliminarLibreria']);
+
+        //rutas de inventario
+        $r->addRoute(['GET', 'POST'], '/inventario', [InventarioController::class, 'mostrarInventario']);
+        $r->addRoute(['GET', 'POST'], '/inventario/filtro', [InventarioController::class, 'mostrarInventarioFiltrado']);
+        $r->addRoute(['GET', 'POST'], '/inventario/registrarLibro', [InventarioController:: class, 'registrarLibro']);
+        $r->addRoute(['GET', 'POST'], '/inventario/editarLibro', [InventarioController:: class, 'editarLibro']);
+        $r->addRoute(['GET', 'POST'], '/inventario/eliminarLibro', [InventarioController:: class, 'eliminarLibro']);
+        // Rutas para la API del inventario
+        $r->addRoute('GET', '/api/inventario', [InventarioApiController::class, 'obtenerInventario']);
 
     });
 }
