@@ -19,7 +19,7 @@
                     <div class="mensaje-exito">
                         <h2>INICIO DE SESIÓN EXITOSO</h2>
                         <p>Ha iniciado sesión exitosamente.</p>
-                        <a href="/cliente/perfil">Continuar</a>
+                        <a href="/catalogo">Continuar</a>
                     </div>
                 </div>
             </div>
