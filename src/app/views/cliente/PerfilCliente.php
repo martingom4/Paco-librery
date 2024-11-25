@@ -65,6 +65,10 @@ include 'includes/header.php'
                         <h4>Fecha compra: <?= htmlspecialchars($compra['fecha']) ?></h4>
                         <h4>Precio: $<?= htmlspecialchars($compra['precio']) ?></h4>
                     </div>
+                        <a href="/factura?venta_id=<?= htmlspecialchars($compra['ID_venta']) ?>">
+                            <button id="boton-editar">Ver Factura</button>
+                        </a>
+                    </div>
                 </section>
             <?php endforeach; ?>
         <?php endif; ?>

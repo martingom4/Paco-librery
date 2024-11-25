@@ -68,7 +68,7 @@ class Cliente {
 
     // Método para obtener el historial de compras del cliente
     public function obtenerHistorialCompras($clienteId) {
-        $query = "SELECT p.fecha_pago AS fecha, l.imagen, l.titulo, vd.cantidad, vd.precio
+        $query = "SELECT v.ID_venta, p.fecha_pago AS fecha, l.imagen, l.titulo, vd.cantidad, vd.precio
                   FROM Venta v
                   JOIN VentaDetalle vd ON v.ID_venta = vd.ID_venta
                   JOIN Libro l ON vd.ISBN = l.ISBN
