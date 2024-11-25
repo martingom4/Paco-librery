@@ -17,6 +17,8 @@ require_once __DIR__ .'/../app/controllers/InventarioController.php';
 require_once __DIR__ . '/../app/controllers/PagoController.php';
 require_once __DIR__ . '/../app/controllers/FacturaController.php';
 require_once __DIR__ . '/../app/controllers/InventarioApiController.php';
+require_once __DIR__ .'/../app/controllers/AdministradorController.php';
+require_once __DIR__ . '/../app/controllers/EmpleadoController.php';
 
 
 // Configurar rutas

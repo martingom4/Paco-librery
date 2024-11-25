@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Datos de Libro</title>
     <!--Documentos CSS utilizados-->
-    <link rel="stylesheet" href="../css/registroLibroStyle.css">
+    <link rel="stylesheet" href="/css/registroLibroStyle.css">
     <link rel="shortcut icon" href="../images/LOGO.PNG" alt="logo">
 
     <!---Fuente Nunito de Google Fonts-->
@@ -43,11 +43,11 @@
                     </div>
                     <div class="input-group">
                         <input type="text" placeholder="Titulo" name="titulo" required>
-                        <input type="text" placeholder="Edicion" name="edicion" required>                        
+                        <input type="text" placeholder="Edicion" name="edicion" required>
                     </div>
                     <div class="input-group">
                         <input type="number" placeholder="Precio" name="precio" required>
-                        <input type="number" placeholder="ID Librería" name="id_libreria" required>                        
+                        <input type="number" placeholder="ID Librería" name="id_libreria" required>
                     </div>
                     <div class="input-group">
                         <input type="number" placeholder="ID de editorial" name="id_edit" required>

@@ -14,7 +14,7 @@ class InventarioController {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include __DIR__ . '/../views/empleado/RegistrarLibro.php';
         }
-    
+
         // Si el método es POST, procesamos el registro del libro
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtener los datos del formulario
@@ -32,20 +32,20 @@ class InventarioController {
             $id_genero = $_POST['id_genero'];
             // Registrar el libro en la base de datos
             $this->inventarioModel->registrarLibroYInventario(
-                $isbn, $nombre, $titulo, $edicion, $precio, $fecha_publi, $id_edit, $id_autor, $imagen, $cantidad, $id_libreria, $id_genero 
+                $isbn, $nombre, $titulo, $edicion, $precio, $fecha_publi, $id_edit, $id_autor, $imagen, $cantidad, $id_libreria, $id_genero
             );
-    
+
             // Después de registrar, redirigimos o mostramos el inventario
             $this->mostrarInventario();
         }
     }
-    
+
     public function editarLibro() {
         // Si el método es GET, mostramos el formulario de registro
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include __DIR__ . '/../views/empleado/EditarLibro.php';
         }
-    
+
         // Si el método es POST, procesamos el registro del libro
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtener los datos del formulario
@@ -63,9 +63,9 @@ class InventarioController {
             $id_genero = $_POST['id_genero'];
             // Registrar el libro en la base de datos
             $this->inventarioModel->editarLibro(
-                $isbn, $nombre, $titulo, $edicion, $precio, $fecha_publi, $id_edit, $id_autor, $imagen, $cantidad, $id_libreria, $id_genero 
+                $isbn, $nombre, $titulo, $edicion, $precio, $fecha_publi, $id_edit, $id_autor, $imagen, $cantidad, $id_libreria, $id_genero
             );
-    
+
             // Después de registrar, redirigimos o mostramos el inventario
             $this->mostrarInventario();
         }
@@ -75,7 +75,7 @@ class InventarioController {
     public function mostrarInventario() {
         // Obtiene todos los libros sin filtros
         $inventario = $this->inventarioModel->getInventario();
-        
+
         // Carga la vista con los datos del inventario completo
         include __DIR__ . '/../views/empleado/Inventario.php';
 
@@ -86,7 +86,7 @@ class InventarioController {
         // Revisa si la solicitud tiene filtros
         $isbn = $_GET['isbn'] ?? null;
         $sucursal = $_GET['Sucursal'] ?? null;
-        
+
         // Si se tiene ISBN o Sucursal, se realiza el filtrado
         if ($isbn || $sucursal) {
             $inventario = $this->inventarioModel->getLibrosFiltrados($isbn, $sucursal);

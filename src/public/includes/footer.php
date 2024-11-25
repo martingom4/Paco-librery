@@ -3,6 +3,7 @@ session_start();
 //detectar sesion para determinar pefil
 $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
 //aqui debe ir  los parametros de la sesion de admin admin_id  email
+$perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
 ?>
 <link rel="stylesheet" href="/css/header_footerEmpleado.css">
 <body>
@@ -20,28 +21,27 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                     <a href="/perfiles"><img src="../images/Usuario.png" alt="Usuario"></a>
                     <a href="/perfiles">Iniciar Sesión</a>
                 </div>
-       
+
             <!--FOOTER PARA EMPLEADO-->
             <?php elseif ($perfilAdmin): ?>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home.php">Home</a></li>
                     <li><a href="/inventario">Inventario</a></li>
-                    <li><a href="HistorialVentas.html">Ventas</a></li>
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
                     <li><a href="/contacto">Contacto</a></li>
                 </ul>
                 <div class="Usuario-footer">
-                    <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                    <a href="PerfilEmpleado.html">Mi cuenta</a>
+                    <a href="/admin/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
+                    <a href="/admin/perfil">Mi cuenta</a>
                 </div>
                 <ul>
-                    <li><a href="perfiles.html">Cerrar Sesión</a></li>
+                    <li><a href="/admin/cerrarSesion">Cerrar Sesión</a></li>
                 </ul>
 
             <!--FOOTER PARA CLIENTE-->
             <?php elseif ($perfilCliente): ?>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home.php">Home</a></li>
                     <li><a href="/catalogo">Catálogo</a></li>
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
                     <li><a href="/contacto">Contacto</a></li>

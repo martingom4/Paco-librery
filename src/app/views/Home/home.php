@@ -18,8 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap" rel="stylesheet">
 </head>
 <body>
-
-   <main>
+    <main>
         <div class="welcome-message">
             <h1>¡Bienvenidos a Librería ¡Donde Paco!</h1>
             <p>Explora nuestras selecciones más vendidas, las últimas novedades y mucho más.

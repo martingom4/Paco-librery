@@ -255,4 +255,9 @@ class ClientesController {
             }
         }
     }
+
+    public function mostrarInfoClientes() {
+        $clientes = $this->clienteModel->obtenerClientes();
+        include __DIR__ . '/../views/empleado/infoCliente.php';
+    }
 }
