@@ -34,7 +34,7 @@
             <section class="catalog-section">
                 <?php foreach ($catalogo as $libro): ?>
                     <div class="product-card">
-                        <img src="../images/<?= htmlspecialchars($libro['imagen']) ?>" alt="Imagen del producto">
+                        <img src="/images/<?= htmlspecialchars($libro['imagen']) ?>" alt="Imagen del producto">
                         <h4>
                             <a href="/comprar/<?= htmlspecialchars($libro['ISBN']) ?>">
                                 <?= htmlspecialchars($libro['nombre']) ?>
