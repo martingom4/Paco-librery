@@ -308,6 +308,7 @@ h2{
     box-shadow: 0  0  5px #00000080; /*x y size color*/
     display: flex;
     align-items: center;
+    gap:120px;
 }
 
 .Container-historial img{
