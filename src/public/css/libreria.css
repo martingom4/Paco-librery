@@ -240,25 +240,27 @@ tbody tr:nth-child(even) {
     background-color: #E4C8A3;
 }
 
-/* Estilo para los botones */
 .action-buttons-group {
     display: flex;
-    gap: 10px;
+    gap: 10px; /* Espaciado uniforme entre botones */
 }
 
 .btn-action {
-    background-color: #1E3F48;
-    color: #FFFFFF;
-    padding: 5px 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    border-radius: 5px;
     text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block; /* Uniformidad con los botones */
+    transition: background-color 0.3s ease;
 }
 
 .btn-action:hover {
-    background-color: #1E3F48;
-    color: #FFFFFF;
+    background-color: #0056b3; /* Efecto hover */
 }
 
 /* Agregar bordes a la tabla */

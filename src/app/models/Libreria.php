@@ -39,4 +39,41 @@ class Libreria {
         $stmt = $this->db->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function eliminarLibreria($idLibreria): bool {
+        try {
+            // Iniciar una transacción
+            $this->db->beginTransaction();
+    
+            // 1. Actualizar las dependencias en las tablas relacionadas
+            // Desvincular empleados asociados a la librería
+            $queryEmpleados = "UPDATE Empleado SET ID_libreria_e = NULL WHERE ID_libreria_e = :id_libreria";
+            $stmtEmpleados = $this->db->prepare($queryEmpleados);
+            $stmtEmpleados->execute([':id_libreria' => $idLibreria]);
+    
+            // Eliminar inventario relacionado con la librería
+            $queryInventario = "DELETE FROM Inventario WHERE ID_libreria_inv = :id_libreria";
+            $stmtInventario = $this->db->prepare($queryInventario);
+            $stmtInventario->execute([':id_libreria' => $idLibreria]);
+    
+            // Desvincular ventas relacionadas con la librería
+            $queryVentas = "UPDATE Venta SET ID_libreria_v = NULL WHERE ID_libreria_v = :id_libreria";
+            $stmtVentas = $this->db->prepare($queryVentas);
+            $stmtVentas->execute([':id_libreria' => $idLibreria]);
+    
+            // 2. Eliminar la librería
+            $queryLibreria = "DELETE FROM Libreria WHERE ID_libreria = :id_libreria";
+            $stmtLibreria = $this->db->prepare($queryLibreria);
+            $stmtLibreria->execute([':id_libreria' => $idLibreria]);
+    
+            // Confirmar la transacción
+            $this->db->commit();
+            return true;
+        } catch (PDOException $e) {
+            // Revertir la transacción en caso de error
+            $this->db->rollBack();
+            error_log("Error al eliminar la librería: " . $e->getMessage());
+            return false;
+        }
+    }
 }

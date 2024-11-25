@@ -94,4 +94,18 @@ class LibreriasController {
         $librerias = $this->libreriaModel->obtenerTodasLasLibrerias();
         include __DIR__ . '/../views/Registros/libreria/Librerias.php';
     }
+
+    // Eliminar libreira
+    public function eliminarLibreria() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $idLibreria = $_POST['id_libreria'] ?? null;
+    
+            if ($idLibreria && $this->libreriaModel->eliminarLibreria($idLibreria)) {
+                header('Location: /Librerias.php');
+                exit;
+            } else {
+                echo "Error al eliminar la librería. Asegúrate de que no existan dependencias pendientes.";
+            }
+        }
+    }
 }
