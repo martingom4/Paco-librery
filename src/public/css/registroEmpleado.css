@@ -1,0 +1,88 @@
+/* General styles */
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdf5e6; /* Fondo crema */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenedor principal del formulario */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Para ocupar todo el espacio disponible */
+}
+
+/* Caja del formulario */
+.registro-box {
+    background-color: white; /* Fondo blanco */
+    padding: 30px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 400px; /* Ancho fijo */
+    text-align: center;
+}
+
+/* Título del formulario */
+.registro-box h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra al texto */
+}
+
+/* Grupo de entradas */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Etiquetas */
+.input-group label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Campos de entrada */
+.input-group input {
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+}
+
+/* Botón de envío */
+button.btn {
+    background-color: #003333; /* Verde oscuro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button.btn:hover {
+    background-color: #005555; /* Efecto hover */
+}
+
+
+/* Responsividad */
+@media (max-width: 480px) {
+    .registro-box {
+        width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+        padding: 20px;
+    }
+}

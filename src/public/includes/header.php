@@ -3,6 +3,7 @@ session_start();
 //detectar sesion para determinar pefil
 $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
 //aqui debe ir  los parametros de la sesion de admin admin_id  email
+$perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
 ?>
 <link rel="stylesheet" href="/css/header_footerEmpleado.css">
 <body>
@@ -10,7 +11,7 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
         <!--LOGO Y REDES-->
         <div class="LogoRedes">
             <div class="logo">
-                <img src="../images/LOGO.png" alt="Librerí­a ¡Donde Paco!">
+                <img src="/images/LOGO.png" alt="Librerí­a ¡Donde Paco!">
             </div>
         </div>
 
@@ -24,7 +25,7 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                     <li><a href="/contacto">Contacto</a></li>
                 </ul>
             <div class="Usuario">
-                <a href="/perfiles"><img src="../images/Usuario.png" alt="Usuario"></a>
+                <a href="/perfiles"><img src="/images/Usuario.png" alt="Usuario"></a>
                 <a href="/perfiles">Iniciar Sesión</a>
             </div>
 
@@ -33,13 +34,21 @@ $perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
                 <ul>
                     <li><a href="/home.php">Home</a></li>
                     <li><a href="/inventario">Inventario</a></li>
-                    <li><a href="HistorialVentas.html">Ventas</a></li>
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
                     <li><a href="/contacto">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Más</a>
+                        <div class="dropdown-content">
+                            <a href="/empleados/infoClientes">Clientes</a>
+                            <a href="/empleados">Empleados</a>
+                            <a href="/Librerias.php">Librerías</a>
+                            <a href="/editorial">Editoriales</a>
+                        </div>
+                    </li>
                 </ul>
                 <div class="Usuario">
-                    <a href="PerfilEmpleado.html"><img src="../images/Usuario.png" alt="Usuario"></a>
-                    <a href="PerfilEmpleado.html">Mi cuenta</a>
+                    <a href="/admin/perfil"><img src="/images/Usuario.png" alt="Usuario"></a>
+                    <a href="/admin/perfil">Mi cuenta</a>
                 </div>
 
             <!--HEADER PARA CLIENTE-->

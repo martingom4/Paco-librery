@@ -31,17 +31,15 @@ class Cliente {
         return $stmt->execute();
     }
 
-    public function actualizarCliente($id, $nombre, $apellido, $telefono, $email) {
-        $query = "UPDATE Cliente SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo WHERE ID_cliente = :id";
-        $stmt = $this->db->prepare($query);
-
-        return $stmt->execute([
-            ':nombre' => $nombre,
-            ':apellido'=> $apellido,
-            ':telefono' => $telefono,
-            ':correo' => $email,
-            ':id' => $id
-        ]);
+    public function actualizarCliente($id, $nombre, $apellido, $telefono, $correo) {
+        $sql = "UPDATE Cliente SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo WHERE ID_cliente = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellido', $apellido);
+        $stmt->bindParam(':telefono', $telefono);
+        $stmt->bindParam(':correo', $correo);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 
     public function eliminarCliente($id, $correo) {

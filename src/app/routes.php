@@ -73,5 +73,24 @@ function configurarRutas()
         // Rutas para la API del inventario
         $r->addRoute('GET', '/api/inventario', [InventarioApiController::class, 'obtenerInventario']);
 
+
+        // Rutas para el administrador
+        $r->addRoute('GET', '/admin/login', [AdministradorController::class, 'mostrarLogin']);
+        $r->addRoute('POST', '/admin/login', [AdministradorController::class, 'procesarLogin']);
+        $r->addRoute('GET', '/admin/logout', [AdministradorController::class, 'cerrarSesion']);
+
+
+        $r->addRoute('GET', '/empleados', [EmpleadoController::class, 'listarEmpleados']);
+        $r->addRoute('GET', '/empleados/actualizar/{id:\d+}', [EmpleadoController::class, 'mostrarFormularioActualizar']);
+        $r->addRoute('POST', '/empleados/actualizar', [EmpleadoController::class, 'actualizarEmpleado']);
+        $r->addRoute('POST', '/empleados/eliminar', [EmpleadoController::class, 'eliminarEmpleado']);
+        $r->addRoute('GET', '/empleados/registrar', [EmpleadoController::class, 'mostrarFormularioRegistro']);
+        $r->addRoute('POST', '/empleados/registrar', [EmpleadoController::class, 'registrarEmpleado']);
+        $r->addRoute('GET', '/empleados/infoClientes', [ClientesController::class, 'mostrarInfoClientes']);
+        $r->addRoute('GET', '/empleados/cliente-actualizar/{id}', [EmpleadoController::class,'mostrarFormularioActualizarCliente']);
+        $r->addRoute('POST', '/empleados/cliente-actualizar', [EmpleadoController::class,'actualizarClientePorEmpleado']);
+        $r->addRoute('GET','/admin/perfil', [AdministradorController::class, 'mostrarPerfil']);
+        $r->addRoute('GET', '/admin/cerrarSesion', [AdministradorController::class, 'cerrarSesion']);
+
     });
 }

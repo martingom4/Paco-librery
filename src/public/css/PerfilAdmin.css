@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F2E5D5; /* Fondo de toda la aplicación */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.titulo h1 {
+    text-align: center;
+    color: #333;
+}
+
+.Container-infoper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.campoizquierdo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fotoperfil img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 5px solid #007bff;
+}
+
+.infop {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.infop h4 {
+    margin: 10px 0;
+    color: #555;
+}
+
+.boton button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.boton button a {
+    color: white;
+    text-decoration: none;
+}
+
+.boton button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #1B3F48;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
