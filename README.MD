@@ -322,3 +322,13 @@ Aquí tienes un ejemplo del flujo completo, usando la rama `busqueda-libro` como
 Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y minimizar los conflictos en el proceso de colaboración. Si tienes dudas, consulta con el equipo antes de proceder.
 
 ---
+
+Proyecto realizado por: 
+
+- **Martin Gomez** - [GitHub](https://github.com/martingom4)
+- **Anilys Rodriguez** - [GitHub](https://github.com/anilysRodriguez)
+- **Mariangel Santos** - [GitHub](https://github.com/mariangeli-s)
+- **Isabel Flores** - [GitHub](https://github.com/iflores18)
+- **Sebastian Herrera** - [GitHub](https://github.com/Sahvizz)
+- **Luis Montenegro** - [GitHub](https://github.com/LuiMonz)
+
