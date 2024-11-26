@@ -65,16 +65,16 @@ Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro de
 
     ```env
     # Configuración general del entorno
-    APP_ENV=development
-    APP_DEBUG=true
+    APP_ENV=
+    APP_DEBUG=
 
     # Configuración de la base de datos
-    DB_CONNECTION=mysql
-    DB_HOST=db
-    DB_PORT=3306
-    DB_DATABASE=paco_librery_db
-    DB_USERNAME=paco_user
-    DB_PASSWORD=paco1234
+    DB_CONNECTION=
+    DB_HOST=
+    DB_PORT=
+    DB_DATABASE=
+    DB_USERNAME=
+    DB_PASSWORD=
 
     ```
 
