@@ -57,7 +57,7 @@ include 'includes/header.php'
             <?php foreach ($historialCompras as $compra): ?>
                 <section class="Container-historial">
                     <div class="imagenlibro">
-                        <img src="../images/<?= htmlspecialchars($compra['imagen']) ?>" alt="Imagen del libro">
+                        <img src="/images/<?= htmlspecialchars($compra['imagen']) ?>" alt="Imagen del libro">
                     </div>
                     <div class="infolibro">
                         <h2><?= htmlspecialchars($compra['titulo']) ?></h2>
