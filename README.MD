@@ -114,14 +114,7 @@ Esto es necesario para que el archivo `entrypoint.sh` pueda ejecutarse dentro de
 8. **Las ramas que se estan utilizando se pueden activar con**:
 
 ```
-git checkout -b busqueda-libro remotes/origin/busqueda-libro
-git checkout -b develop remotes/origin/develop
-git checkout -b factura remotes/origin/factura
-git checkout -b inicio-sesion-cliente remotes/origin/inicio-sesion-cliente
-git checkout -b inicio-sesion-admin remotes/origin/inicio-sesion-admin
-git checkout -b registro-admin remotes/origin/registro-admin
-git checkout -b registro-cliente remotes/origin/registro-cliente
-```
+git checkout -b Desarrollo remotes/origin/Desarrollo
 
 Se tendria que navegar dependiendo de lo que se quiera programar
 
