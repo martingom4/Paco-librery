@@ -17,10 +17,19 @@ class CarritoController {
         }
     }
 
+    private function redirigir($ruta) {
+        header("Location: $ruta");
+        exit();
+    }
+
+    private function obtenerPost($clave, $valorPorDefecto = null) {
+        return $_POST[$clave] ?? $valorPorDefecto;
+    }
+
     public function agregarAlCarrito() {
         $this->verificarSesion(); // Verificar la sesión
-        $isbn = $_POST['isbn'] ?? null;
-        $cantidad = $_POST['cantidad'] ?? 1;
+        $isbn = $this->obtenerPost('isbn');
+        $cantidad = $this->obtenerPost('cantidad', 1);
 
         if ($isbn) {
             $libro = $this->carritoModel->getLibro($isbn);
@@ -38,21 +47,19 @@ class CarritoController {
                 $this->carritoModel->guardarCarrito($clienteId, $isbn, $cantidad);
             }
         }
-        header('Location: /carrito'); // Redirigir al carrito
-        exit();
+        $this->redirigir('/carrito'); // Redirigir al carrito
     }
 
     public function actualizarCantidad() {
         $this->verificarSesion(); // Verificar la sesión
-        $isbn = $_POST['isbn'] ?? null;
-        $cantidad = $_POST['cantidad'] ?? null;
+        $isbn = $this->obtenerPost('isbn');
+        $cantidad = $this->obtenerPost('cantidad');
         if ($isbn && $cantidad && isset($_SESSION['carrito'][$isbn])) {
             $_SESSION['carrito'][$isbn]['cantidad'] = $cantidad;
             $clienteId = $_SESSION['cliente_id'];
             $this->carritoModel->actualizarCantidad($cantidad, $isbn, $clienteId);
         }
-        header('Location: /carrito'); // Redirigir al carrito
-        exit();
+        $this->redirigir('/carrito'); // Redirigir al carrito
     }
 
     public function mostrarCarrito() {
@@ -64,7 +71,7 @@ class CarritoController {
 
     public function eliminarDelCarrito() {
         $this->verificarSesion(); // Verificar la sesión
-        $isbn = $_POST['isbn'] ?? null;
+        $isbn = $this->obtenerPost('isbn');
         if ($isbn && isset($_SESSION['carrito'][$isbn])) {
             unset($_SESSION['carrito'][$isbn]);
 
@@ -72,8 +79,7 @@ class CarritoController {
             $clienteId = $_SESSION['cliente_id'];
             $this->carritoModel->eliminarCarrito($clienteId, $isbn);
         }
-        header('Location: /carrito'); // Redirigir al carrito
-        exit();
+        $this->redirigir('/carrito'); // Redirigir al carrito
     }
 
     public function finalizarCompra() {
@@ -91,8 +97,7 @@ class CarritoController {
         unset($_SESSION['carrito']);
         $this->carritoModel->vaciarCarrito($clienteId); // Eliminar todos los items del carrito del cliente
 
-        header('Location: /factura?venta_id=' . $ventaId); // Redirigir a la página de factura
-        exit();
+        $this->redirigir('/factura?venta_id=' . $ventaId); // Redirigir a la página de factura
     }
 
     public function comprar() {

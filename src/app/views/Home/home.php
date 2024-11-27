@@ -51,19 +51,6 @@
                     </a>
                 </div>
             </div>
-            <div class="slide">
-                <div class="image-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/mPCN1irKfkc?si=5JBTcXX-Tt2_PIOi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="text-content">
-                    <h2>Netflix lanzará serie del libro "Cien años de soledad" de Gabriel García Márquez</h2>
-                    <p>Una nueva serie de Netflix titulada "Cien años de soledad" llevará a la icónica novela
-                        del escritor colombiano y Premio Nobel de Literatura Gabriel García Márquez a la pantalla.</p>
-                    <a href="https://cnnespanol.cnn.com/video/netflix-cien-anos-soledad-gabriel-garcia-marquez-aristegui-tv/" class="text-content button">
-                        <button>Click aquí para ver más</button>
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="recuadro-slider-controls">
             <script src="scripts/home.js"></script>

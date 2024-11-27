@@ -1,19 +1,22 @@
 <?php
 require_once __DIR__ ."/../models/Editorial.php";
-class EditorialesController {
 
+class EditorialesController {
     private $editorialModel;
+
     public function __construct($db) {
         $this->editorialModel = new Editorial($db);
     }
-    public function verEditorial() {
-        $editorial = $this -> editorialModel -> getEditorial();
-        include __DIR__ ."/../views/editorial/editorial.php";
 
+    public function verEditorial() {
+        $editorial = $this->editorialModel->getEditorial();
+        include __DIR__ ."/../views/editorial/editorial.php";
     }
+
     public function viewRegister() {
         include __DIR__ ."/../views/editorial/registro.php";
     }
+
     public function addEditorial() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'] ?? null;
@@ -23,7 +26,7 @@ class EditorialesController {
             $telefono = $_POST['telefono'] ?? null;
             $correo = $_POST['correo'] ?? null;
 
-            if ($nombre && $corregimiento && $calle && $num_loc && $telefono && $correo) {
+            if ($this->validateEditorialData($nombre, $corregimiento, $calle, $num_loc, $telefono, $correo)) {
                 $this->editorialModel->addEditorial($nombre, $corregimiento, $calle, $num_loc, $telefono, $correo);
                 header("Location: /editorial");
                 exit();
@@ -34,6 +37,7 @@ class EditorialesController {
             include __DIR__ ."/../views/editorial/registro.php";
         }
     }
+
     public function eliminarEditorial() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? null;
@@ -47,4 +51,7 @@ class EditorialesController {
         }
     }
 
+    private function validateEditorialData($nombre, $corregimiento, $calle, $num_loc, $telefono, $correo) {
+        return $nombre && $corregimiento && $calle && $num_loc && $telefono && $correo;
+    }
 }

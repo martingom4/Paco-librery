@@ -98,3 +98,6 @@
     		<script src="../scripts/home.js"></script>
     </body>
 </html>
+<?php
+// Mostrar los datos de la factura y los detalles de la venta
+?>

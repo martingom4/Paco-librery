@@ -10,13 +10,25 @@ class FacturaController {
     }
 
     public function mostrarFactura() {
-        $ventaId = $_GET['venta_id'] ?? null;
+        $ventaId = $this->obtenerVentaId();
         if ($ventaId) {
-            $factura = $this->facturaModel->obtenerFacturaPorVentaId($ventaId);
-            $detallesVenta = $this->facturaModel->obtenerDetallesVenta($ventaId);
-            include __DIR__ . '/../views/factura/factura.php';
+            $this->renderizarFactura($ventaId);
         } else {
-            echo "ID de venta no proporcionado.";
+            $this->mostrarError("ID de venta no proporcionado.");
         }
+    }
+
+    private function obtenerVentaId() {
+        return $_GET['venta_id'] ?? null;
+    }
+
+    private function renderizarFactura($ventaId) {
+        $factura = $this->facturaModel->obtenerFacturaPorVentaId($ventaId);
+        $detallesVenta = $this->facturaModel->obtenerDetallesVenta($ventaId);
+        include __DIR__ . '/../views/factura/factura.php';
+    }
+
+    private function mostrarError($mensaje) {
+        echo $mensaje;
     }
 }

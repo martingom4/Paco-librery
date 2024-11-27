@@ -28,16 +28,10 @@ class EmpleadoController {
     public function actualizarEmpleado() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? '';
-            $data = [
-                'telefono' => $_POST['telefono'] ?? '',
-                'correo' => $_POST['correo'] ?? '',
-                'contrasena' => password_hash($_POST['contrasena'] ?? '', PASSWORD_BCRYPT),
-                'sueldo' => $_POST['sueldo'] ?? ''
-            ];
+            $data = $this->getEmpleadoDataFromRequest();
 
             if ($this->empleadoModel->actualizarEmpleado($id, $data)) {
-                header('Location: /empleados?message=Empleado%20actualizado%20con%20éxito');
-                exit();
+                $this->redirectWithMessage('/empleados', 'Empleado actualizado con éxito');
             } else {
                 $error = "Error al actualizar el empleado.";
                 include __DIR__ . '/../views/empleado/actualizarEmpleado.php';
@@ -51,8 +45,7 @@ class EmpleadoController {
             $id = $_POST['id'] ?? null;
 
             if ($id && $this->empleadoModel->eliminarEmpleado($id)) {
-                header('Location: /empleados?message=Empleado%20eliminado%20con%20éxito');
-                exit();
+                $this->redirectWithMessage('/empleados', 'Empleado eliminado con éxito');
             } else {
                 $error = "Error al eliminar el empleado.";
                 include __DIR__ . '/../views/empleado/visualizarEmpleado.php';
@@ -68,25 +61,10 @@ class EmpleadoController {
     // Método para registrar un empleado
     public function registrarEmpleado() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = [
-                'CIP' => $_POST['CIP'] ?? '',
-                'nombre' => $_POST['nombre'] ?? '',
-                'apellido' => $_POST['apellido'] ?? '',
-                'nacionalidad' => $_POST['nacionalidad'] ?? '',
-                'fecha_contrato' => $_POST['fecha_contrato'] ?? '',
-                'fecha_nac' => $_POST['fecha_nac'] ?? '',
-                'edad' => $_POST['edad'] ?? '',
-                'sueldo' => $_POST['sueldo'] ?? '',
-                'cargo' => $_POST['cargo'] ?? '',
-                'telefono' => $_POST['telefono'] ?? '',
-                'correo' => $_POST['correo'] ?? '',
-                'contrasena' => password_hash($_POST['contrasena'] ?? '', PASSWORD_BCRYPT),
-                'id_libreria' => $_POST['id_libreria'] ?? null
-            ];
+            $data = $this->getEmpleadoDataFromRequest();
 
             if ($this->empleadoModel->agregarEmpleado($data)) {
-                header('Location: /empleados?message=Empleado%20registrado%20con%20éxito');
-                exit();
+                $this->redirectWithMessage('/empleados', 'Empleado registrado con éxito');
             } else {
                 $error = "Error al registrar el empleado.";
                 include __DIR__ . '/../views/empleado/registrarEmpleado.php';
@@ -94,7 +72,7 @@ class EmpleadoController {
         }
     }
 
-    // M��todo para mostrar el formulario de actualización de cliente desde la vista del empleado
+    // Método para mostrar el formulario de actualización de cliente desde la vista del empleado
     public function mostrarFormularioActualizarCliente($id) {
         $cliente = $this->clienteModel->obtenerClientePorId($id);
         include __DIR__ . '/../views/empleado/actualizarCliente.php';
@@ -119,13 +97,35 @@ class EmpleadoController {
             $perfilActualizado = $this->clienteModel->actualizarCliente($id, $nombre, $apellido, $telefono, $correo);
 
             if ($perfilActualizado) {
-                $mensaje = 'Datos actualizados con éxito.';
-                header('Location: /empleados/infoClientes?message=' . urlencode($mensaje));
+                $this->redirectWithMessage('/empleados/infoClientes', 'Datos actualizados con éxito');
             } else {
                 $error = 'Hubo un problema al actualizar los datos.';
                 include __DIR__ . '/../views/empleado/actualizarCliente.php';
             }
             exit();
         }
+    }
+
+    private function getEmpleadoDataFromRequest() {
+        return [
+            'CIP' => $_POST['CIP'] ?? '',
+            'nombre' => $_POST['nombre'] ?? '',
+            'apellido' => $_POST['apellido'] ?? '',
+            'nacionalidad' => $_POST['nacionalidad'] ?? '',
+            'fecha_contrato' => $_POST['fecha_contrato'] ?? '',
+            'fecha_nac' => $_POST['fecha_nac'] ?? '',
+            'edad' => $_POST['edad'] ?? '',
+            'sueldo' => $_POST['sueldo'] ?? '',
+            'cargo' => $_POST['cargo'] ?? '',
+            'telefono' => $_POST['telefono'] ?? '',
+            'correo' => $_POST['correo'] ?? '',
+            'contrasena' => password_hash($_POST['contrasena'] ?? '', PASSWORD_BCRYPT),
+            'id_libreria' => $_POST['id_libreria'] ?? null
+        ];
+    }
+
+    private function redirectWithMessage($url, $message) {
+        header('Location: ' . $url . '?message=' . urlencode($message));
+        exit();
     }
 }

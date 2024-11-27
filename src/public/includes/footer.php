@@ -35,7 +35,11 @@ $perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
                     <a href="/admin/perfil">Mi cuenta</a>
                 </div>
                 <ul>
-                    <li><a href="/admin/cerrarSesion">Cerrar Sesión</a></li>
+                    <li>
+                        <form action="/admin/logout" method="GET" style="display:inline;">
+                            <button type="submit" class="logout-button">Cerrar Sesión</button>
+                        </form>
+                    </li>
                 </ul>
 
             <!--FOOTER PARA CLIENTE-->
@@ -51,7 +55,11 @@ $perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
                     <a href="/cliente/perfil">Mi cuenta</a>
                 </div>
                 <ul>
-                    <li><a href="/logout">Cerrar Sesión</a></li>
+                    <li>
+                        <form action="/cliente/logout" method="POST" style="display:inline;">
+                            <button type="submit" class="logout-button">Cerrar Sesión</button>
+                        </form>
+                    </li>
                 </ul>
             <?php endif; ?>
         </div>

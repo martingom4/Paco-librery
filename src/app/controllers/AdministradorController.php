@@ -18,44 +18,44 @@ class AdministradorController {
             $correo = trim($_POST['correo'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
-            // Validación de campos vacíos
-            if (empty($correo) || empty($password)) {
-                $error = 'Por favor, complete todos los campos.';
+            $error = $this->validarCampos($correo, $password);
+            if ($error) {
                 include __DIR__ . '/../views/admin/loginAdministrador.php';
                 return;
             }
 
-            // Verificar si el administrador existe en la base de datos
-            $adminExistente = $this->adminModel->verificarCredenciales($correo, $password);
+            $this->autenticarAdmin($correo, $password);
+        }
+    }
 
-            if ($adminExistente) {
-                // Si las credenciales son correctas, iniciar sesión
-                session_start();  // Iniciar la sesión
-                $_SESSION['admin_id'] = $adminExistente['ID_admin'];  // Almacenar ID del administrador en la sesión
-                $_SESSION['correo'] = $adminExistente['correo'];
+    private function validarCampos($correo, $password) {
+        if (empty($correo) || empty($password)) {
+            return 'Por favor, complete todos los campos.';
+        }
+        return null;
+    }
 
-                //cookie de ultimo acceso
-                $ultimoAcceso = date("Y-m-d H:i:s"); // La fecha y hora actual
-                setcookie('ultimo_acceso', $ultimoAcceso, time() + 30*24*60*60, "/");  // La cookie durará 30 días
+    private function autenticarAdmin($correo, $password) {
+        $adminExistente = $this->adminModel->verificarCredenciales($correo, $password);
 
+        if ($adminExistente) {
+            session_start();
+            $_SESSION['admin_id'] = $adminExistente['ID_admin'];
+            $_SESSION['correo'] = $adminExistente['correo'];
 
-                 // Redirigir al catálogo o a cualquier página deseada
-                 include __DIR__ . "/../views/admin/loginExitoso.php";
-                exit();
-            } else {
-                // Si las credenciales no son correctas
-                $error = 'Correo o contraseña incorrectos.';
-                include __DIR__ . '/../views/admin/loginAdministrador.php';
-            }
+            $ultimoAcceso = date("Y-m-d H:i:s");
+            setcookie('ultimo_acceso', $ultimoAcceso, time() + 30*24*60*60, "/");
+
+            include __DIR__ . "/../views/admin/loginExitoso.php";
+            exit();
+        } else {
+            $error = 'Correo o contraseña incorrectos.';
+            include __DIR__ . '/../views/admin/loginAdministrador.php';
         }
     }
 
     public function mostrarPerfil() {
-        session_start();
-        if (!isset($_SESSION['admin_id'])) {
-            header('Location: /admin/login');
-            exit();
-        }
+        $this->verificarSesion();
 
         $admin = $this->adminModel->obtenerAdminPorId($_SESSION['admin_id']);
         include __DIR__ . '/../views/admin/PerfilAdmin.php';
@@ -65,7 +65,7 @@ class AdministradorController {
         session_start();
         session_unset();
         session_destroy();
-        header('Location: /admin/login');
+        header('Location: /home.php');
         exit();
     }
 

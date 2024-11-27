@@ -29,6 +29,7 @@ class Factura {
     }
 
     public function obtenerFacturaPorVentaId($ventaId) {
+        // Implementación para obtener la factura por ID de venta
         $query = "SELECT * FROM Factura WHERE ID_venta = :ventaId";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':ventaId', $ventaId);
@@ -37,6 +38,7 @@ class Factura {
     }
 
     public function obtenerDetallesVenta($ventaId) {
+        // Implementación para obtener los detalles de la venta
         $query = "SELECT vd.ISBN, l.titulo, vd.cantidad, vd.precio
                   FROM VentaDetalle vd
                   JOIN Libro l ON vd.ISBN = l.ISBN

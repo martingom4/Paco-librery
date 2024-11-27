@@ -195,3 +195,16 @@ body{
     background-color: #16333a; /* Color para el hover */
 }
 
+.logout-button {
+    background-color: #1B3F48;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.logout-button:hover {
+    background-color: #16333a;
+}
+
