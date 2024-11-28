@@ -1,5 +1,5 @@
 # Usar una imagen base de PHP con Apache
-FROM php:7.4-apache
+FROM php:8.1-apache
 
 # Instalar dependencias y las bibliotecas necesarias
 RUN apt-get update && \
@@ -33,8 +33,6 @@ COPY ./src/composer.json ./src/composer.lock ./
 # Instalar dependencias de Composer en /var/www/vendor
 RUN composer install --optimize-autoloader --no-interaction --prefer-dist --no-scripts --no-progress
 
-# Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
-COPY ./src /var/www/
 
 # Exponer el puerto 80
 EXPOSE 80
