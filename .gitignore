@@ -14,8 +14,7 @@ logs/*
 # Configuración de Docker
 docker/db_data
 
-
-
+.migraciones_completadas
 
 
 
