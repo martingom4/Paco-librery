@@ -1,9 +1,10 @@
 <?php
-session_start();
-//detectar sesion para determinar pefil
-$perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
-//aqui debe ir  los parametros de la sesion de admin admin_id  email
-$perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+// detectar sesion para determinar perfil
+$perfilCliente = isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
+$perfilAdmin = isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
 ?>
 <link rel="stylesheet" href="/css/header_footerEmpleado.css">
 <body>
@@ -19,7 +20,7 @@ $perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
             <!--HEADER PARA VISITANTE-->
             <?php if (!$perfilCliente && !$perfilAdmin): ?>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home.php">Home</a></li>
                     <li><a href="/catalogo">Catálogo</a></li>
                     <li><a href="/sobrenosotros">Sobre Nosotros</a></li>
                     <li><a href="/contacto">Contacto</a></li>
@@ -64,7 +65,6 @@ $perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
                     <a href="/carrito" class="carrito"><img src="../images/shopcart.png" alt="carrito"></a>
                     <a href="/cliente/perfil"><img src="../images/Usuario.png" alt="Usuario"></a>
                     <a href="/cliente/perfil">Mi cuenta</a>
-
                 </div>
             <?php endif; ?>
         </div>

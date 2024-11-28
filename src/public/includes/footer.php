@@ -1,9 +1,10 @@
 <?php
-session_start();
-//detectar sesion para determinar pefil
-$perfilCliente= isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
-//aqui debe ir  los parametros de la sesion de admin admin_id  email
-$perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+// detectar sesion para determinar perfil
+$perfilCliente = isset($_SESSION['cliente_id']) && isset($_SESSION['email']);
+$perfilAdmin = isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
 ?>
 <link rel="stylesheet" href="/css/header_footerEmpleado.css">
 <body>
