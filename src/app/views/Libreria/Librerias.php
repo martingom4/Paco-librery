@@ -24,7 +24,7 @@
         <div class="container">
             <div class="tabla-container">
                 <div style="margin-bottom: 20px;">
-                    <a href="/registrarLibrerias" class="btn registrar">Registrar Librería</a>
+                    <a href="/libreria/registrar" class="btn registrar">Registrar Librería</a>
                 </div>
                 <table>
                     <thead>
@@ -49,8 +49,8 @@
                                     <td><?= htmlspecialchars($libreria['telefono'] ?? 'No disponible'); ?></td>
                                     <td><?= htmlspecialchars($libreria['correo'] ?? 'No disponible'); ?></td>
                                     <td>
-                                        <a class="btn actualizar" href="/detallesLibrerias/<?= htmlspecialchars($libreria['ID_libreria']); ?>"><i class="fas fa-eye"></i> Ver Detalles</a>
-                                        <a class="btn actualizar" href="/formularioActualizar/<?= htmlspecialchars($libreria['ID_libreria']); ?>"><i class="fas fa-edit"></i> Actualizar</a>
+                                        <a class="btn actualizar" href="/libreria/detalles/<?= htmlspecialchars($libreria['ID_libreria']); ?>"><i class="fas fa-eye"></i> Ver Detalles</a>
+                                        <a class="btn actualizar" href="/libreria/actualizar/<?= htmlspecialchars($libreria['ID_libreria']); ?>"><i class="fas fa-edit"></i> Actualizar</a>
                                         <form method="POST" action="/libreria/eliminar" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta librería?');" style="display:inline; margin:0;">
                                             <input type="hidden" name="id_libreria" value="<?= htmlspecialchars($libreria['ID_libreria']); ?>">
                                             <button type="submit" class="btn eliminar"><i class="fas fa-trash-alt"></i> Eliminar</button>

@@ -41,7 +41,7 @@ $perfilAdmin= isset($_SESSION['admin_id']) && isset($_SESSION['correo']);
                         <div class="dropdown-content">
                             <a href="/empleados/infoClientes">Clientes</a>
                             <a href="/empleados">Empleados</a>
-                            <a href="/Librerias.php">Librerías</a>
+                            <a href="/libreria">Librerías</a>
                             <a href="/editorial">Editoriales</a>
                         </div>
                     </li>
