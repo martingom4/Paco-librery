@@ -46,13 +46,15 @@ services:
       retries: 5
 
   test:
-    image: php:7.4-cli
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
     volumes:
       - ./src:/var/www
       - ./tests:/var/www/tests
       - ./phpunit.xml:/var/www/phpunit.xml
     working_dir: /var/www
-    entrypoint: ["vendor/bin/phpunit"]
+    entrypoint: ["./vendor/bin/phpunit"]
 
 volumes:
   db_data:

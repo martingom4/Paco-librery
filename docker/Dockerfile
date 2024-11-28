@@ -27,14 +27,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Configurar el directorio de trabajo para Composer y el proyecto
 WORKDIR /var/www/
 
-# Copiar composer.json en el contenedor
-COPY ./src/composer.json ./
+# Copiar composer.json y composer.lock en el contenedor
+COPY ./src/composer.json ./src/composer.lock ./
 
 # Instalar dependencias de Composer en /var/www/vendor
-RUN composer install --no-dev --optimize-autoloader
-
-# Instalar PHPUnit globalmente
-RUN composer global require phpunit/phpunit
+RUN composer install --optimize-autoloader --no-interaction --prefer-dist --no-scripts --no-progress
 
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
 COPY ./src /var/www/
@@ -47,6 +44,7 @@ RUN chown -R www-data:www-data /var/www
 
 # Copiar el script de entrada y darle permisos de ejecución
 COPY ./docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
