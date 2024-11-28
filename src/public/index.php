@@ -1,7 +1,7 @@
 <?php
 
 // Autoload de Composer (si usas Composer)
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../app/routes.php';
 require_once __DIR__ . '/../app/config/config.php';
 

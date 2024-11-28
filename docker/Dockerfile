@@ -28,11 +28,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /var/www/
 
 # Copiar composer.json y composer.lock en el contenedor
-COPY ./src/composer.json ./src/composer.lock ./
+COPY ./composer.json ./composer.lock ./
 
 # Instalar dependencias de Composer en /var/www/vendor
 RUN composer install --optimize-autoloader --no-interaction --prefer-dist --no-scripts --no-progress
-
 
 # Exponer el puerto 80
 EXPOSE 80

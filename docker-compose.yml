@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./src:/var/www
+      - ./:/var/www
       - ./logs/apache:/var/log/apache2 # Logs de Apache
       - ./logs/php:/var/log/php        # Logs de PHP
       - ./docker/apache/vhost.conf:/etc/apache2/sites-available/vhost.conf # Archivo vhost.conf
@@ -50,7 +50,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     volumes:
-      - ./src:/var/www
+      - ./:/var/www
       - ./tests:/var/www/tests
       - ./phpunit.xml:/var/www/phpunit.xml
     working_dir: /var/www

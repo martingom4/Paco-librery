@@ -19,7 +19,7 @@ function loadEnv($path) {
 }
 
 // Cargar las variables de entorno
-loadEnv(ROOT_PATH . '/');
+loadEnv(ROOT_PATH . '/../.env');
 
 // Configuración de conexión a la base de datos
 $host = getenv('DB_HOST');
