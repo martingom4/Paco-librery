@@ -1,11 +1,11 @@
 version: '3.9'
 services:
-  web:
+  web_test:
     build:
       context: .
       dockerfile: docker/Dockerfile
     ports:
-      - "8000:80"
+      - "8001:80"
     volumes:
       - ./src:/var/www
       - ./logs/apache:/var/log/apache2 # Logs de Apache
@@ -23,21 +23,21 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
     depends_on:
-      db:
+      db_test:
         condition: service_healthy
     command: >
       /bin/bash -c "a2dissite 000-default.conf && a2ensite vhost.conf && apache2-foreground"
 
-  db:
+  db_test:
     image: mysql:8.0
-    container_name: paco_libreria_db
+    container_name: paco_libreria_db_test
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data_test:/var/lib/mysql
       - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u${DB_USERNAME}", "-p${DB_PASSWORD}"]
@@ -45,7 +45,7 @@ services:
       timeout: 10s
       retries: 5
 
-  test:
+  phpunit:
     build:
       context: .
       dockerfile: docker/Dockerfile
@@ -57,4 +57,4 @@ services:
     entrypoint: ["./vendor/bin/phpunit"]
 
 volumes:
-  db_data:
+  db_data_test:
