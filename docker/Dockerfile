@@ -33,6 +33,9 @@ COPY ./src/composer.json ./
 # Instalar dependencias de Composer en /var/www/vendor
 RUN composer install --no-dev --optimize-autoloader
 
+# Instalar PHPUnit globalmente
+RUN composer global require phpunit/phpunit
+
 # Copiar el código fuente de la aplicación desde src sin incluir composer.json y .env
 COPY ./src /var/www/
 
@@ -47,4 +50,3 @@ COPY ./docker/entrypoint.sh /entrypoint.sh
 
 # Configurar el script de entrada
 ENTRYPOINT ["/entrypoint.sh"]
-

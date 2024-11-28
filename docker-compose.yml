@@ -45,5 +45,14 @@ services:
       timeout: 10s
       retries: 5
 
+  test:
+    image: php:7.4-cli
+    volumes:
+      - ./src:/var/www
+      - ./tests:/var/www/tests
+      - ./phpunit.xml:/var/www/phpunit.xml
+    working_dir: /var/www
+    entrypoint: ["vendor/bin/phpunit"]
+
 volumes:
   db_data:
