@@ -62,6 +62,34 @@ switch ($routeInfo[0]) {
 
         // Instanciar el controlador y llamar al método correspondiente
         $controllerInstance = new $controller($pdo);
-        call_user_func_array([$controllerInstance, $method], $params);
+
+        // Asegúrate de que los parámetros se están pasando correctamente
+        try {
+            $reflectionMethod = new ReflectionMethod($controllerInstance, $method);
+            $reflectionParams = $reflectionMethod->getParameters();
+            $paramsToPass = [];
+
+            foreach ($reflectionParams as $param) {
+                $paramName = $param->getName();
+                if (isset($params[$paramName])) {
+                    $paramsToPass[] = $params[$paramName];
+                } elseif ($param->isDefaultValueAvailable()) {
+                    $paramsToPass[] = $param->getDefaultValue();
+                } else {
+                    throw new ArgumentCountError("Falta el parámetro requerido: $paramName");
+                }
+            }
+
+            call_user_func_array([$controllerInstance, $method], $paramsToPass);
+        } catch (ArgumentCountError $e) {
+            http_response_code(400);
+            echo "Error en los parámetros: " . $e->getMessage();
+        } catch (TypeError $e) {
+            http_response_code(400);
+            echo "Error en los tipos de parámetros: " . $e->getMessage();
+        } catch (ReflectionException $e) {
+            http_response_code(500);
+            echo "Error en la reflexión del método: " . $e->getMessage();
+        }
         break;
 }

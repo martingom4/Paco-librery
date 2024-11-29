@@ -22,13 +22,6 @@
                 <?php if (isset($error)): ?>
                     <p style="color: red;"><?php echo $error; ?></p>
                 <?php endif; ?>
-
-                <!--<div class="mensaje-exito">
-                    <h2>REGISTRO EXITOSO</h2>
-                    <p>Su registro se ha completado exitosamente.</p>
-                    <a href="home.html">Volver a la página principal</a>
-                </div>-->
-
                 <form action="/cliente/registro" method="POST">
                     <div class="input-group">
                         <input type="text" placeholder="Nombre" name="nombre" required>

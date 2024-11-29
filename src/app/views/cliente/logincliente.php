@@ -23,11 +23,9 @@
             <div class="login">
                 <h2>Inicio de sesión</h2>
                 <hr>
-                
                 <?php if (isset($error)): ?>
                 <p style="color: red;"><?php echo $error; ?></p>
                 <?php endif; ?>
-
                 <form action="/cliente/login" method="POST">
                     <div class="input-group">
                         <label for="email">Email</label>

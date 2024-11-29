@@ -60,11 +60,11 @@ class ClientesController {
 
     public function procesarLogin() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $correo = trim($_POST['email'] ?? '');
+            $email = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
-            if ($this->validarCamposLogin($correo, $password)) {
-                $clienteExistente = $this->clienteModel->buscarPorCorreo($correo);
+            if ($this->validarCamposLogin($email, $password)) {
+                $clienteExistente = $this->clienteModel->buscarPorCorreo($email);
                 if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
                     $this->iniciarSesion($clienteExistente);
                     include __DIR__ . "/../views/cliente/loginExitoso.php";

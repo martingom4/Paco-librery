@@ -8,12 +8,13 @@ class Cliente {
     }
 
     // Método para buscar un cliente por correo
-    public function buscarPorCorreo($correo) {
-        $query = "SELECT * FROM Cliente WHERE correo = :correo";
+    public function buscarPorCorreo(string $email): array {
+        $query = "SELECT * FROM Cliente WHERE correo = :email";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':correo', $correo);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result !== false ? $result : [];
     }
 
     // Método para registrar un nuevo cliente
