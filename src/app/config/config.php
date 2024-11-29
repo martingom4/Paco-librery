@@ -1,6 +1,6 @@
 <?php
 // Definir la ruta raíz del proyecto
-define('ROOT_PATH', dirname(__DIR__, 2));
+define('ROOT_PATH', dirname(__DIR__, 3));
 
 // Función para cargar variables de entorno desde un archivo .env
 function loadEnv($path) {
@@ -19,7 +19,7 @@ function loadEnv($path) {
 }
 
 // Cargar las variables de entorno
-loadEnv(ROOT_PATH . '/../.env');
+loadEnv(ROOT_PATH . '/.env');
 
 // Configuración de conexión a la base de datos
 $host = getenv('DB_HOST');
