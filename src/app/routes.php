@@ -34,6 +34,8 @@ function configurarRutas()
             $r->addRoute('GET', '/logout', [AdministradorController::class, 'cerrarSesion']);
             $r->addRoute('GET', '/perfil', [AdministradorController::class, 'mostrarPerfil']);
             $r->addRoute('GET', '/cerrarSesion', [AdministradorController::class, 'cerrarSesion']);
+            $r->addRoute('GET','/loginExitoso', [AdministradorController::class,'loginExitoso']);
+            $r->addRoute('GET','/loginFallido', [AdministradorController::class,'loginFallido']);
         });
 
         // Rutas para editorial

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registro de Cliente</title>
+        <title>Iniciar Sesión</title>
         <link rel="shortcut icon" href="../images/LOGO.png" alt="logo">
         <link rel="stylesheet" href="/css/registrocliente.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +17,9 @@
             <div class="registro-container">
                 <div class="registro-box">
                     <div class="mensaje-exito">
-                        <h2>REGISTRO FALLIDO</h2>
-                        <p>No ha sido posible completar su registro</p>
-                        <a href="/cliente/registro">Volver a Intentar</a>
+                        <h2>INICIO DE SESION FALLIDO</h2>
+                        <p>Correo o contraseña incorrectos.</p>
+                        <a href="/cliente/login">Volver a intentar</a>
                     </div>
                 </div>
             </div>

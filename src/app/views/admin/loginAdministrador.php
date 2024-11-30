@@ -28,10 +28,10 @@
                 <?php if (isset($error)): ?>
                     <p style="color: red;"><?php echo $error; ?></p>
                 <?php endif; ?>
-                <form method="POST" action="/admin/login">
+                <form action="/admin/login" method="POST">
                     <div class="input-group">
                         <label for="correo">Email</label>
-                        <input type="email" id="correo" name="correo" required>
+                        <input type="email" id="correo" name="email" required>
                     </div>
                     <div class="input-group">
                         <label for="password">Contraseña</label>

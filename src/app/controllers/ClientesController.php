@@ -14,7 +14,7 @@ class ClientesController {
         include __DIR__ ."/../views/cliente/logincliente.php";
     }
     public function registroFallido(){
-        include __DIR__ ."/../views/cliente/registroFallido.php";
+        include __DIR__ ."/../views/cliente/loginFallido.php";
     }
 
     public function loginExitoso(){
