@@ -43,7 +43,6 @@
             </div>
         </div>
     </main>
-<?php include 'includes/footer.php';?>
-    <script src="../scripts/home.js"></script>
+    <?php include 'includes/footer.php';?>
 </body>
 </html>

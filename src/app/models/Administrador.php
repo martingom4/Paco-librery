@@ -7,14 +7,14 @@ class Administrador {
         $this->db = $db;
     }
 
-    public function verificarCredenciales($correo, $password) {
+    public function buscarPorCorreo($correo) {
         $query = "SELECT * FROM Admin WHERE correo = :correo";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':correo', $correo);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
-    }
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result !== false ? $result : [];
+      }
 
     public function obtenerAdminPorId($id) {
         $sql = "SELECT * FROM Admin WHERE ID_admin = :id";

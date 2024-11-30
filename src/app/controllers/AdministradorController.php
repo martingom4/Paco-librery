@@ -15,30 +15,31 @@ class AdministradorController {
 
     public function procesarLogin() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $correo = trim($_POST['correo'] ?? '');
+            $email = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
-            $error = $this->validarCampos($correo, $password);
-            if ($error) {
-                include __DIR__ . '/../views/admin/loginAdministrador.php';
-                return;
+            if ($this->validarCamposLogin($email, $password)) {
+                $clienteExistente = $this->adminModel->buscarPorCorreo($email);
+                if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
+                    $this->iniciarSesion($clienteExistente);
+                    header('Location: /cliente/loginExitoso');
+                    exit();
+                } else {
+                    $error = 'Correo o contraseña incorrectos.';
+                    header('Location: /cliente/registroFallido');
+                }
             }
-
-            $this->autenticarAdmin($correo, $password);
         }
     }
 
-    private function validarCampos($correo, $password) {
+    private function validarCamposLogin($correo, $password) {
         if (empty($correo) || empty($password)) {
             return 'Por favor, complete todos los campos.';
         }
         return null;
     }
 
-    private function autenticarAdmin($correo, $password) {
-        $adminExistente = $this->adminModel->verificarCredenciales($correo, $password);
-
-        if ($adminExistente) {
+    private function iniciarSesion($adminExistente) {
             session_start();
             $_SESSION['admin_id'] = $adminExistente['ID_admin'];
             $_SESSION['correo'] = $adminExistente['correo'];
@@ -46,12 +47,7 @@ class AdministradorController {
             $ultimoAcceso = date("Y-m-d H:i:s");
             setcookie('ultimo_acceso', $ultimoAcceso, time() + 30*24*60*60, "/");
 
-            include __DIR__ . "/../views/admin/loginExitoso.php";
-            exit();
-        } else {
-            $error = 'Correo o contraseña incorrectos.';
-            include __DIR__ . '/../views/admin/loginAdministrador.php';
-        }
+
     }
 
     public function mostrarPerfil() {

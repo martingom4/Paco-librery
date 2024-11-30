@@ -18,8 +18,8 @@
                 <div class="registro-box">
                     <div class="mensaje-exito">
                         <h2>REGISTRO FALLIDO</h2>
-                        <p>No ha sido posible completar su registro</p>
-                        <a href="/cliente/registro">Volver a Intentar</a>
+                        <p>Correo o contraseña incorrectos.</p>
+                        <a href="/cliente/login">Volver a Intentar</a>
                     </div>
                 </div>
             </div>

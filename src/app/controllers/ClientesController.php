@@ -10,6 +10,17 @@ class ClientesController {
         $this->clienteModel = new Cliente($db);
     }
 
+    public function mostrarLogin() {
+        include __DIR__ ."/../views/cliente/logincliente.php";
+    }
+    public function registroFallido(){
+        include __DIR__ ."/../views/cliente/registroFallido.php";
+    }
+
+    public function loginExitoso(){
+        include __DIR__ ."/../views/cliente/loginExitoso.php";
+    }
+
     public function mostrarRegistro() {
         include __DIR__ ."/../views/cliente/registrocliente1.php";
     }
@@ -54,14 +65,6 @@ class ClientesController {
         }
     }
 
-    public function mostrarLogin() {
-        include __DIR__ ."/../views/cliente/logincliente.php";
-    }
-
-    public function loginExitoso(){
-        include __DIR__ ."/../views/cliente/loginExitoso.php";
-    }
-
     public function procesarLogin() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = trim($_POST['email'] ?? '');
@@ -75,7 +78,7 @@ class ClientesController {
                     exit();
                 } else {
                     $error = 'Correo o contraseña incorrectos.';
-                    include __DIR__ . '/../views/cliente/registroFallido.php';
+                    header('Location: /cliente/registroFallido');
                 }
             }
         }
