@@ -67,7 +67,8 @@ class ClientesController {
                 $clienteExistente = $this->clienteModel->buscarPorCorreo($email);
                 if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
                     $this->iniciarSesion($clienteExistente);
-                    include __DIR__ . "/../views/cliente/loginExitoso.php";
+                    header('Location: /cliente/perfil'); // Redirigir a /cliente/perfil
+                    exit();
                 } else {
                     $error = 'Correo o contraseña incorrectos.';
                     include __DIR__ . "/../views/cliente/logincliente.php";
