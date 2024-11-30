@@ -58,6 +58,10 @@ class ClientesController {
         include __DIR__ ."/../views/cliente/logincliente.php";
     }
 
+    public function loginExitoso(){
+        include __DIR__ ."/../views/cliente/loginExitoso.php";
+    }
+
     public function procesarLogin() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = trim($_POST['email'] ?? '');
@@ -67,11 +71,11 @@ class ClientesController {
                 $clienteExistente = $this->clienteModel->buscarPorCorreo($email);
                 if ($clienteExistente && password_verify($password, $clienteExistente['contrasena'])) {
                     $this->iniciarSesion($clienteExistente);
-                    header('Location: /cliente/perfil'); // Redirigir a /cliente/perfil
+                    header('Location: /cliente/loginExitoso');
                     exit();
                 } else {
                     $error = 'Correo o contraseña incorrectos.';
-                    include __DIR__ . "/../views/cliente/logincliente.php";
+                    include __DIR__ . '/../views/cliente/registroFallido.php';
                 }
             }
         }

@@ -1,11 +1,9 @@
 <?php
-session_start();
-if(!isset($_SESSION['cliente_id'])){
-        header("Location: /cliente/login");
-        exit();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
-include 'includes/header.php'
 ?>
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
