@@ -24,7 +24,7 @@
         <div class="main-content">
             <section class="form-section">
                 <div class="form-container">
-                    <form method="POST" action="/formularioActualizar" class="form-register">
+                    <form method="POST" action="/libreria/actualizar" class="form-register">
                     <h1>Actualizar Librería</h1>
                     <hr>
                         <input type="hidden" name="id_libreria" value="<?= htmlspecialchars($libreria['ID_libreria']) ?>">
@@ -61,6 +61,9 @@
 
                         <button type="submit" class="btn">Actualizar</button>
                     </form>
+                    <?php if (isset($mensaje)): ?>
+                        <p><?= htmlspecialchars($mensaje) ?></p>
+                    <?php endif; ?>
                 </div>
             </section>
         </div>

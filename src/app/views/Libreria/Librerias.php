@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +27,10 @@
     </header>
     <main class="main-content">
         <div class="container">
+            <?php if (isset($_SESSION['mensaje'])): ?>
+                <p><?= htmlspecialchars($_SESSION['mensaje']) ?></p>
+                <?php unset($_SESSION['mensaje']); ?>
+            <?php endif; ?>
             <div class="tabla-container">
                 <div style="margin-bottom: 20px;">
                     <a href="/libreria/registrar" class="btn registrar">Registrar Librería</a>

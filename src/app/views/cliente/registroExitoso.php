@@ -19,7 +19,7 @@
                     <div class="mensaje-exito">
                         <h2>REGISTRO EXITOSO</h2>
                         <p>Su registro se ha completado exitosamente.</p>
-                        <a href="/cliente/login=">Continuar</a>
+                        <a href="/cliente/login">Continuar</a>
                     </div>
                 </div>
             </div>

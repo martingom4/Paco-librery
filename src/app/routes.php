@@ -67,9 +67,9 @@ function configurarRutas()
         $r->addGroup('/libreria', function (RouteCollector $r) {
             $r->addRoute('GET', '/registrar', [LibreriasController::class, 'formularioRegistro']);
             $r->addRoute('POST', '/registrar', [LibreriasController::class, 'registrarLibreria']);
-            $r->addRoute('GET', '/actualizar/{id:\d+}', [LibreriasController::class, 'mostrarFormularioEdicion']);
+            $r->addRoute('GET', '/actualizar/{idLibreria}', [LibreriasController::class, 'mostrarFormularioEdicion']);
             $r->addRoute('POST', '/actualizar', [LibreriasController::class, 'actualizarLibreria']);
-            $r->addRoute('GET', '/detalles/{id:\d+}', [LibreriasController::class, 'mostrarDetallesLibreria']);
+            $r->addRoute('GET', '/detalles/{idLibreria}', [LibreriasController::class, 'mostrarDetallesLibreria']);
             $r->addRoute('GET', '', [LibreriasController::class, 'listarLibrerias']);
             $r->addRoute('POST', '/eliminar', [LibreriasController::class, 'eliminarLibreria']);
         });

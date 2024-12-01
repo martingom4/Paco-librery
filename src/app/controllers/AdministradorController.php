@@ -34,8 +34,7 @@ class AdministradorController {
                         header('Location: /admin/loginExitoso');
                         exit();
                     } else {
-                        $error = 'Correo o contraseña incorrectos';
-                        header ('Location: /admin/loginFallido');
+                        $error = 'Correo o contraseña incorrectos.';
                     }
                 }
             } else {

@@ -78,7 +78,7 @@ class ClientesController {
                     exit();
                 } else {
                     $error = 'Correo o contraseña incorrectos.';
-                    header('Location: /cliente/registroFallido');
+                    include __DIR__ . '/../views/cliente/logincliente.php';
                 }
             }
         }

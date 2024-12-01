@@ -1,5 +1,6 @@
 <?php
 
+
 require_once __DIR__ . "/../models/Libreria.php";
 
 class LibreriasController {
@@ -40,10 +41,13 @@ class LibreriasController {
                     ':correo' => $correo,
                 ]);
 
-                header('Location: /Librerias.php');
+                $_SESSION['mensaje'] = "Librería registrada correctamente.";
+                header('Location: /libreria');
                 exit;
             } catch (PDOException $e) {
-                echo "Error al registrar la librería: " . $e->getMessage();
+                $_SESSION['mensaje'] = "Error al registrar la librería: " . $e->getMessage();
+                header('Location: /libreria');
+                exit;
             }
         }
     }
@@ -71,10 +75,13 @@ class LibreriasController {
             ];
 
             if ($this->libreriaModel->actualizarLibreria($datosLibreria)) {
-                header('Location: /Librerias.php');
+                $_SESSION['mensaje'] = "Librería actualizada correctamente.";
+                header('Location: /libreria');
                 exit;
             } else {
-                echo "Error al actualizar la librería.";
+                $_SESSION['mensaje'] = "Error al actualizar la librería.";
+                header('Location: /libreria');
+                exit;
             }
         }
     }
@@ -101,10 +108,13 @@ class LibreriasController {
             $idLibreria = $_POST['id_libreria'] ?? null;
 
             if ($idLibreria && $this->libreriaModel->eliminarLibreria($idLibreria)) {
-                header('Location: /Librerias.php');
+                $_SESSION['mensaje'] = "Librería eliminada correctamente.";
+                header('Location: /libreria');
                 exit;
             } else {
-                echo "Error al eliminar la librería. Asegúrate de que no existan dependencias pendientes.";
+                $_SESSION['mensaje'] = "Error al eliminar la librería. Asegúrate de que no existan dependencias pendientes.";
+                header('Location: /libreria');
+                exit;
             }
         }
     }

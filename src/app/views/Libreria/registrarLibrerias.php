@@ -26,7 +26,7 @@
         <div class="main-content">
             <section class="form-section">
                 <div class="form-container">
-                    <form action="/registrarLibrerias" method="POST" class="form-register">
+                    <form action="/libreria/registrar" method="POST" class="form-register">
                     <h1>Registrar Librería</h1>
                     <hr>
                         <div class="form-group">
@@ -66,6 +66,9 @@
 
                         <button type="submit" class="btn">Registrar</button>
                     </form>
+                    <?php if (isset($mensaje)): ?>
+                        <p><?= htmlspecialchars($mensaje) ?></p>
+                    <?php endif; ?>
                 </div>
             </section>
         </div>
