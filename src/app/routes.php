@@ -40,6 +40,7 @@ function configurarRutas()
 
         // Rutas para editorial
         $r->addGroup('/editorial', function (RouteCollector $r) {
+            $r->addRoute('GET','/registrar', [EditorialesController::class,'viewRegister']);
             $r->addRoute('GET', '', [EditorialesController::class, 'verEditorial']);
             $r->addRoute('GET', '/agregar', [EditorialesController::class, 'viewRegister']);
             $r->addRoute('POST', '/registrar', [EditorialesController::class, 'addEditorial']);
