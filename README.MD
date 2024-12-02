@@ -137,59 +137,6 @@ Se tendria que navegar dependiendo de lo que se quiera programar
 - La base de datos persiste en un volumen llamado `db_data`, por lo que los datos no se perderán cuando se apaguen los contenedores.
 - Cualquier cambio en la carpeta `src` se refleja automáticamente en el contenedor.
 
-## Archivos Ignorados en el Control de Versiones
-
-El archivo `.gitignore` está configurado para ignorar archivos sensibles o innecesarios en el repositorio, incluyendo:
-
-```
-# Archivos y carpetas del sistema
-.DS_Store
-Thumbs.db
-
-# Archivos de entorno
-.env
-docker-compose.override.yml
-docker/Dockerfile.override
-
-# Archivos de logs
-logs/
-logs/*
-
-# Configuración de Docker
-docker/db_data
-
-# Archivos de bases de datos y backups
-*.sql
-*.tar.gz
-*.gz
-
-# Archivos temporales de PHP
-*.log
-*.cache
-
-# Directorios generados por Composer y dependencias
-/vendor/
-
-# Archivos y directorios que contienen configuraciones específicas de desarrollo
-# Ignorar archivos de configuración de Apache o Nginx si es necesario
-
-
-# Ignorar archivos de configuración en src
-src/.migraciones_completadas
-
-# Ignorar archivos de pruebas o ejemplos (si no son necesarios en producción)
-tests/
-examples/
-
-# Archivos de configuración de entorno de Docker (si contienen credenciales sensibles)
-docker-compose.yml
-docker/*   # Ignorar el directorio Docker entero si contiene configuraciones sensibles
-
-```
-
-
-
----
 
 ---
 
@@ -318,7 +265,7 @@ Siguiendo estos pasos, el equipo puede mantener el repositorio sincronizado y mi
 
 ---
 
-Proyecto realizado por: 
+Proyecto realizado por:
 
 - **Martin Gomez** - [GitHub](https://github.com/martingom4)
 - **Anilys Rodriguez** - [GitHub](https://github.com/anilysRodriguez)
